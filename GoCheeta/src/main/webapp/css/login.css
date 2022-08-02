@@ -1,0 +1,208 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+
+.nav-bar {
+    height: 50px;
+    background-color: bisque;
+    display: flex;
+    flex-direction: row;
+}
+
+.logo {
+    width: 130px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo img {
+    width: 100px;
+    height: auto;
+}
+
+.nav-links {
+    display: flex;
+    flex: 1;
+    padding-right: 1%;
+    background-color: aliceblue;
+    justify-content: right;
+    align-items: center;
+  
+}
+
+.nav-links button {
+    background-color: transparent;
+    border: 0px;
+    padding: 5px;
+    margin: 5px;
+}
+
+.nav-links #loginBtn{
+    background-color: orange;
+    border-radius: 15px;
+    padding-left: 14px;
+    padding-right: 14px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.nav-menu-button{
+    display: none;
+}
+
+.login-bg {
+
+    background-image: url('../images/taxi-sideview.jpg');
+    width: auto;
+    height: 100vh;
+    background-size: contains;
+    padding-top: 3%;
+
+}
+
+.login-panel {
+    display: flex;
+    flex-flow: column;
+    height: 85%;
+    width:650px;
+    background-color: white;
+    margin: auto;
+    border-radius: 5px;
+    
+}
+
+.login-title{
+    display: flex;
+    padding-left: 50px;
+    padding-top: 50px;
+}
+
+.login-title img{
+    width: 20%;
+    display: flex;
+    
+}
+.login-title p{
+    display: flex;
+    align-items: center;
+    margin-left: 15px;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    width: 85%;
+    margin-left: 5%;
+    margin-top: 5%;
+    
+}
+
+.email-ip, .password-ip {
+    font-size: 32px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-size: 24px;
+    padding-left: 34px;
+    background-repeat: no-repeat;
+    background-position: left ;
+    border-width: 1px;
+    border-style: outset;
+    background-position-x: 5px;
+}
+
+.email-ip{
+    margin-bottom: 2%;
+    background-image: url('../images/mail.svg');
+}
+
+.password-ip {
+    margin-bottom: 6%;
+    background-image: url('../images/password-lock.svg');
+}
+
+.submitBtn{
+    font-size: 30px;
+    background-color: orange;
+    border-width: 0px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 5px;
+}
+
+.createAccBtn {
+    display: flex;
+    margin-top: auto;
+    justify-content: center;
+    padding-bottom: 16px;
+}
+
+.createAccBtn div{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 20px;
+
+}
+
+.createAccBtn div img{
+    display: flex;
+    align-items: center;
+    height: 18px;
+    padding-left: 5px;
+
+}
+
+.footer {
+    display: flex;
+    flex-direction: row;
+    background-color: black;
+    color: white;
+}
+.footer-about{
+    flex: 1;
+}
+.footer-socialM{
+    flex: 1;
+    flex-direction: column;
+}
+
+.footer-socialM div{
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  
+}
+
+
+.social-media-icons{
+    width: 24px;
+}
+
+.footer-info-Nletter{
+    flex: 1;
+    flex-direction: column;
+}
+
+.footer-info-Nletter div{
+    display: flex;
+}
+
+
+
+@media only screen and (max-width: 768px) {
+    .nav-menu-button{
+        display: flex;
+    }
+
+    .login-panel {
+        
+        width:500px;
+        
+    }
+}
