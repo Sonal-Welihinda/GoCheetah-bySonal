@@ -5,48 +5,54 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/login.css">
-    <title>Document</title>
+    <link rel="stylesheet" href="css/nav-customer.css">
+    <link rel="stylesheet" href="css/footer-customer.css">
+    <title>login</title>
 </head>
 <body>
 
-    <!-- nav bar -->
-    <div class="nav-bar">
-        <div class="logo">
+    <!-- nav bar v1 -->
+    <div class="nav-bar flex">
+        <div class="logo flex">
             <img src="images/logo_white.png" alt="company logo white">
         </div>
 
-        <div class="nav-links" >
+        <!-- <div id="nav-links" >
             <button>HOME</button>
             <button>ABOUT US</button>
             <button>FAQ</button>
             <button>OUR SERVICES</button>
             <button id="loginBtn">LOGIN</button>
-            <img class="nav-menu-button" src="images/menu.svg" alt="menu">
-        </div>
+            
+        </div> -->
+        <!-- <img src="images/menu.svg" alt="menu" id="nav-Button"> -->
     </div>
 
     <!-- login screen -->
     <div class="login-bg">
 
         <!-- login panel -->
-        <div class="login-panel">
+        <div class="login-panel flex">
 
             
-            <div class="login-title" >
+            <div class="login-title flex" >
                 <img src="images/logo-full.png" alt="gocheeta company logo"> 
                 <p>Login Page</p>
             </div>
 
             <!-- login form -->
             <form action="" class="login-form">
-                <input class="email-ip" type="text" >
-                <input class="password-ip" type="text" >
+                <label for="email">Email</label>
+                <input class="email-ip" type="text" id="email">
+                <label for="password">Password</label>
+                <input class="password-ip" type="text" id="password">
+           
                 <input class="submitBtn" type="button" value="Login">
             </form>
 
             
             <!-- create new account  -->
-            <div class="createAccBtn">
+            <div class="createAccBtn flex">
                 <div>
                     Create Account 
                     <img src="images/person_add.svg" alt="Create Account">
@@ -57,7 +63,9 @@
 
     </div>
 
-    <div class="footer">
+
+    <!-- Footer -->
+    <div class="footer flex">
         <!-- about -->
         <div class="footer-about">
             <h3>ABOUT</h3>
@@ -74,11 +82,11 @@
                 www.facebook.com/gocheeta
             </div>
             <div>
-                <img class="social-media-icons" src="images/instagram.svg" alt="facebook logo">
+                <img class="social-media-icons" src="images/instagram.svg" alt="instagram logo">
                 https://www.instagram.com/gocheeta/
             </div>
             <div>
-                <img class="social-media-icons" src="images/twitter.svg" alt="facebook logo">
+                <img class="social-media-icons" src="images/twitter.svg" alt="twitterlogo">
                 https://twitter.com/GoCheeta
             </div>
             
@@ -90,12 +98,24 @@
         <div class="footer-info-Nletter">
             <h3>INFORMATION</h3>
             <div>
-                <img class="social-media-icons" src="images/phone.svg" alt="facebook logo">
+                <img class="social-media-icons" src="images/phone.svg" alt="phone logo">
                 011 222 2222
             </div>
+            <div>
+                <img class="social-media-icons" src="images/mail-oranged.svg" alt="mail logo">
+                test@gmail.com
+            </div>
+            <div>
+                <img class="social-media-icons" src="images/location.svg" alt="location logo">
+                137 1/3 2nd Cross Street, 11 
+            </div>
+
+            
         </div>
     </div>
 
 
+
+    <script src="nav.js"></script>
 </body>
 </html>

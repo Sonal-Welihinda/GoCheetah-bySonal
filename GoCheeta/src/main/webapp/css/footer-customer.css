@@ -1,0 +1,89 @@
+.footer {
+    flex-direction: row;
+    background-color: black;
+    color: white;
+    
+
+}
+
+.footer-about{
+    flex: 1;
+    padding-top: 10px;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.footer-about h3,.footer-socialM h3, .footer-info-Nletter h3{
+    padding-bottom: 20px;
+    color: #FB9933;
+}
+
+.footer-socialM{
+    flex: 1;
+    flex-direction: column;
+    padding-top: 10px;
+    padding-left: 5%;
+}
+
+.footer-socialM div{
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-bottom: 5px;
+  
+}
+
+.social-media-icons{
+    width: 24px;
+}
+
+.footer-info-Nletter{
+    flex: 1;
+    flex-direction: column;
+    padding-top: 10px;
+    padding-left: 5%;
+}
+
+
+
+.footer-info-Nletter div{
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 5px;
+
+}
+
+.footer-info-Nletter input{
+    font-size: 20px;
+
+
+}
+.footer-info-Nletter button{
+    background-color: white;
+    height: auto;
+    width: auto;
+
+}
+
+.footer-info-Nletter button img{
+    height: 100%;
+
+
+}
+
+
+@media only screen and (max-width: 768px) {
+    .footer {
+
+        flex-direction: column;
+    
+    }
+    .footer-about, .footer-socialM , .footer-info-Nletter{
+        padding-left: 2%;
+        padding-right: 2%;
+    }
+
+}
+

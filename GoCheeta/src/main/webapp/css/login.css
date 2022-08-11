@@ -5,17 +5,15 @@
 
 
 
-.nav-bar {
-    height: 50px;
-    background-color: bisque;
+
+
+.flex{
     display: flex;
-    flex-direction: row;
 }
 
 .logo {
     width: 130px;
     height: 50px;
-    display: flex;
     align-items: center;
     justify-content: center;
 }
@@ -25,35 +23,8 @@
     height: auto;
 }
 
-.nav-links {
-    display: flex;
-    flex: 1;
-    padding-right: 1%;
-    background-color: aliceblue;
-    justify-content: right;
-    align-items: center;
-  
-}
 
-.nav-links button {
-    background-color: transparent;
-    border: 0px;
-    padding: 5px;
-    margin: 5px;
-}
 
-.nav-links #loginBtn{
-    background-color: orange;
-    border-radius: 15px;
-    padding-left: 14px;
-    padding-right: 14px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-}
-
-.nav-menu-button{
-    display: none;
-}
 
 .login-bg {
 
@@ -66,18 +37,19 @@
 }
 
 .login-panel {
-    display: flex;
+    
     flex-flow: column;
-    height: 85%;
-    width:650px;
-    background-color: white;
+    height: 70%;
+    width: 650px;;
+    background-color: rgba(255, 255, 255,0.6);
+    backdrop-filter: blur(5px);
     margin: auto;
     border-radius: 5px;
     
 }
 
 .login-title{
-    display: flex;
+    
     padding-left: 50px;
     padding-top: 50px;
 }
@@ -91,6 +63,8 @@
     display: flex;
     align-items: center;
     margin-left: 15px;
+    font-size: 20px;
+    padding-top: 10px;
 }
 
 .login-form {
@@ -100,6 +74,11 @@
     margin-left: 5%;
     margin-top: 5%;
     
+}
+
+
+.login-form label{
+    padding-left: 5px;
 }
 
 .email-ip, .password-ip {
@@ -113,7 +92,17 @@
     border-width: 1px;
     border-style: outset;
     background-position-x: 5px;
+    outline: none;
+    outline-style: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: solid #292929 1px;
+    background-color:rgba(255, 255, 255,0.1) ;
+    backdrop-filter: blur(3px);
 }
+
+
 
 .email-ip{
     margin-bottom: 2%;
@@ -135,7 +124,7 @@
 }
 
 .createAccBtn {
-    display: flex;
+    
     margin-top: auto;
     justify-content: center;
     padding-bottom: 16px;
@@ -157,52 +146,26 @@
 
 }
 
-.footer {
-    display: flex;
-    flex-direction: row;
-    background-color: black;
-    color: white;
-}
-.footer-about{
-    flex: 1;
-}
-.footer-socialM{
-    flex: 1;
-    flex-direction: column;
-}
 
-.footer-socialM div{
-    flex: 1;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-  
-}
-
-
-.social-media-icons{
-    width: 24px;
-}
-
-.footer-info-Nletter{
-    flex: 1;
-    flex-direction: column;
-}
-
-.footer-info-Nletter div{
-    display: flex;
-}
 
 
 
 @media only screen and (max-width: 768px) {
-    .nav-menu-button{
-        display: flex;
+
+
+    .login-bg{
+        padding-top: 13%;
     }
 
     .login-panel {
-        
-        width:500px;
+
+        width:90%;
         
     }
+
+    
+
+
+ 
+
 }

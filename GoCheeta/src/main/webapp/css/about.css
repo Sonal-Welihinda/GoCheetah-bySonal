@@ -1,0 +1,102 @@
+* {
+    margin: 0;
+    padding: 0;
+                                                
+}
+
+
+.flex{
+    display: flex;
+}
+
+#aboutTitle {
+    background-color: #FFD344;
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+}
+
+#aboutTitle img{
+    width: 3em;
+    margin-right: 1%;
+
+}
+
+#aboutTitle p{
+
+    font-size: 3em;
+    font-weight: 700;
+    
+}
+
+#whoWeAre{
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 1%;
+}
+
+#whoWeAre p{
+    font-size: 1.5em;
+    margin-top: 1%;
+}
+
+#customerReview h1{
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 1%;
+}
+
+#customerReview_bg{
+    background:  url("../images/taxicabs.jpg"), rgba(255, 255, 255,0.6);
+    background-position: center 88%;
+    background-repeat: no-repeat;
+    background-blend-mode: overlay;
+    height: 60vh;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-weight: 400;
+
+
+}
+
+#customerReview_bg p,#customerReview_bg h4{
+    margin-left: 7%;
+    margin-right: 7%;
+    margin-top: 1%;
+    text-align: center;
+    font-size: 1.5em;
+    align-items: center;
+}
+
+#customerReview_bg h4{
+    margin-top: 2%;
+    font-weight: 700;
+}
+
+@media only screen and (max-width: 768px) {
+
+    
+    #aboutTitle img{
+    
+        margin-right: 1%;
+
+    }
+
+    #whoWeAre p{
+        font-size: 1em;
+    }
+
+    #customerReview_bg{
+        height: 40vh;
+    }
+
+    #customerReview_bg h4{
+        margin-top: 10%;
+    }
+
+}

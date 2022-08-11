@@ -1,0 +1,200 @@
+* {
+    margin: 0;
+    padding: 0;
+    /* font-family: 'Yeseva One';font-size: 22px; */
+
+    /* font-family: 'Diamond Sparkling', sans-serif; */
+                                                
+    /* font-family: 'Vogue', sans-serif;
+                                                 */
+    /* font-family: 'MADE Sunflower', sans-serif; */
+                                                
+}
+
+
+.flex{
+    display: flex;
+}
+
+.intro-home{
+    flex-direction: column;
+    background-image: url("../images/pexels-yurii-hlei-1324990 - Copy.jpg");
+    background-size: 55%;
+    background-position: right 100%;
+    background-repeat: no-repeat;
+
+}
+
+
+.intro-home-upper{
+    display: flex;
+    flex-direction: row;
+    
+    width: 100%;
+    background: linear-gradient(120deg, rgba(248,248,248,1) 0%, rgba(248,248,248,1) 54%, rgba(248,248,248,0.8576564414828431) 60%, rgba(0,0,0,0) 65%);
+
+
+}
+
+
+
+.into-text{
+    flex: 1;
+    flex-direction: column;
+    padding-left: 1%;
+   
+}
+.into-text h3{
+    font-size: 5vw;
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+
+.into-text p{
+    font-size: 3vw;
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+
+
+
+.taxi-car-img{
+    flex: 1;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+  
+
+
+    
+    
+}
+
+
+
+#registerBtn{
+    background-color: black;
+    color: orange;
+    border-radius: 24px;
+    font-size: 2vw;
+    margin-top: 2%;
+    margin-bottom: 3%;
+    margin-left: 5%;
+    margin-right: 9%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+
+}
+
+#registerBtn2{
+    display: none;
+    background-color: black;
+    color: orange;
+    border-radius: 20px;
+    font-size: 2.5vw;
+    margin-top: 2%;
+    margin-bottom: 3%;
+    
+}
+
+
+.why-home{
+    flex-direction: column;
+    background-color: rgb(255,188,0);
+    backdrop-filter: blur(5px);
+}
+
+.why-home-title{
+    justify-content: center;
+    margin-top: 2%;
+}
+
+.why-home-body{
+    justify-content: center;
+    padding-top: 3%;
+    padding-bottom: 5%;
+}
+
+.why-home-body div{
+    height: 350px;
+    width: 320px;
+    margin-left: 2%;
+    margin-right: 2%;
+    background-color: white;
+    border-radius: 10px;
+    border-width: 1px;
+    border-style: outset;
+    border-color: rgb(221, 221, 221);
+
+}
+
+
+@media only screen and (max-width: 768px) {
+
+    .intro-home{
+    
+       
+        background-image: url("../images/pexels-yurii-hlei-1324990 - Copy.jpg");
+        background-size: 100%;
+        background-position: right 100%;
+        background-repeat: no-repeat;
+    
+    }
+
+    .intro-home-upper{
+        flex-direction: column;
+        background: linear-gradient(180deg, rgba(248,248,248,1) 0%, rgba(248,248,248,1) 25%, rgba(248,248,248,0.9164799708946079) 54%, rgba(248,248,248,0.6783847327993697) 90%, rgba(0,0,0,0) 100%);
+
+    }
+
+    .into-text h3{
+        text-align: center;
+        font-size: 1.8em ;
+    }
+
+    .into-text p{
+        text-align: center;
+        font-size: 5vw;
+    }
+
+    .taxi-car-img{
+        flex: 1;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        
+    }
+
+    .taxi-car-img img{
+        width: 90%;
+        margin-top: 13%;
+      
+    }
+
+    #registerBtn{
+        display: none;
+    }
+
+    #registerBtn2{
+        display: block;
+        margin-left: 5%;
+        margin-right: 5%;
+        margin-top: 10%;
+      
+        font-size: 3vw;
+        padding-top: 1%;
+        padding-bottom: 1%;
+    }
+
+    .why-home-body{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .why-home-body div{
+        margin-top: 5%;
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+
+}
