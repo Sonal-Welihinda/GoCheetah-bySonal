@@ -35,6 +35,7 @@
 
 #FAQSearch h2{
     color: #FFBC00;
+    margin-bottom: 1%;
 }
 
 #FAQSearch input{
@@ -66,25 +67,24 @@
 
 .FAQ-Question{
     flex-direction: row;
-    font-size: 1.6vw;
-    height: 2.5vw;
+    font-size: 1.5vw;
+    height: 10px;
     align-items: center;
     padding: 2%;
     border-radius: 10px;
-    background-color: rgb(176, 176, 176);
+    background-color: #FFBC00;
 
 }
 
 .FAQ-Question img{
-    
-    height: 70%;
+    height: 100%;
     margin-left: auto;
 }
 
 .FAQ-Awnser{
     
     font-size: 1.5vw;
-    background-color: gray;
+    background-color: #FFD96F;
     height: 0px;
     overflow: hidden;
     transform: scaleY(0);
@@ -98,7 +98,26 @@
     transform: scaleY(1);
     height: auto;
     font-size: 1.5vw;
-    background-color: gray;
+    background-color: #FFD96F;
     padding: 1%;
 }
 
+@media only screen and (max-width: 768px) {
+    
+    .FAQ-Question{
+        font-size: 3.5vw;
+        height: 30px;
+    }
+
+    
+    .FAQ-Question img{
+        height: 60%;
+
+    }
+
+    .FAQ-Awnser{
+        font-size: 3vw;
+    }
+
+
+}
