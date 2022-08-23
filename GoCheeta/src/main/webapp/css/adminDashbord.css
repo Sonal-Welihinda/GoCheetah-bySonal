@@ -1,0 +1,22 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+
+#nav-tabs{
+    display: flex;
+}
+
+#nav-bar{
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+}
+
+#TabsContent div{
+    display: none;
+}
+
+.Active-Tab{
+    display: flex !important;
+}

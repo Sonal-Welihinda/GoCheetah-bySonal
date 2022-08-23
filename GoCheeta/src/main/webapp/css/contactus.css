@@ -1,0 +1,107 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+.flex{
+    display: flex;
+}
+
+#contectTitle{ 
+    height: 20vh;
+
+    background-image: url("../images/taxi-line-tesla.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: 0px 50%;
+   
+}
+
+#contectTitle div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background-color: #ffffffad;
+
+}
+
+#contectTitle div h2{
+    font-size: 40px;
+}
+
+#contactContainer{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+}
+
+#contactForm, #contactSocial{
+    flex: 1;
+    display: flex;
+}
+
+#contactForm{
+    /* flex: 2 !important; */
+
+    color: white;
+    flex-direction: column;
+    padding-top: 30px;
+  
+}
+
+#contactForm h2{
+    font-size: 36px;
+    
+}
+
+#contactForm p{
+    font-size: 20px;
+}
+
+#contactForm h2, #contactForm p, #contactForm form{
+    margin-left: 9%;
+    margin-right: 9%;
+}
+
+#contactForm form{
+    /* flex: 2 !important; */
+   
+    font-size: 24px;
+    font-weight: 700;
+    display: flex;
+    color: white;
+    flex-direction: column;
+  
+}
+
+#contactForm form label{
+    margin-top: 3%;
+    margin-bottom: 3px;
+}
+
+#contactForm form input, #contactForm form textarea{
+    font-size: 26px;
+    resize: none;
+}
+
+#contactForm form input[type=submit]{
+    margin-left: auto;
+    margin-top: 5%;
+    padding-left: 6%;
+    padding-right: 6%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    background-color: #FFBC00;
+    color: black;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+
+#contactForm{
+    background-color: black;
+}
+

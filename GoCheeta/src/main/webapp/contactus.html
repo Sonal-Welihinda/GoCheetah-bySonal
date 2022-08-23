@@ -4,21 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="http://fonts.cdnfonts.com/css/diamond-sparkling" rel="stylesheet">
-                
-    <link href="http://fonts.cdnfonts.com/css/made-sunflower" rel="stylesheet">
-    <link href="http://fonts.cdnfonts.com/css/vogue" rel="stylesheet">
-    <link href='https://fonts.googleapis.com/css?family=Yeseva One' rel='stylesheet'>
-                
-
-    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/contactus.css">
     <link rel="stylesheet" href="css/nav-customer.css">
     <link rel="stylesheet" href="css/footer-customer.css">
-
-    
-    <title>HOME</title>
+    <title>Document</title>
 </head>
 <body>
+
     <!-- nav bar v1 -->
     <div class="nav-bar flex">
         <div class="logo flex">
@@ -35,56 +27,45 @@
         <img src="images/menu.svg" alt="menu" id="nav-Button">
     </div>
 
-
-    <div class="intro-home flex">
-
-        <div class="intro-home-upper flex">
+    <!-- contact us title -->
+    <div id="contectTitle">
+        <div>
+            <h2>
+                Contect Us
+            </h2>
             
-            <div class="into-text flex">
-                <h3>Welcome to Go Cheeta</h3>
-                <p>
-                    Faster and secured way to travel in affordable manner. book your taxi now
-                </p>
-                <button id="registerBtn">Register now</button>
-            </div>
-            <div class="taxi-car-img flex">
-                <!-- <img src="images/pexels-yurii-hlei-1324990 - Copy.jpg" alt="taxi-car"> -->
-            </div>
-            
-        </div>  
-        <button id="registerBtn2">Register now</button>
+        </div>
     </div>
 
-    
-    <div class="flex why-home">
+    <!-- contact us form / social media -->
 
-        <div class="flex why-home-title">
-            <h2>WHY GoCheeta</h2>
+    <div id="contactContainer">
+
+        <div id="contactForm">
+            <h2>
+                Get in touch
+            </h2>
+            <p>
+                We would love to hear from you. Get in touch with us by email.
+            </p>
+
+            <form>
+                <label for="userName">Name</label>
+                <input type="text" id="userName">
+                <label for="userEmail">Email</label>
+                <input type="text" id="userEmail">
+                <label for="userMessage">Message</label>
+                <textarea name="Message" id="userMessage" cols="30" rows="6"></textarea>
+
+                <input type="submit" value="Submit">
+            </form>
         </div>
 
-        <div class="flex why-home-body">
-
-            <div>
-
-            </div>
-            
-            <div>
-                
-            </div>
-
-            <div>
-                
-            </div>
-
-
+        <div id="contactSocial">
+            test2
         </div>
-        
+
     </div>
-
-
-
-
-
 
 
 
@@ -114,7 +95,7 @@
                 <img class="social-media-icons" src="images/twitter.svg" alt="twitterlogo">
                 https://twitter.com/GoCheeta
             </div>
-            
+        
         </div>
         <!-- information and newsletter -->
         <div class="footer-info-Nletter">
@@ -137,15 +118,11 @@
     </div>
 
 
-
-    
-
     <!-- nav java-script -->
     <script src="nav.js"></script>
+    
+    <!-- faq js file -->
+    <script src="js/FAQ.js"></script>
+    
 </body>
 </html>
-
-
-
-
-

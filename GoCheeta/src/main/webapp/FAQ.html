@@ -4,21 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="http://fonts.cdnfonts.com/css/diamond-sparkling" rel="stylesheet">
-                
-    <link href="http://fonts.cdnfonts.com/css/made-sunflower" rel="stylesheet">
-    <link href="http://fonts.cdnfonts.com/css/vogue" rel="stylesheet">
-    <link href='https://fonts.googleapis.com/css?family=Yeseva One' rel='stylesheet'>
-                
-
-    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/FAQ.css">
     <link rel="stylesheet" href="css/nav-customer.css">
     <link rel="stylesheet" href="css/footer-customer.css">
-
-    
-    <title>HOME</title>
+    <title>FAQ</title>
 </head>
 <body>
+
     <!-- nav bar v1 -->
     <div class="nav-bar flex">
         <div class="logo flex">
@@ -36,58 +28,78 @@
     </div>
 
 
-    <div class="intro-home flex">
+    <!-- FAQ Search -->
+    <div class="flex" id="FAQheader">
 
-        <div class="intro-home-upper flex">
-            
-            <div class="into-text flex">
-                <h3>Welcome to Go Cheeta</h3>
+        <div id="FAQSearch">
+        <h2>How can we help you</h2>
+        <input type="text">
+        </div>
+
+    </div>
+
+    <!-- FAQs -->
+
+    <div id="FAQContainer">
+
+        <div class="FAQ-Item">
+
+            <div class="FAQ-Question flex" onclick="toggleFAQ(this);">
+                <h3>
+                    Availble locations ?
+                </h3>
+                <img src="images/arrow-down-icon.svg" alt="arrow-down-icon" >
+            </div>
+            <div class="FAQ-Awnser">
                 <p>
-                    Faster and secured way to travel in affordable manner. book your taxi now
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius neque reiciendis ad fuga veritatis. 
+                 Perspiciatis, nisi cupiditate laudantium vero, illo dolorem necessitatibus
+                 cumque sed expedita sequi consequatur deleniti? Provident, exercitationem!
                 </p>
-                <button id="registerBtn">Register now</button>
             </div>
-            <div class="taxi-car-img flex">
-                <!-- <img src="images/pexels-yurii-hlei-1324990 - Copy.jpg" alt="taxi-car"> -->
-            </div>
-            
-        </div>  
-        <button id="registerBtn2">Register now</button>
-    </div>
-
-    
-    <div class="flex why-home">
-
-        <div class="flex why-home-title">
-            <h2>WHY GoCheeta</h2>
         </div>
 
-        <div class="flex why-home-body">
+        <div class="FAQ-Item">
 
-            <div>
-
+            <div class="FAQ-Question flex" onclick="toggleFAQ(this);">
+                <h3>
+                    Availble locations ?
+                </h3>
+                <img src="images/arrow-down-icon.svg" alt="arrow-down-icon" >
             </div>
-            
-            <div>
-                
+            <div class="FAQ-Awnser">
+                <p>
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius neque reiciendis ad fuga veritatis. 
+                Perspiciatis, nisi cupiditate laudantium vero, illo dolorem necessitatibus
+                 cumque sed expedita sequi consequatur deleniti? Provident, exercitationem!
+                 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius neque reiciendis ad fuga veritatis. 
+                 Perspiciatis, nisi cupiditate laudantium vero, illo dolorem necessitatibus
+                  cumque sed expedita sequi consequatur deleniti? Provident, exercitationem!
+                </p>
             </div>
-
-            <div>
-                
-            </div>
-
-
         </div>
-        
+
+        <div class="FAQ-Item">
+
+            <div class="FAQ-Question flex" onclick="toggleFAQ(this);">
+                <h3>
+                    Availble locations ?
+                </h3>
+                <img src="images/arrow-down-icon.svg" alt="arrow-down-icon" >
+            </div>
+            <div class="FAQ-Awnser">
+                <p>
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius neque reiciendis ad fuga veritatis. 
+                Perspiciatis, nisi cupiditate laudantium vero, illo dolorem necessitatibus
+                 cumque sed expedita sequi consequatur deleniti? Provident, exercitationem!
+                </p>
+                
+            </div>
+        </div>
+
     </div>
 
-
-
-
-
-
-
-
+<br>
 
     <!-- Footer v1 -->
     <div class="footer flex">
@@ -114,7 +126,7 @@
                 <img class="social-media-icons" src="images/twitter.svg" alt="twitterlogo">
                 https://twitter.com/GoCheeta
             </div>
-            
+        
         </div>
         <!-- information and newsletter -->
         <div class="footer-info-Nletter">
@@ -137,15 +149,10 @@
     </div>
 
 
-
-    
-
     <!-- nav java-script -->
     <script src="nav.js"></script>
+    
+    <!-- faq js file -->
+    <script src="js/FAQ.js"></script>
 </body>
 </html>
-
-
-
-
-

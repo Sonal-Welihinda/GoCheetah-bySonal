@@ -101,7 +101,7 @@
 .why-home{
     flex-direction: column;
     background-color: rgb(255,188,0);
-    backdrop-filter: blur(5px);
+   
 }
 
 .why-home-title{
