@@ -37,7 +37,7 @@
 #contactContainer{
     display: flex;
     flex-direction: row;
-    margin-bottom: 20px;
+    
 }
 
 #contactForm, #contactSocial{
@@ -45,18 +45,22 @@
     display: flex;
 }
 
-#contactForm{
-    /* flex: 2 !important; */
 
+
+/* form Style */
+#contactForm{
+    background-color: black;
     color: white;
     flex-direction: column;
     padding-top: 30px;
+    padding-bottom: 10px;
   
 }
 
 #contactForm h2{
     font-size: 36px;
     font-weight: 700;
+
     
 }
 
@@ -100,13 +104,105 @@
     background-color: #FFBC00;
     color: black;
     border-radius: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 7%;
     font-size: 30px;
     font-weight: 700;
 }
 
-
-#contactForm{
-    background-color: black;
+#contactForm hr{
+    border: none;
+    border-top: 2px dashed #FFBC00;
+    
+    height: 1px;
 }
 
+
+
+
+/* contact social media */
+
+#contactSocial{
+    background-color:#FFBC00 ;
+    flex-direction: column;
+    padding-bottom: 10px;
+
+}
+
+#socialMedia{
+    display: flex;
+    flex-direction: column;
+    margin-top: 9%;
+    margin-left: 6%;
+    height: 24vh;
+    
+}
+
+#socialMedia div{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 2%;
+    height: 26%;
+    
+    
+
+}
+
+#socialMedia div img{
+    height: 100%;
+    margin-right: 2%;
+}
+
+
+#socialMedia div a{
+    font-size: 20px;
+    text-decoration: none;
+    color: black;
+    font-weight: 600;
+    
+}
+
+
+#contactDetails{
+    display: flex;
+    margin-left: 6%;
+    margin-top: 6%;
+    height: 5%;
+    
+}
+
+#contactDetails div{
+    display: flex;
+    margin-right: 10%;
+    font-size: 24px;
+    align-items: center;
+    font-weight: 600;
+    
+}
+
+#contactDetails div img{
+    padding-right: 8px;
+    height: 100%;
+}
+
+
+#locationDetails{
+    display: flex;
+    margin-left: 6%;
+    margin-top: 6%;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+#locationDetails img{
+    height: 100%;
+}
+
+
+#contactSocial hr{
+    border: none;
+    border-top: 2px dashed black;
+    height: 1px;
+    bottom: 0px;
+    margin-top: auto;
+}
