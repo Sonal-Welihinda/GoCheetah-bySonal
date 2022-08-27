@@ -206,3 +206,142 @@
     bottom: 0px;
     margin-top: auto;
 }
+
+/* branch detailes */
+
+
+
+#branchesContainer{
+    display: flex;
+    flex-direction: row;
+}
+
+#branchListContainer{
+    display: flex;
+    flex-direction: column;
+    height: 300px;
+    
+    position: relative;
+    align-items: center;
+    width: 30%;
+    background-image: url("../images/3-taxi.jpg");
+    background-blend-mode: lighten;
+    background-color: rgba(255,255,255,0.8);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: -22px;
+    padding-top:2%;
+    padding-bottom: 2%;
+}
+
+#branchListContainer img{
+    height: 20px;
+   
+    position: absolute;
+}
+
+#previousBranch{
+    top: 0px;
+}
+
+#nextBranch{
+    bottom: 0px;
+}
+
+#branchList::-webkit-scrollbar {
+    display: none;
+}
+
+#branchList{
+    display: flex;
+    flex-direction: column;
+    
+    align-items: center;
+    
+    overflow-y: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+    z-index: 1;
+}
+
+#branchList h2{
+    margin-top: 24%;
+    margin-bottom: 24%;
+    color: black;
+    opacity: 0.5;
+    font-size: 30px;
+    
+}
+
+.branch-selected{
+    font-size: 20px;
+    transition: font-size 0.2s ease-out;
+    color: black !important;
+    font-size: 36px !important;
+    
+    scroll-snap-align: center;
+    opacity: 1 !important;
+}
+
+
+#branch-details{
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+}
+
+.branch{
+    display: none;
+    
+    
+}
+
+.branch-detail-active {
+    display: flex !important;
+    flex-direction: column;
+    height: 100%;
+    flex: 1;
+    font-size: 20px;
+}
+
+.BD-Contact div{
+    width: auto;
+}
+
+.BD-Contact, .BD-Contact div{
+    display: flex;
+    flex-direction: row;
+    
+}
+
+
+
+.BD-Contact, .BD-Location{
+    margin-top: 2%;
+    margin-left: 5%;
+}
+
+.BD-Contact div span{
+    
+    
+}
+
+.BD-Location{
+    align-items: center;
+    display: flex;
+    margin-top: 5%;
+
+}
+
+.BD-Contact div{
+    padding-right: 4%;
+    
+}
+
+
+
+
+

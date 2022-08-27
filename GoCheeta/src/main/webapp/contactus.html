@@ -115,11 +115,103 @@
 
     <!-- contact details on branches -->
     <div id="branchesContainer">
-        <!-- branches list -->
-        <div></div>
+        <!-- branch list -->
+        <div id="branchListContainer">
+            <img id="previousBranch" src="images/arrow-up-icon.svg" alt="previous-button" onclick="prevBranch();">
+            <div id="branchList" onwheel="onScroll(event);">
+                <h2 id="test5" onclick="switchBranchDetails('test5');">test 5</h2>
+                <h2 class="branch-selected" id="test1" onclick="switchBranchDetails('test1');">test 1</h2>
+                <h2 id="test2" onclick="switchBranchDetails('test2');">test 2</h2>
+                <h2 id="test3" onclick="switchBranchDetails('test3');">test 332</h2>
+                <h2 id="test4" onclick="switchBranchDetails('test4');">test 4</h2>
+                
+            </div>
+            <img id="nextBranch" src="images/arrow-down-icon.svg" alt="next-button" onclick="nextBranch();">
+        </div>
 
-        <!-- branches Details -->
-        <div></div>
+        <!-- branch Details -->
+        <div id="branch-details">
+            <div data-branch="test2" class="branch-detail-active branch">
+                <div class="BD-Location">
+                    <img src="images/location_black_fill.svg" alt="phone">
+                    <p>179 Panchikawatte Road, Colombo</p>
+                </div>
+                <div class="BD-Contact">
+                    <div>
+                        <img src="images/phone_black_fill.svg" alt="phone">
+                        <span>011-111-1111</span>
+                    </div>
+                    <div>
+                        <img src="images/email_black_fill.svg" alt="email">
+                        <span>test@gmail.com</span>
+                    </div>
+                </div>
+            </div>
+            <div data-branch="test1" class="branch" >
+                <div class="BD-Location">
+                    <img src="images/location_black_fill.svg" alt="phone">
+                    <p>178 Panchikawatte Road, Colombo</p>
+                </div>
+                <div class="BD-Contact">
+                    <div>
+                        <img src="images/phone_black_fill.svg" alt="phone">
+                        <span>011-111-1111</span>
+                    </div>
+                    <div>
+                        <img src="images/email_black_fill.svg" alt="email">
+                        <span>test2@gmail.com</span>
+                    </div>
+                </div>
+            </div>
+            <div data-branch="test3" class="branch" >
+                <div class="BD-Location">
+                    <img src="images/location_black_fill.svg" alt="phone">
+                    <p>1d9 Panchikawatte Road, Colombo</p>
+                </div>
+                <div class="BD-Contact">
+                    <div>
+                        <img src="images/phone_black_fill.svg" alt="phone">
+                        <span>011-111-1111</span>
+                    </div>
+                    <div>
+                        <img src="images/email_black_fill.svg" alt="email">
+                        <span>test3@gmail.com</span>
+                    </div>
+                </div>
+            </div>
+            <div data-branch="test4" class="branch" ><div class="BD-Location">
+                    <img src="images/location_black_fill.svg" alt="phone">
+                    <p>179 Panchikawatte Road, Colombo</p>
+                </div>
+                <div class="BD-Contact">
+                    <div>
+                        <img src="images/phone_black_fill.svg" alt="phone">
+                        <span>011-111-1111</span>
+                    </div>
+                    <div>
+                        <img src="images/email_black_fill.svg" alt="email">
+                        <span>test3@gmail.com</span>
+                    </div>
+                </div>
+            </div>
+            <div data-branch="test5" class="branch" >
+                <div class="BD-Location">
+                    <img src="images/location_black_fill.svg" alt="phone">
+                    <p>179 Panchikawatte Road, Colombo</p>
+                </div>
+                <div class="BD-Contact">
+                    <div>
+                        <img src="images/phone_black_fill.svg" alt="phone">
+                        <span>011-111-1111</span>
+                    </div>
+                    <div>
+                        <img src="images/email_black_fill.svg" alt="email">
+                        <span>test2@gmail.com</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </div>
 
 
@@ -174,8 +266,10 @@
     <!-- nav java-script -->
     <script src="nav.js"></script>
     
-    <!-- faq js file -->
-    <script src="js/FAQ.js"></script>
+    <!-- contact us js file -->
+    <script src="js/contactus.js"></script>
+
+    
     
 </body>
 </html>
