@@ -309,6 +309,8 @@
 
 .BD-Contact div{
     width: auto;
+    gap: 10px;
+    padding-right: 4%;
 }
 
 .BD-Contact, .BD-Contact div{
@@ -324,10 +326,6 @@
     margin-left: 5%;
 }
 
-.BD-Contact div span{
-    
-    
-}
 
 .BD-Location{
     align-items: center;
@@ -336,10 +334,6 @@
 
 }
 
-.BD-Contact div{
-    padding-right: 4%;
-    
-}
 
 
 
