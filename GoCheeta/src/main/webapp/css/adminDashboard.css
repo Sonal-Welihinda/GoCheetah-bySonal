@@ -5,18 +5,324 @@
 
 #nav-tabs{
     display: flex;
+    height: 100vh;
+    align-items: stretch;
+}
+
+#compLogo{
+    width: 80px;
+    margin-top: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 35px;
+    transition: margin-left 3s;
 }
 
 #nav-bar{
     display: flex;
     flex-direction: column;
+    width: 7%;
+    height: 100%;
+    background-color: gray;
+    transition: width .5s, margin-left 3s , margin-right 3s;
+     
+}
+
+
+
+#nav-bar button{
+    background-color: transparent;
+    border-style: none;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 20px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    
+    transition: margin-left .0s , margin-right .0s ease-out;
+
+}
+
+#nav-bar > button > img{
+    height: 28px;
+    margin-right: 2%;
+
+}
+
+#nav-bar button span{
+    display: none;
+}
+
+#nav-bar > button.navActive{
+    background-color: #FFBC00;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-radius: 10px;
+   
+}
+
+#nav-bar .sidebar-Submenu button.navActive{
+    color: #ffc933;
+    
+}
+
+#nav-bar:hover{
     width: 20%;
 }
 
-#TabsContent div{
+#nav-bar:hover > button{
+    margin-left: 0px;
+    margin-right: 0px;
+    padding-left: 10%;
+    border-radius: 0px;
+    
+}
+
+#nav-bar:hover .sidebar-Submenu >button{
+    margin-left: 0px;
+    margin-right: 0px;
+    padding-left: 20%;
+}
+
+#nav-bar:hover button span{
+    display: block;
+}
+
+#nav-bar:hover #compLogo{
+    width: 100px;
+    margin-top: 15px;
+    margin-right: 0px;
+    margin-left: 30px;
+    margin-bottom: 25px;
+    
+}
+
+
+.sidebar-Submenu{
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(94, 94, 94);
+    height: 0px;
+    transition: height 1s;
+    
+}
+
+.sidebar-Submenu button{
+    display: none !important;
+    
+}
+
+
+
+#nav-bar:hover .sidebar-Submenu-Active{
+    height: auto;
+    margin-top: -5px;
+
+    
+}
+
+#nav-bar:hover .sidebar-Submenu.sidebar-Submenu-Active button{
+   
+    display: flex !important;
+}
+
+#TabsContent{
+    flex: 1;
+
+}
+
+#TabsContent > div{
     display: none;
 }
 
 .Active-Tab{
     display: flex !important;
+}
+
+
+
+
+
+
+/* dashboard design */
+
+#dashbordTab{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+/* user design */
+
+#userName{
+    display: flex;
+    height: 6vh;
+    margin-left: auto;
+    margin-right: 2%;
+    margin-top: 1%;
+}
+
+#userName img{
+    height: 100%;
+    
+}
+#userName p{ 
+    font-size: 26px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+#DashboardStatistics{
+    display: flex;
+    height: 25vh;
+    margin-top: 5%;
+    margin-left: 5%;
+    
+}
+
+#DashboardStatistics div{
+    border: 1px;
+    border-style: double;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    
+}
+
+#DashboardStatistics div:first-child{
+    width: 30vw;
+    margin-right: 5%;
+}
+
+#DashboardStatistics div:nth-child(2){
+    width: 24vw;
+    margin-right: 5%;
+}
+
+#DashboardStatistics div:nth-child(3){
+    width: 14vw;
+    margin-right: 5%;
+}
+
+/* up coming booking table */
+
+#upComingBooking{
+    margin-left: 2%;
+    margin-top: 5%;
+    margin-right: 2%;
+    background-color: antiquewhite;
+    border-collapse: collapse;
+}
+
+#upComingBooking th, #upComingBooking td{
+    padding-left: 3px;
+    text-align: start;
+    border-right: 2px solid black;
+}
+
+#upComingBooking th:last-of-type, #upComingBooking td:last-of-type{
+    border: none;
+}
+
+#upComingBooking thead tr{
+    border-spacing: 30px;
+    padding-bottom: 30px;
+    margin-bottom: 20px;
+}
+
+
+/* Drivers */
+
+
+
+#driversTab{
+    display: flex;
+    flex-direction: column;
+}
+
+#driverTitle{
+    display: flex;
+    width: 5%;
+    align-items: center;
+    margin-top: 2%;
+    margin-left: 2%;
+    font-size: 20px;
+}
+
+
+/* drivers table */
+
+#driverTable{
+    margin-left: 2%;
+    margin-top: 1%;
+    margin-right: 2%;
+    background-color: antiquewhite;
+    border-collapse: collapse;
+}
+
+#driverTable th, #driverTable td{
+    padding-left: 3px;
+    text-align: start;
+    border-right: 2px solid black;
+}
+
+#driverTable th:last-of-type, #driverTable td:last-of-type{
+    border: none;
+}
+
+#driverTable thead tr{
+    border-spacing: 30px;
+    padding-bottom: 30px;
+    margin-bottom: 20px;
+}
+
+
+/* Vehicle */
+
+#vehicleTab{
+    display: flex;
+    flex-direction: column;
+}
+
+#vehicleTitle{
+    display: flex;
+    width: 5%;
+    align-items: center;
+    margin-top: 2%;
+    margin-left: 2%;
+    font-size: 20px;
+}
+
+
+/* Add Vehicel */
+
+#addVehicleTab{
+    display: flex;
+    flex-direction: column;
+}
+
+#addVehicleTab form{
+    display: flex;
+    flex-direction: row;
+    
+    flex: 1;
+    
+
+}
+
+#addVehicleForm div{
+    flex: 1 1 0px;
+    background-color: aquamarine;
+}
+
+#addVehicleForm div:first-child{
+    background-color: bisque;
 }
