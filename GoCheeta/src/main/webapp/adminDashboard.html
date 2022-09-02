@@ -22,12 +22,12 @@
                 <button onclick="switchTabs('addVehicleTab',this);">Add Vehicel</button>
                 <button onclick="switchTabs('categoryVehicleTab', this);">Vehicel Category</button>
             </div>
-            <button subMenu="Admins" onclick="submenuEnable('Admins'); subMenuActive(this);"><img src="/images/admin_panel.svg" alt="admin icon"> <span>Admins</span></button>
-            <div class="sidebar-Submenu" data-SubMenu="Admins">
+            <button subMenu="Admins" onclick="switchTabs('adminsTab', this);"><img src="/images/admin_panel.svg" alt="admin icon"> <span>Admins</span></button>
+            <!-- <div class="sidebar-Submenu" data-SubMenu="Admins">
                 <button onclick="switchTabs('adminsTab', this);">View Admin</button>
                 <button onclick="switchTabs('addVehicleTab', this);">Add Vehicel</button>
                 <button onclick="switchTabs('categoryVehicleTab', this);">Vehicel Category</button>
-            </div>
+            </div> -->
         </div>
 
         <div id="TabsContent">
@@ -181,30 +181,285 @@
             </div>
 
             <div id="addVehicleTab">
-                <div>
-                    f
+                <div id="vAddTitle">
+                    <img src="/images/car-add.svg" alt="vehicle add">
+                    <span> Add Vehicle</span>
                 </div>
                 <form action="" id="addVehicleForm">
-                    <div>test</div>
-                    <div>test2</div>
+                    <div>
+                        <div id="addVehicleFormLeft">
+                            <label for="addVFormVehicleName">Vehicle Name</label>
+                            <input type="text" id="addVFormVehicleName">
+    
+                            <label for="addVFormVehicleImage">Vehicle Image</label>
+                            <input type="file" id="addVFormVehicleImage">
+    
+                            <label for="addVFormVehiclePlateNum">Plate Number</label>
+                            <input type="text" id="addVFormVehiclePlateNum">
+    
+                            <label for="drivers-dropDown">Drivers</label>
+                            <div class="drivers-dropDown-box" onclick="driversDropdown();">
+                                <span>Select drivers</span>
+                                <img src="/images/arrow-down-icon.svg" alt="down arrow">
+                            </div>
+                            <div id="driversListContainer" >
+                                <div class="drivers-List-checkbox" >
+                                    <label>
+                                        <input type="checkbox" name="test 1" id="">
+                                        <span>test 1</span>
+                                    </label>
+    
+                                    <label>
+                                        <input type="checkbox" name="test 2" id="">
+                                        <span>test 2</span>
+                                    </label>
+    
+                                    <label>
+                                        <input type="checkbox" name="test 3" id="">
+                                        <span>test 3</span>
+                                    </label>
+    
+                                    <label>
+                                        <input type="checkbox" name="test 4" id="">
+                                        <span>test 4</span>
+                                    </label>
+                                </div>
+                            </div>
+    
+                        </div>
+                        <div id="addVehicleFormRight">
+                            <label for="addVFormVehicleAvailability">Availability</label>
+                            <select name="VehicleAvailability" id="addVFormVehicleAvailability">
+                                <option value="unav">unAvailabile</option>
+                                <option value="Availabile">Availabile</option>
+                                <option value="null">not set</option>
+                            </select>
+    
+                            <label for="addVFormVehicleAvailability">Availability</label>
+                            <select name="VehicleAvailability" id="addVFormVehicleAvailability">
+                                <option value="unav">unAvailabile</option>
+                                <option value="Availabile">Availabile</option>
+                                <option value="null">not set</option>
+                            </select>
+    
+                            <label for="addVehicleNumSeats">Number of seats</label>
+                            <input type="number" min="1" id="addVehicleNumSeats">
+
+                            <label for="addVehicleColour">Colour</label>
+                            <input type="text" min="1" id="addVehicleColour">
+                        </div>
+                    </div>
+                    
+                    
+                    <div id="addVehicleFormSubmit" >
+                        <input type="button" value="Cancel">
+                        <input type="button" value="Submit">
+                    </div>
                 </form>
             </div>
 
             <div id="categoryVehicleTab">
-                test 2
-            </div>
+                <span>Vehicel Category</span>
+                <div>
+                    <button>+ Add Category</button>
+                </div>
 
-            
+                <table id="driverTable">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>location</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>01</td>
+                            <td>Sonal</td>
+                            <td>test location</td>
+                        </tr>
+
+                        <tr>
+                            <td>02</td>
+                            <td>Asel</td>
+                            <td>test location</td>
+                        </tr>
+
+                        <tr>
+                            <td>03</td>
+                            <td>aziz</td>
+                            <td>test location</td>
+                        </tr>
+
+                        <tr>
+                            <td>04</td>
+                            <td>Kanishka</td>
+                            <td>test location</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>  
 
             <div id="adminsTab">
-                Lorem4 ipsum dolor sit amet consectetur adipisicing elit. Provident deleniti dolores quia nihil est esse non ea, 
-                tenetur quis ut similique tempore quidem perspiciatis minima. Ab laboriosam corporis laborum accusantium.
+                <div id="AdminVTitle">
+                    <img src="/images/admin_panel.svg" alt="admin icon">
+                    <span>Admins</span> 
+                </div>
+
+                <button id="addAdminBtn" onclick="switchTabs2('addAdminTab');"> &plus; Add Admin</button>
+
+                <!-- change id of select -->
+
+                <div id="adminFilters">
+                    <label for="adminBranchs">Branch :</label>
+                    <select name="adminBranchs" id="adminBranchs">
+                        <option value="unav">unAvailabile</option>
+                        <option value="Availabile">Availabile</option>
+                        <option value="null">not set</option>
+                    </select>
+
+                    <label for="adminBranchs2">Account Types :</label>
+                    <select name="adminBranchs" id="adminBranchs2">
+                        <option value="unav">unAvailabile</option>
+                        <option value="Availabile">Availabile</option>
+                        <option value="null">not set</option>
+                    </select>
+
+                    <div id="adminSearchContainer">
+                        <label for="AdminSearch">Search</label>
+                        <input type="search" name="AdminSearch" id="AdminSearch">
+                    </div>
+
+                    
+                </div>
+
+                <table id="driverTable">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>location</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>01</td>
+                            <td>Sonal</td>
+                            <td>test location</td>
+                        </tr>
+
+                        <tr>
+                            <td>02</td>
+                            <td>Asel</td>
+                            <td>test location</td>
+                        </tr>
+
+                        <tr>
+                            <td>03</td>
+                            <td>aziz</td>
+                            <td>test location</td>
+                        </tr>
+
+                        <tr>
+                            <td>04</td>
+                            <td>Kanishka</td>
+                            <td>test location</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+
             </div>
 
+
+            <div id="addAdminTab">
+                <div id="addAdminTitle">
+                    <img src="/images/admin-icon.svg" alt="">
+                    <span>Add New Admin</span>
+                </div>
+
+                <form action="" id="addAdminForm">
+                    <div>
+                        <div id="addAdminFormLeft">
+                            <label for="addAdminFormName">Name</label>
+                            <input type="text" id="addAdminFormName">
+                            <label for="addAdminFormEmail">Email</label>
+                            <input type="email" id="addAdminFormEmail">
+                            <label for="addAdminFormPNum">Phone number</label>
+                            <input type="text" id="addAdminFormPNum">
+                            <label for="addAdminFormAddress">Address</label>
+                            <input type="text" id="addAdminFormAddress">
+                            <label for="addAdminFormDOB">Date of birth</label>
+                            <input type="date" id="addAdminFormDOB">
+                            
+                        </div>
+    
+    
+                        <div id="addAdminFormRight">
+                            <label for="addAdminAccType">Account Type :</label>
+                            <select name="AccountType" id="addAdminAccType" onchange="addAdmin_Branchs();">
+                                <option value="BranchAdmin">Branch Admin</option>
+                                <option value="MainAdmin">HQ Admin</option>
+                            </select>
+    
+                            <div id="addAdminFormBranchBox">
+                                <label for="addAdminBranch">Branch :</label>
+                                <select name="Branchs" id="addAdminBranch">
+                                    <option value="unav">unAvailabile</option>
+                                    <option value="Availabile">Availabile</option>
+                                    <option value="null">not set</option>
+                                </select>
+                            </div>
+    
+                            <label for="addAdminFormGender">Gender</label>
+                            <div id="addAdminFormGender">
+                                <input type="radio" name="AddAdminGender" id="addAdminFormMale">
+                                <label for="addAdminFormMale">Male</label>
+                                
+                                <input type="radio" name="AddAdminGender" id="addAdminFormFemale">
+                                <label for="addAdminFormFemale">Female</label>
+                                
+                            </div>
+    
+                            <label for="addAdminFormUsername">Username</label>
+                            <input type="text" id="addAdminFormUsername">
+    
+                            <label for="addAdminFormPassword">Password</label>
+                            <input type="password" id="addAdminFormPassword">
+                            
+                        </div>
+                    </div>
+
+                    <div id="addAdminformSubmit">
+                        <input type="button" value="Cancel">
+                        <input type="submit" value="Create new admin">
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+
+        
+    </div>
+
+
+    <!-- modal -->
+    <div id="addAdminModal">
+        <div class="modal-Header">
+            Add New Admin
+        </div>
+
+        <div class="modal-Body">
+
+        </div>
+
+        <div class="modal-Footer">
 
         </div>
     </div>
-
 
     <script src="js/adminDashboard.js"></script>
 </body>

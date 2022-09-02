@@ -304,25 +304,459 @@
 
 /* Add Vehicel */
 
+#vAddTitle{
+    display: flex;
+    align-items: center;
+    margin-top: 2%;
+    margin-left: 1%;
+    margin-bottom: 1%;
+    font-size: 34px;
+    
+}
+
+#vAddTitle img{
+    height: 2em;
+    margin-right: 1%;
+
+}
+
 #addVehicleTab{
     display: flex;
     flex-direction: column;
+    height: 100%;
 }
 
-#addVehicleTab form{
+
+
+#addVehicleForm{
+    display: flex;
+    margin-left: 2%;
+    margin-right: 2%;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+#addVehicleForm >div:first-of-type{
     display: flex;
     flex-direction: row;
-    
     flex: 1;
     
+}
+
+
+/* add Vehicle Form Left side */
+
+
+
+#addVehicleFormLeft{
+    flex: 1 ;
+    display: flex;
+    flex-direction: column; 
 
 }
 
-#addVehicleForm div{
-    flex: 1 1 0px;
-    background-color: aquamarine;
+#addVehicleFormLeft > label{
+    font-size: 24px;
+    margin-top: 4.5%;
 }
 
-#addVehicleForm div:first-child{
+#addVehicleFormLeft > input{
+    margin-right: 24%;
+    font-size: 24px;
+    
+}
+
+
+
+
+.drivers-dropDown-box{
+    border: 1px solid black;
+    border-radius: 2px;
+    margin-right: 24%;
+    display: flex;
+    padding-top: 1%;
+    padding: 1%;
+    
+}
+
+.drivers-dropDown-box span{
+    font-size: 24px;
+
+}
+
+.drivers-dropDown-box img{
+    margin-left: auto;
+    width: 6%;
+    margin-right: 1%;
+}
+
+#driversListContainer{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    font-size: 24px;
+    margin-right: 24%;
+    
+}
+
+.drivers-List-checkbox{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    height: 0px;
+    z-index: 1;
+    width: 100%;
+    max-height: 150px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    
+}
+
+.drivers-List-checkbox.Active{
+    overflow-y: auto ;
+    height: auto;
+    transition: height 1s;
+}
+
+.drivers-List-checkbox label{
+    display: flex;
+    flex: 1;
+    padding: 2% 1%;
+    background-color: antiquewhite;
+
+}
+
+.drivers-List-checkbox label input{
+    -ms-transform: scale(2); 
+    -moz-transform: scale(2); 
+    -webkit-transform: scale(2); 
+    -o-transform: scale(2); 
+    transform: scale(2);
+    margin-left: 2%;
+}
+
+.drivers-List-checkbox label span{
+    margin-left: auto;
+    margin-right: 1%;
+
+}
+
+/* add Vehicle Form right side */
+
+#addVehicleFormRight{
+    flex: 1;
+    
+    display: flex;
+    flex-direction: column; 
+}
+
+#addVehicleFormRight > label{
+    font-size: 24px;
+    margin-top: 4.5%;
+}
+
+#addVehicleFormRight > input[type=number]{
+    margin-right: auto;
+    font-size: 24px;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    
+}
+
+#addVehicleFormRight > input[type=text]{
+    margin-right: 5%;
+    font-size: 24px;
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+
+
+#addVehicleFormRight > select{
+    margin-right: 5%;
+    font-size: 24px;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    
+}
+
+
+/* add Vehicle Form Submit and cancel*/
+
+#addVehicleFormSubmit{
+    display: flex;
+    align-items: flex-end;
+    justify-content: end;
+    margin-top: auto;
+    margin-bottom: 2%;
+}
+
+#addVehicleFormSubmit input{
+    margin-left: 2%;
+    padding-left:8%;
+    padding-right: 8%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    border-radius: 1px;
+    font-size: 24px;
+}
+
+#addVehicleFormSubmit input:first-child{
+    background-color: white;
+    border: 1px solid black;
+    color: black;
+}
+
+#addVehicleFormSubmit input:last-child{
+    background-color: black;
+    color: #FFBC00;
+}
+
+/* category manage */
+#categoryVehicleTab{
+    display: flex;
+    flex-direction: column;
+    font-size: 36px;
+}
+
+#categoryVehicleTab span{
+    margin-top: 1%;
+    margin-left: 1%;
+}
+
+#categoryVehicleTab div {
+    display: flex;
+}
+
+#categoryVehicleTab div button{
+    margin-left: auto;
+    padding: .6% 2%;
+    background-color: gray;
+    border-radius: 40px;
+    margin-right: 4%;
+}
+
+
+#categoryVehicleTab table{
+    font-size: 24px;
+}
+
+
+/* AdminTab */
+
+#adminsTab{
+    display: flex;
+    flex-direction: column;
+    font-size: 24px;
+}
+
+#AdminVTitle{
+    display: flex;
+    align-items: center;
+    height: 2em;
+    font-size: 36px;
+    margin-top: 1%;
+    margin-left: .5%;
+}
+
+#AdminVTitle img{
+    height: 100%;
+}
+
+#addAdminBtn{
+    margin-left: auto;
+    font-size: 24px;
+    background-color: transparent;
+    border-radius: 6px;
+    margin-right: 2%;
+    padding: .5% 2%;
+}
+
+#adminFilters{
+    display: flex;
+    margin-top: 2%;
+    margin-left: 1%;
+    margin-right: 2%;
+    
+}
+
+
+#adminFilters select{
+    font-size: 20px;
+    margin-left: 1%;
+    margin-right: 1%;
+    
+}
+
+#adminSearchContainer{
+    display: flex;
+    margin-left: auto;
+    
+    width: 30%;
+}
+
+#adminSearchContainer input{
+    margin-left: 5%;
+    width: 90%;
+}
+
+#addAdminModal{
+    display: none;
+    position: fixed;
+    z-index: 1;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2%;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 50%;
     background-color: bisque;
+    opacity: 0.9;
+    height: 80%; 
+    overflow: auto;
+}
+
+
+/* Add admin tab */
+
+
+#addAdminTab{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+#addAdminTitle{
+    display: flex;
+    align-items: center;
+    margin-top: 1%;
+    margin-left: 1%;
+    font-size: 36px;
+}
+
+#addAdminTitle img{
+    height: 2em;
+    margin-right: 1%;
+    
+}
+
+/* add admin form */
+
+#addAdminForm{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+#addAdminForm div{
+    display: flex;
+    flex: 1;
+}
+
+#addAdminForm div div{
+    flex: 1;
+}
+
+#addAdminFormLeft{
+    display: flex;
+    flex-direction: column;
+    
+    margin-top: 2%;
+    margin-left: 1%;
+    
+    font-size: 24px;
+
+}
+
+#addAdminFormLeft label{
+    margin-top: 3%;
+    margin-right: 6%;
+}
+
+#addAdminFormLeft input{
+    font-size: 24px;
+    padding-top: .1%;
+    padding-bottom: .1%;
+    margin-right: 6%;
+
+}
+
+#addAdminFormRight{
+    margin-top: 2%;
+    display: flex;
+    flex-direction: column;
+    font-size: 24px;
+    
+}
+
+#addAdminFormRight label{
+    margin-top: 3%;
+}
+
+#addAdminFormRight select{
+    font-size: 24px;
+    padding-top: .1%;
+    padding-bottom: .1%;
+    margin-right: 6%;
+    
+}
+
+#addAdminFormBranchBox{
+    display: flex;
+    flex-direction: column;
+    
+}
+
+
+#addAdminFormBranchBox.Active{
+    display: none;
+}
+
+#addAdminFormGender{
+    display: flex;
+    align-items: center;
+    
+}
+
+#addAdminFormGender label{
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 4%;
+    margin-left: 1%;
+}
+
+#addAdminFormRight > input{
+    font-size: 24px;
+    padding-top: .1%;
+    padding-bottom: .1%;
+    margin-right: 6%;
+}
+
+/* submit buttons */
+
+#addAdminformSubmit{
+    display: flex;
+    margin-top: auto;
+    align-items: flex-end;
+    justify-content: end;
+    margin-bottom: 2%;
+    margin-right: 4%;
+}
+
+#addAdminformSubmit input{
+    padding: 1% 2%;
+    margin-left: 1%;
+    font-size: 20px;
+}
+
+#addAdminformSubmit input:first-of-type{
+    background-color: white;
+    font-weight: 400;
+}
+
+#addAdminformSubmit input:last-of-type{
+    background-color: black;
+    color: white;
+    font-weight: 600;
 }

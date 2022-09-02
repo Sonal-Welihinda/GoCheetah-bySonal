@@ -3,6 +3,12 @@ var submenus = document.getElementsByClassName("sidebar-Submenu");
 var navButtons = document.querySelectorAll("#nav-bar > button");
 var subMenuButton = document.querySelectorAll("#nav-bar .sidebar-Submenu button");
 
+var driversLDropdown = document.querySelector("#driversListContainer .drivers-List-checkbox");
+var driverslist = document.querySelectorAll(".drivers-List-checkbox label");
+
+var AccTypeDropdown = document.getElementById("addAdminAccType");
+
+
 function switchTabs(ActiveTab,button){
     var IsSubMenu = false;
     
@@ -52,6 +58,20 @@ function switchTabs(ActiveTab,button){
 
 }
 
+function switchTabs2(ActiveTab){
+    // show selected tab 
+    tabs.forEach(tab=> {
+        if(tab.id == ActiveTab){
+          
+            tab.classList.add("Active-Tab");
+        }else{
+           
+            tab.classList.remove("Active-Tab");
+        }
+    })
+}
+
+
 function subMenuActive(mainMenu){
 
     var subMenu =  document.querySelector(`[data-SubMenu = ${mainMenu.getAttribute("subMenu")}]`);
@@ -85,4 +105,21 @@ function submenuEnable(submenu){
             sMenu.classList.remove("sidebar-Submenu-Active");
         }
     })
+}
+
+function driversDropdown(){
+    driversLDropdown.classList.toggle("Active");
+}
+
+// Add admin form branch drop down 
+function addAdmin_Branchs(){
+    
+    
+    if(AccTypeDropdown.value == "BranchAdmin"){
+        document.getElementById("addAdminFormBranchBox").classList.add("Active");
+       
+    }else{
+        document.getElementById("addAdminFormBranchBox").classList.remove("Active");
+    }
+
 }
