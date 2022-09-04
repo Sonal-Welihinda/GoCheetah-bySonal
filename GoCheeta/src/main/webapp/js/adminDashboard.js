@@ -123,3 +123,46 @@ function addAdmin_Branchs(){
     }
 
 }
+
+
+function genPassword(inpuutID){
+    var genPass = "";
+    var PassLen = 10;
+    var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$&%*!+=<>()[]";
+
+    for (let i = 1; i <= PassLen; i++) {
+        var Pchar = Math.floor(Math.random()
+                    * chars.length+1 );
+          
+        genPass += chars.charAt(Pchar);
+    }
+
+    document.getElementById(inpuutID).value = genPass;
+
+}
+
+// document.addEventListener('click' , (event) => {
+//    // closeModal(event);
+// });
+
+
+function openModal(ModalID){
+    var modal = document.getElementById(ModalID);
+    modal.classList.add("Active");
+
+    modal.addEventListener('click' , (event) => {
+       
+        if(modal.isSameNode(event.target) || document.querySelector("#"+ModalID+" .close").isSameNode(event.target)){
+            modal.classList.remove("Active");
+            modal.removeEventListener('click', this);
+           
+        }
+    });
+
+}
+
+
+function FAQModal_Set(FAQItem){
+    document.getElementById("UpdateFAQModalQip").value = FAQItem.children[0].children[1].innerText;
+    document.getElementById("UpdateFAQModalAip").value = FAQItem.children[1].children[1].innerText;
+}

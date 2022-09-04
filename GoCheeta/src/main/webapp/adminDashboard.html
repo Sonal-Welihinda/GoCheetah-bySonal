@@ -28,6 +28,11 @@
                 <button onclick="switchTabs('addVehicleTab', this);">Add Vehicel</button>
                 <button onclick="switchTabs('categoryVehicleTab', this);">Vehicel Category</button>
             </div> -->
+            <button onclick="switchTabs('FAQTab',this);"><img src="/images/faqs-icon.svg" alt="FAQ icon"> <span>FAQ</span></button>
+            <button onclick="switchTabs('BookingsTab',this);"><img src="/images/booking-icon.svg" alt="driver icon"> <span>Booking</span></button>
+            <button onclick="switchTabs('InquiriesTab',this);"><img src="/images/Inquiry.svg" alt="Inquiries icon"> <span>Inquiries</span></button>
+
+
         </div>
 
         <div id="TabsContent">
@@ -261,7 +266,7 @@
             <div id="categoryVehicleTab">
                 <span>Vehicel Category</span>
                 <div>
-                    <button>+ Add Category</button>
+                    <button onclick="openModal('addVCategoryModal');">+ Add Category</button>
                 </div>
 
                 <table id="driverTable">
@@ -426,8 +431,8 @@
                             <label for="addAdminFormUsername">Username</label>
                             <input type="text" id="addAdminFormUsername">
     
-                            <label for="addAdminFormPassword">Password</label>
-                            <input type="password" id="addAdminFormPassword">
+                            <label for="addAdminFormPassword" id="addAdminFormPasswordLabel">Password <img src="/images/passGen_24dp.svg" alt="pass gen icon" onclick="genPassword('addAdminFormPassword');"></label>
+                            <input type="text" id="addAdminFormPassword">
                             
                         </div>
                     </div>
@@ -440,26 +445,414 @@
                 </form>
             </div>
 
+            <div id="FAQTab">
+                <div id="FAQTitle">
+                    <img src="/images/faqs-icon.svg" alt="Faq">
+                    <span>FAQ </span>
+                </div>
+
+
+
+                <div id="FAQList">
+                    <div class="FAQ-Item" onclick="openModal('UpdateFAQModal'); FAQModal_Set(this);">
+
+                        <div class="FAQ-Question">
+                            <h2>Q: </h2>
+                            <h3>Availabile vehicle</h3>
+                            
+                        </div>
+
+                        <div class="FAQ-Answer">
+                            <h2>
+                                A: 
+                            </h2>
+
+                            <p>
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus necessitatibus excepturi aut nam molestias fuga doloremque, 
+                            perspiciatis incidunt cupiditate vero aliquid accusamus ipsam? Quas quo quibusdam esse quisquam temporibus natus!
+                            </p>
+                            
+                        </div>
+
+                    </div>
+
+                    <div class="FAQ-Item" onclick="openModal('UpdateFAQModal'); FAQModal_Set(this);">
+
+                        <div class="FAQ-Question">
+                            <h2>Q: </h2>
+                            <h3>Availabile vehicle</h3>
+                            
+                        </div>
+
+                        <div class="FAQ-Answer">
+                            <h2>
+                                A: 
+                            </h2>
+
+                            <p>
+                                Lorem2 ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus necessitatibus excepturi aut nam molestias fuga doloremque, 
+                            perspiciatis incidunt cupiditate vero aliquid accusamus ipsam? Quas quo quibusdam esse quisquam temporibus natus!
+                            </p>
+                            
+                        </div>
+
+                    </div>
+
+                    <div class="FAQ-Item" onclick="openModal('UpdateFAQModal'); FAQModal_Set(this);">
+
+                        <div class="FAQ-Question">
+                            <h2>Q: </h2>
+                            <h3>Availabile vehicle</h3>
+                            
+                        </div>
+
+                        <div class="FAQ-Answer">
+                            <h2>
+                                A: 
+                            </h2>
+
+                            <p>
+                                Lorem3 ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus necessitatibus excepturi aut nam molestias fuga doloremque, 
+                            perspiciatis incidunt cupiditate vero aliquid accusamus ipsam? Quas quo quibusdam esse quisquam temporibus natus!
+                            </p>
+                            
+                        </div>
+
+                    </div>
+                    
+
+                </div>
+
+            </div>
+
+
+            <div id="BookingsTab">
+                <div id="bookingTitle">
+                    <img src="/images/booking-icon.svg" alt="booking-icon">
+                    <span>Bookings</span>
+                </div>
+
+                <div id="bookingList">
+
+                    <div class="BookingItem" onclick="openModal('bookingDetailModal');">
+                        <div>
+                            <div class="booking-DT">
+
+                                Date : 2022/02/02  Time : 24:24:00:00
+
+                            </div>
+
+                            <div class="booking-ID">
+                                Trip Id : 233423
+                            </div>
+
+                        </div>
+
+                        <div class="booking-driver">
+                            Rider : Sonal
+                        </div>
+                    </div>
+
+                    <div class="BookingItem" onclick="openModal('bookingDetailModal');">
+                        <div>
+                            <div class="booking-DT">
+
+                                Date : 2022/02/02  Time : 24:24:00:00
+
+                            </div>
+
+                            <div class="booking-ID">
+                                Trip Id : 233423
+                            </div>
+
+                        </div>
+
+                        <div class="booking-driver">
+                            Rider : Sonal
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+
+            <div id="InquiriesTab">
+                <div id="InquiriesTitle">
+                    <img src="/images/Inquiry.svg" alt="Inquiry icon">
+                    <span>Inquiries</span>
+                </div>
+
+                <div class="Inquiries-List">
+                    <div class="Inquiries-Item" onclick="switchTabs2('InquiryTab');">
+                        <div class="Inquiries-From">
+                            <h2>From :</h2>
+                            <p>Sonal</p>
+                        </div>
+
+                        <div class="Inquiries-Msg">
+                            <h2>Message :</h2>
+                            <p>Lorem1 ipsum dolor sit amet consectetur adipisicing elit. Molestias, in! Esse officiis, 
+                                provident quae maiores aut similique hic aliquam temporibus dolore. 
+                                Voluptas velit cum omnis rem quia perferendis quos illo?</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div id="InquiryTab">
+                <div onclick="switchTabs2('InquiriesTab');">
+                    
+                    <span>&#8592;</span> 
+                </div>
+
+                <div class="Inquiries-Item">
+
+                    <div class="Inquiries-From">
+                        <span>From :</span>
+                        <p>Sonal</p>
+                    </div>
+
+                    <div class="Inquiries-Msg">
+                        <span>Message :</span>
+                        <p>Lorem1 ipsum dolor sit amet consectetur adipisicing elit. Molestias, in! Esse officiis, 
+                            provident quae maiores aut similique hic aliquam temporibus dolore. 
+                            Voluptas velit cum omnis rem quia perferendis quos illo?</p>
+                    </div>
+                </div>
+
+                <form id="InquiryReply">
+                    <h2>Reply :</h2>
+                    <textarea name="" id="" cols="30" rows="10"></textarea>
+
+                    <input type="submit" value="Send Reply">
+                </form>
+
+            </div>
+
+
         </div>
 
         
     </div>
 
-
+    
     <!-- modal -->
-    <div id="addAdminModal">
-        <div class="modal-Header">
-            Add New Admin
-        </div>
 
-        <div class="modal-Body">
+    <!-- Add Driver -->
+    <div id="addDriversModal" class="Modal ">
+        <form>
+            <div class="modal-Header">
+                <div>
+                    <img src="/images/driver-add.svg" alt="driver add">
+                    <h3>New Driver</h3>
+                </div>
 
-        </div>
+                <span class="close">
+                    &#10006;
+                </span>
+            </div>
 
-        <div class="modal-Footer">
+            <div class="modal-Body">
+                <label for="addDriversModal_Name">Name</label>
+                <input type="text" id="addDriversModal_Name">
+                <label for="addDriversModal_Img">Driver Image</label>
+                <input type="file" name="driverImage" id="addDriversModal_Img">
+                <label for="addDriversModal_Branch">Branch</label>
+                <select name="Branch" id="addDriversModal_Branch">
+                    <option value="Kandy">Kandy</option>
+                    <option value="Kandy">Kandy</option>
+                    <option value="Kandy">Kandy</option>
+                    <option value="Kandy">Kandy</option>
+                </select>
+
+                <label for="addDriversModal_Contact">Contact</label>
+                <input type="text" id="addDriversModal_Contact">
+                <label for="addDriversModal_DOB">Date of birth</label>
+                <input type="date" id="addDriversModal_DOB">
+                <label for="">Gender</label>
+                <div>
+                    
+                    <input type="radio" name="Gender" id="addDriversModal_Male">
+                    <label for="addDriversModal_Male">Male</label>
+                    <input type="radio" name="Gender" id="addDriversModal_Female">
+                    <label for="addDriversModal_Female">Female</label>
+                </div>
+                
+                <label for="addDriversModal_address">Address</label>
+                <textarea name="Address" id="addDriversModal_address" rows="6"></textarea>
+
+               
+
+                <div id="addDriversModal_UnContainer">
+                    Username&nbsp;:&nbsp;<input type="text" id="addDriversModal_Username">
+                </div>
+
+                <div id="addDriversModal_PwContainer">
+                    Password&nbsp;&nbsp;:&nbsp;<input type="password" id="addDriversModal_Pass"> <img src="/images/passGen_24dp.svg" alt="Password gen " onclick="genPassword('addDriversModal_Pass');">
+                </div>
+
+
+            </div>
+
+            <div class="modal-Footer">
+
+                <input type="reset" value="Cancel" class="close">
+                <input type="submit" value="Create New Driver">
+
+            </div>
+
+        </form>
+
+    </div>
+
+
+    <!-- add Vehicle Category Modal -->
+
+    <div id="addVCategoryModal" class="Modal">
+
+        <form  id="addVCategoryModalForm">
+            <div class="modal-Header">
+                Create New Category
+            </div>
+    
+            <div class="modal-Body">
+                <label for="addVCategoryModalIcon">Category Icon :</label>
+                <input type="file" name="CategoryIcon" id="addVCategoryModalIcon">
+    
+                <label for="">Category Name :</label>
+                <input type="text">
+            </div>
+    
+            <div class="modal-Footer">
+                <input type="submit" value="Create New Category">
+            </div>
+        </form>
+    </div>
+
+    <!-- FAQ Update Modal -->
+
+    <div id="UpdateFAQModal" class="Modal ">
+
+        
+        <form action="" id="UpdateFAQModalForm">
+            <div class="modal-Header">
+                <h1>Edit FAQ</h1>
+                
+            </div>
+
+            <div class="modal-Body">
+                <div>
+                    <label for="UpdateFAQModalQip">Question :</label>
+                    <input type="text" id="UpdateFAQModalQip">
+                </div>
+                
+                <div>
+                    
+                    <label for="UpdateFAQModalAip">Answer  &nbsp;&nbsp;:</label>
+                    <textarea type="text" id="UpdateFAQModalAip"  rows="5" ></textarea>
+                </div>
+                
+            </div>
+
+            <div class="modal-Footer">
+                <input type="submit" value="Update FAQ">
+            </div>
+        </form>
+
+    </div>
+    
+
+    <!-- Booking Details Modal -->
+
+    <div id="bookingDetailModal" class="Modal ">
+        <div >
+
+            <div class="modal-Header">
+                <h3>
+                    Trip Details
+                </h3>
+                <span class="close">
+                    &#10006;
+
+                </span>
+                
+            </div>
+            
+            <div class="modal-Body">
+                
+                <div >
+                    <label for="bkDeetsModalTripID"> Trip Id :</label>
+                    <span id="bkDeetsModalTripID" >23343</span>
+                </div>
+
+                <div >
+                    <label for="bkDeetsModalDate">Date : </label>
+                    <span id="bkDeetsModalDate" >2022/02/02</span>
+                    
+                </div>
+
+                <div >
+                    <label for="bkDeetsModalTime">Time : </label>
+                    <span id="bkDeetsModalTime" >24:24:23:24</span>
+                    
+                </div>
+
+                <div >
+                    <label for="bkDeetsModalVehicle">Vehicle :</label>
+                    <span id="bkDeetsModalVehicle"> test vehicle  - GG-2332</span>
+                </div>
+
+
+                <div >
+                    <label for="bkDeetsModalVPlate">Vehicle plate number :</label>
+                    <span id="bkDeetsModalVPlate">GG-2332</span>
+                     
+                </div>
+
+                <div >
+                    <label for="bkDeetsModalC_ID">Customer Id :</label>
+                    <span id="bkDeetsModalC_ID"> 44 </span>
+                </div>
+
+                <div >
+                    <label for="bkDeetsModalC_Name">Customer Name :</label>
+                    <span id="bkDeetsModalC_Name">Sonal</span>
+                     
+                </div>
+
+                <div>
+                    <label for="bkDeetsModalC_Pnum">Customer Phone Number :</label>
+                    <span id="bkDeetsModalC_Pnum">1234567889</span>
+                </div>
+
+                <div>
+                    <label for="bkDeetsModalPickupL">Pickup location :</label>
+                    <span id="bkDeetsModalPickupL">123/4 testnamefdsfddsf testCity 20202 test2</span>
+                </div>
+
+                <div>
+                    <label for="bkDeetsModalDropoffL">Dropoff location :</label>
+                    <span id="bkDeetsModalDropoffL">123/4 testnamefdsfddsf testCity 20202 test2</span>
+                </div>
+
+
+
+            </div>
+
+            <div class="modal-Footer">
+
+            </div>
 
         </div>
     </div>
+
+
+
+
+
+
 
     <script src="js/adminDashboard.js"></script>
 </body>
