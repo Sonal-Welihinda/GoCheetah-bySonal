@@ -262,7 +262,7 @@
 
 #driverTable{
     margin-left: 2%;
-    margin-top: 1%;
+    
     margin-right: 2%;
     background-color: antiquewhite;
     border-collapse: collapse;
@@ -284,6 +284,34 @@
     margin-bottom: 20px;
 }
 
+#driversToolbox{
+    display: flex;
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+
+}
+
+#driversToolbox input{
+    width: 30%;
+}
+
+#driversToolbox button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 10%;
+    padding: .5% 1%;
+    margin-left: auto;
+    background-color: transparent;
+    border: none;
+}
+
+#driversToolbox button img{
+    width: 20%;
+}
+
 
 /* Vehicle */
 
@@ -301,15 +329,92 @@
     font-size: 20px;
 }
 
+/* 
+    Drivers drop down  
+    for add drivers and update drivers
+*/
+.drivers-dropDown-box{
+    border: 1px solid black;
+    border-radius: 2px;
+    margin-right: 24%;
+    display: flex;
+    padding-top: 1%;
+    padding: 1%;
+    
+}
 
-/* Add Vehicel */
+.drivers-dropDown-box span{
+    font-size: 24px;
+
+}
+
+.drivers-dropDown-box img{
+    margin-left: auto;
+    width: 6%;
+    margin-right: 1%;
+}
+
+.drivers-List-Container{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    font-size: 24px;
+    margin-right: 24%;
+    
+}
+
+.drivers-List-checkbox{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    height: 0px;
+    z-index: 1;
+    width: 100%;
+    max-height: 150px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    
+}
+
+.drivers-List-checkbox.Active{
+    overflow-y: auto ;
+    height: auto;
+    transition: height 1s;
+}
+
+.drivers-List-checkbox label{
+    display: flex;
+    flex: 1;
+    padding: 2% 1%;
+    background-color: antiquewhite;
+
+}
+
+/* Check box size */
+.drivers-List-checkbox label input{
+    -ms-transform: scale(2); 
+    -moz-transform: scale(2); 
+    -webkit-transform: scale(2); 
+    -o-transform: scale(2); 
+    transform: scale(2);
+    margin-left: 2%;
+}
+
+.drivers-List-checkbox label span{
+    margin-left: auto;
+    margin-right: 1%;
+
+}
+
+
+/* Add Vehicel tab */
 
 #vAddTitle{
     display: flex;
     align-items: center;
     margin-top: 2%;
     margin-left: 1%;
-    margin-bottom: 1%;
+    margin-bottom: 2%;
     font-size: 34px;
     
 }
@@ -346,9 +451,6 @@
 
 
 /* add Vehicle Form Left side */
-
-
-
 #addVehicleFormLeft{
     flex: 1 ;
     display: flex;
@@ -364,89 +466,15 @@
 #addVehicleFormLeft > input{
     margin-right: 24%;
     font-size: 24px;
+    padding-top: .4%;
+    padding-bottom: .4%;
     
-}
-
-
-
-
-.drivers-dropDown-box{
-    border: 1px solid black;
-    border-radius: 2px;
-    margin-right: 24%;
-    display: flex;
-    padding-top: 1%;
-    padding: 1%;
-    
-}
-
-.drivers-dropDown-box span{
-    font-size: 24px;
-
-}
-
-.drivers-dropDown-box img{
-    margin-left: auto;
-    width: 6%;
-    margin-right: 1%;
-}
-
-#driversListContainer{
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    font-size: 24px;
-    margin-right: 24%;
-    
-}
-
-.drivers-List-checkbox{
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    height: 0px;
-    z-index: 1;
-    width: 100%;
-    max-height: 150px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    
-}
-
-.drivers-List-checkbox.Active{
-    overflow-y: auto ;
-    height: auto;
-    transition: height 1s;
-}
-
-.drivers-List-checkbox label{
-    display: flex;
-    flex: 1;
-    padding: 2% 1%;
-    background-color: antiquewhite;
-
-}
-
-.drivers-List-checkbox label input{
-    -ms-transform: scale(2); 
-    -moz-transform: scale(2); 
-    -webkit-transform: scale(2); 
-    -o-transform: scale(2); 
-    transform: scale(2);
-    margin-left: 2%;
-}
-
-.drivers-List-checkbox label span{
-    margin-left: auto;
-    margin-right: 1%;
-
 }
 
 /* add Vehicle Form right side */
 
 #addVehicleFormRight{
     flex: 1;
-    
     display: flex;
     flex-direction: column; 
 }
@@ -456,28 +484,20 @@
     margin-top: 4.5%;
 }
 
+/* input Number of seats */
 #addVehicleFormRight > input[type=number]{
     margin-right: auto;
     font-size: 24px;
-    padding-top: 1%;
-    padding-bottom: 1%;
+    padding-top: .4%;
+    padding-bottom: .4%;
     
 }
 
-#addVehicleFormRight > input[type=text]{
+#addVehicleFormRight > input[type=text], #addVehicleFormRight > select{
     margin-right: 5%;
     font-size: 24px;
-    padding-top: 1%;
-    padding-bottom: 1%;
-}
-
-
-#addVehicleFormRight > select{
-    margin-right: 5%;
-    font-size: 24px;
-    padding-top: 1%;
-    padding-bottom: 1%;
-    
+    padding-top: .4%;
+    padding-bottom: .4%;
 }
 
 
@@ -512,7 +532,156 @@
     color: #FFBC00;
 }
 
-/* category manage */
+/* Update Vehicle Tab*/
+
+#vUpdateTitle{
+    display: flex;
+    align-items: center;
+    margin-top: 1%;
+    font-size: 34px;
+    justify-content: space-between;
+    
+}
+
+#vUpdateTitle div{
+    display: flex;
+    align-items: center;
+}
+
+#vUpdateTitle div:first-child{
+    font-size: 40px;
+    margin-left: 2%;
+}
+
+#vUpdateTitle div:first-child span{
+    font-size: 26px;
+    margin-left: 4%;
+}
+
+#vUpdateTitle div:last-child{
+    margin-right: 2%;
+    flex: 1;
+    justify-content: end;
+    
+}
+
+
+#vUpdateTitle img{
+    height: 2em;
+    margin-right: 1%;
+}
+
+
+#updateVehicleTab{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+
+
+#updateVehicleForm{
+    display: flex;
+    margin-left: 2%;
+    margin-right: 2%;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+#updateVehicleForm >div:first-of-type{
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    
+}
+
+
+/* add Vehicle Form Left side */
+#updateVehicleFormLeft{
+    flex: 1 ;
+    display: flex;
+    flex-direction: column; 
+
+}
+
+#updateVehicleFormLeft > label{
+    font-size: 24px;
+    margin-top: 4.5%;
+}
+
+#updateVehicleFormLeft > input{
+    margin-right: 24%;
+    font-size: 24px;
+    padding-top: .4%;
+    padding-bottom: .4%;
+    
+}
+
+/* add Vehicle Form right side */
+
+#updateVehicleFormRight{
+    flex: 1;
+    display: flex;
+    flex-direction: column; 
+}
+
+#updateVehicleFormRight > label{
+    font-size: 24px;
+    margin-top: 4.5%;
+}
+
+/* input Number of seats */
+#updateVehicleFormRight > input[type=number]{
+    margin-right: auto;
+    font-size: 24px;
+    padding-top: .4%;
+    padding-bottom: .4%;
+    
+}
+
+#updateVehicleFormRight > input[type=text], #updateVehicleFormRight > select{
+    margin-right: 5%;
+    font-size: 24px;
+    padding-top: .4%;
+    padding-bottom: .4%;
+}
+
+
+/* add Vehicle Form Submit and cancel*/
+
+#updateVehicleFormSubmit{
+    display: flex;
+    align-items: flex-end;
+    justify-content: end;
+    margin-top: auto;
+    margin-bottom: 2%;
+}
+
+#updateVehicleFormSubmit input{
+    margin-left: 2%;
+    padding-left:8%;
+    padding-right: 8%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    border-radius: 1px;
+    font-size: 24px;
+}
+
+#updateVehicleFormSubmit input:first-child{
+    background-color: white;
+    border: 1px solid red;
+    color: red;
+}
+
+#updateVehicleFormSubmit input:last-child{
+    background-color: black;
+    color: #FFBC00;
+}
+
+
+
+/* vehicle category manage tab*/
 #categoryVehicleTab{
     display: flex;
     flex-direction: column;
@@ -719,7 +888,7 @@
     margin-right: 6%;
 }
 
-/* submit buttons */
+/*add admin submit buttons */
 
 #addAdminformSubmit{
     display: flex;
@@ -757,6 +926,162 @@
     
 }
 
+/* Update admin */
+
+#updateAdminTab{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+#updateAdminTitle{
+    display: flex;
+    align-items: center;
+    margin-top: 1%;
+    margin-left: 1%;
+    font-size: 36px;
+}
+
+#updateAdminTitle img{
+    height: 2em;
+    margin-right: 1%;
+    
+}
+
+/* update admin form */
+
+#updateAdminForm{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+#updateAdminForm div{
+    display: flex;
+    flex: 1;
+}
+
+#updateAdminForm div div{
+    flex: 1;
+}
+
+#updateAdminFormLeft{
+    display: flex;
+    flex-direction: column;
+    
+    margin-top: 2%;
+    margin-left: 1%;
+    
+    font-size: 24px;
+
+}
+
+#updateAdminFormLeft label{
+    margin-top: 3%;
+    margin-right: 6%;
+}
+
+#updateAdminFormLeft input{
+    font-size: 24px;
+    padding-top: .1%;
+    padding-bottom: .1%;
+    margin-right: 6%;
+
+}
+
+/* update admin form right  */
+
+#updateAdminFormRight{
+    margin-top: 2%;
+    display: flex;
+    flex-direction: column;
+    font-size: 24px;
+    
+}
+
+#updateAdminFormRight label{
+    margin-top: 3%;
+}
+
+#updateAdminFormRight select{
+    font-size: 24px;
+    padding-top: .1%;
+    padding-bottom: .1%;
+    margin-right: 6%;
+    
+}
+
+#updateAdminFormBranchBox{
+    display: flex;
+    flex-direction: column;
+    
+}
+
+
+#updateAdminFormBranchBox.Active{
+    display: none;
+}
+
+#updateAdminFormGender{
+    display: flex;
+    align-items: center;
+    
+}
+
+#updateAdminFormGender label{
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 4%;
+    margin-left: 1%;
+}
+
+#updateAdminFormRight > input{
+    font-size: 24px;
+    padding-top: .1%;
+    padding-bottom: .1%;
+    margin-right: 6%;
+}
+
+/*update admin submit buttons */
+
+#updateAdminformSubmit{
+    display: flex;
+    margin-top: auto;
+    align-items: flex-end;
+    justify-content: end;
+    margin-bottom: 2%;
+    margin-right: 4%;
+}
+
+#updateAdminformSubmit input{
+    padding: 1% 2%;
+    margin-left: 1%;
+    font-size: 20px;
+}
+
+#updateAdminformSubmit input:first-of-type{
+    background-color: white;
+    font-weight: 400;
+}
+
+#updateAdminformSubmit input:last-of-type{
+    background-color: black;
+    color: white;
+    font-weight: 600;
+}
+
+#updateAdminFormPasswordLabel{
+    display: flex;
+    margin-right: 6%;
+}
+
+#updateAdminFormPasswordLabel img{
+    margin-left: auto;
+    
+}
+
+
+
 /* FAQ Tab */
 #FAQTab{
     display: flex;
@@ -774,6 +1099,23 @@
     align-items: center;
     margin-top: 1%;
     margin-left: 1%;
+}
+
+#FAQaddBtnContiner button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6vw;
+    padding: .5% 2%;
+    margin-left: auto;
+    margin-right: 2%;
+    background-color: transparent;
+    border: none;
+}
+
+#FAQaddBtnContiner button img{
+    height: 1.6vw;
+    margin-right: 4px;
 }
 
 #FAQList{
@@ -950,9 +1292,40 @@
     
 }
 
+/* Branch Tab */
+
+#BranchesTab{
+    display: flex;
+    flex-direction: column;
+}
+
+#branchTitle {
+    font-size: 2em;
+    height: 2em;
+    display: flex;
+    align-items: center;
+    margin-top: .5%;
+    margin-left: 1%;
+}
+
+#branchTitle img{
+    height: 2em;
+}
+
+#BranchesTab > button{
+    margin-left: auto;
+    margin-right: 2%;
+    padding: .5% 2%;
+    font-size: 20px;
+}
 
 
-/* Modal */
+
+/*
+    Modal
+    
+    
+*/
 
 .Modal{
     display: none;
@@ -1086,6 +1459,119 @@
     padding-right: 6%;
 }
 
+/* update Driver modal */
+
+#updateDriversModal form{
+    display: flex;
+    flex-direction: column;
+    height: 80%;
+    width: 36%;
+    background-color: white;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2%;
+    
+    border-radius: 4px;
+    overflow-y: auto;
+}
+
+#updateDriversModal .modal-Header{
+    padding-top: 3%;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+#updateDriversModal .modal-Header, #updateDriversModal .modal-Header div{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 1.4vw;
+    
+}
+
+#updateDriversModal .modal-Header img{
+    width: 10%;
+    margin-right: 2%;
+    
+    
+}
+
+#updateDriversModal .modal-Header span{
+    margin-left: auto;
+}
+
+#updateDriversModal .modal-Body{
+    display: flex;
+    flex-direction: column;
+    margin-top: 4%;
+    padding-left: 4%;
+    padding-right: 4%;
+    font-size: 24px;
+}
+
+#updateDriversModal .modal-Body >label{
+    margin-top: 2%;
+}
+
+#updateDriversModal .modal-Body input{
+    font-size: 24px;
+}
+
+#updateDriversModal .modal-Body select{
+    font-size: 24px;
+}
+
+
+
+#updateDriversModal_address{
+    resize: none;
+    font-size: 24px;
+    
+}
+
+#updateDriversModal_PwContainer{
+    display: flex;
+    align-items: center;
+}
+
+#updateDriversModal_UnContainer{
+    margin-top: 6%;
+    margin-bottom: 2%;
+}
+
+#updateDriversModal_PwContainer input{
+    margin-right: 1%;
+
+}
+
+#updateDriversModal .modal-Footer{
+    display: flex;
+    justify-content: end;
+    margin-right: 1%;
+    margin-top: 8%;
+    margin-bottom: 4%;
+}
+
+#updateDriversModal .modal-Footer input{
+    padding: 2% 4%;
+    margin-left: 2%;
+    font-size: 20px;
+    border-radius: 4px;
+}
+
+#updateDriversModal .modal-Footer input:first-child{
+    background-color: white;
+}
+
+#updateDriversModal .modal-Footer input:last-child{
+    background-color: #FFBC00;
+    color: black;
+    border: none;
+    padding-left: 6%;
+    padding-right: 6%;
+}
+
+
 
 /* Add Vehicle Category modal */
 
@@ -1201,6 +1687,72 @@
     border-radius: 4px;
 }
 
+/* Add FAQ */
+#addFAQModal.Active{
+    display: flex !important;
+}
+
+#addFAQModalForm{
+    display: flex;
+    flex-direction: column;
+    height: 40%;
+    width: 30%;
+    background-color: white;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2%;
+    padding: 2%;
+    border-radius: 4px;
+
+}
+
+
+#addFAQModalForm .modal-Body{
+    display: flex;
+    flex-direction: column;
+}
+
+#addFAQModalForm .modal-Body div{
+    display: flex;
+    flex-direction: row;
+    margin-top: 4%;
+    flex: 1;
+    font-size: 24px;
+    
+    
+}
+
+#addFAQModalForm .modal-Body div label{
+    padding-right: 1%;
+    
+}
+
+#addFAQModalForm .modal-Body div input{
+    font-size: 24px;
+    width: 70%;
+}
+
+#addFAQModalAip{
+    font-size: 22px;
+    width: 70%;
+    resize: none;
+}
+
+#addFAQModalForm .modal-Footer{
+    margin-top: auto;
+    margin-left: auto;
+    margin-right: 4%;
+}
+
+#addFAQModalForm .modal-Footer input{
+    padding: 6% 14%;
+    font-size: 18px;
+    background-color: black;
+    color: #FFBC00;
+    border-radius: 4px;
+}
+
+/* Booking details modal */
 
 #bookingDetailModal > div{
     display: flex;
@@ -1262,3 +1814,150 @@
     /* display: flex; */
     /* justify-self: start; */
 }
+
+/* branch Add Modal */
+
+#branchAddModal form{
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+    height: 48%;
+    background-color: white;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2%;
+    overflow: auto;
+    border-radius: 4px;
+    font-size: 1.8vw;
+}
+
+#branchAddModal .modal-Header{
+    margin-top: 1%;
+    margin-left: .5%;
+    font-size: 26px;
+}
+
+#branchAddModal .modal-Body{
+    display: flex;
+    
+}
+
+#branchAddModal .modal-Body div{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+#branchAddModal #branchAddFormLeft{
+   padding-left: 4%;
+   padding-right: 4%;
+}
+
+#branchAddFormLeft > label, #branchAddFormRight > label{
+    margin-top: 4%;
+}
+
+#branchAddFormLeft > input, #branchAddFormRight > input{
+    font-size: .8em;
+    margin-top: 1%;
+}
+
+
+
+#branchAddFormRight{
+    display: flex;
+    flex-direction: column;
+    padding-right: 4%;
+}
+
+/* branch status container */
+
+#addBranchStatusContainer{
+    display: flex;
+    flex-direction: row !important;
+    align-items: center;
+    margin-left: 10%;
+    margin-top: 5%;
+}
+
+#addBranchStatusContainer label{
+    margin-right: 4%;
+    user-select: none;
+    
+}
+
+#branchAddModal .modal-Footer{
+    font-size: .8em;
+    display: flex;
+    padding-right: 4%;
+    margin-top: 4%;
+
+}
+
+#branchAddModal .modal-Footer input{
+    padding: 1% 2%;
+    font-size: .8em;
+}
+
+#branchAddModal .modal-Footer input:first-child{
+    margin-left: auto;
+    background-color: black;
+    color: #ffc933;
+}
+
+
+
+/* toggle switch  */
+
+.switch {
+    display: flex;
+    width: 40px;
+    height: 18px;
+}
+
+.switch input{
+    visibility: collapse;
+    display: none;
+}
+
+.slider {
+    
+    display: flex;
+    cursor: pointer;
+    height: 100%;
+    width: 100%;
+    background-color: red;
+    border-radius: 34px;
+    -webkit-transition: .4s;
+    transition: .4s;
+    padding-left: 6%;
+    padding-right: 6%;
+}
+
+
+.slider::after {
+    display: inline-flex;
+    content: "";
+    height: 80%;
+    width: 40%;
+    align-items: center;
+    
+    margin-top: auto ;
+    margin-bottom: auto;
+    border-radius: 34px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked + .slider::after {
+    -webkit-transform: translateX(150%);
+    -ms-transform: translateX(150%);
+    transform: translateX(150%);
+}
+
+input:checked + .slider {
+    background-color: rgb(22, 229, 22);
+}
+

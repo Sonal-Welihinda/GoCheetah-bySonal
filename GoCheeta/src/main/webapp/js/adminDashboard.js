@@ -152,7 +152,7 @@ function openModal(ModalID){
 
     modal.addEventListener('click' , (event) => {
        
-        if(modal.isSameNode(event.target) || document.querySelector("#"+ModalID+" .close").isSameNode(event.target)){
+        if(modal.isSameNode(event.target) || document.querySelector("#"+ModalID+" .close").isSameNode(event.target) || document.querySelector("#"+ModalID+" input[type='reset']").isSameNode(event.target)){
             modal.classList.remove("Active");
             modal.removeEventListener('click', this);
            
