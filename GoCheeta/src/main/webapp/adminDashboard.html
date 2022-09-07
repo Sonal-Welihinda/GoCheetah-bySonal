@@ -32,6 +32,7 @@
             <button onclick="switchTabs('BookingsTab',this);"><img src="/images/booking-icon.svg" alt="driver icon"> <span>Booking</span></button>
             <button onclick="switchTabs('InquiriesTab',this);"><img src="/images/Inquiry.svg" alt="Inquiries icon"> <span>Inquiries</span></button>
             <button onclick="switchTabs('BranchesTab',this);"><img src="/images/Branch-icon.svg" alt="Branch icon"> <span>Branch</span></button>
+            <button onclick="switchTabs('SalesTab',this); ShowSales();" ><img src="/images/financial-growth-icon.svg" alt="Sales icon"> <span>Sales</span></button>
 
         </div>
 
@@ -795,7 +796,7 @@
                     <img src="/images/Branch-icon.svg" alt="branch icon">
                     <span>Branches</span>
                 </div>
-                <button>Create Branch</button>
+                <button onclick="openModal('branchAddModal');">Create Branch</button>
 
                 <table id="driverTable">
                     <thead>
@@ -807,7 +808,7 @@
                     </thead>
 
                     <tbody>
-                        <tr onclick="switchTabs2('updateAdminTab');">
+                        <tr onclick="openModal('branchUpdateModal');">
                             <td>01</td>
                             <td>Sonal</td>
                             <td>test location</td>
@@ -832,6 +833,48 @@
                         </tr>
                     </tbody>
                 </table>
+
+            </div>
+
+            <div id="SalesTab">
+                <div id="salesTitle">
+                    <img src="/images/financial-growth-icon.svg" alt="Sales icon">
+                    <span>Sales</span>
+                </div>
+
+                <div id="salesTimeRangeSelector">
+                    <div >
+                        <label for="salesTimeRangeFromIP">From :</label>
+                        <input type="date" name="From" id="salesTimeRangeFromIP">
+                    </div>
+
+                    <div >
+                        <label for="salesTimeRangeToIP">To :</label>
+                        <input type="date" name="From" id="salesTimeRangeToIP">
+                    </div>
+
+                </div>
+
+                <div id="salesPieContainer">
+                    <div id="salesPieCharts" >
+
+                    </div>
+
+                    <div id="salesStatistics">
+
+                        <div>
+                            <p id="salesTotalTrip">2,000,000</p>
+                            <label for="salesTotalTrip">Total Trip</label>
+                        </div>
+
+                        <div>
+                            <p id="salesTotalSales">2,000,000</p>
+                            <label for="salesTotalSales">Total Sales</label>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
 
             </div>
 
@@ -1153,10 +1196,14 @@
 
     <!-- Branch add -->
 
-    <div id="branchAddModal" class="Modal Active">
+    <div id="branchAddModal" class="Modal">
         <form action="">
             <div class="modal-Header">
                 New Branch Details
+                <span class="close">
+                    &#10006;
+
+                </span>
             </div>
 
             <div class="modal-Body">
@@ -1210,8 +1257,69 @@
 
     <!-- Branch Update -->
 
+    <div id="branchUpdateModal" class="Modal ">
+        <form action="">
+            <div class="modal-Header">
+                Update Branch Details
+
+                <span class="close">
+                    &#10006;
+
+                </span>
+            </div>
+
+            <div class="modal-Body">
+
+                <div id="branchUpdateFormLeft">
+                    <label for="updateBranchName">Name</label>
+                    <input type="text" id="updateBranchName">
+
+                    <label for="updateBranchCnum">Contect No</label>
+                    <input type="text" id="updateBranchCnum">
+
+                    <label for="updateBranchCity">City</label>
+                    <input type="text" id="updateBranchCity">
+
+                </div>
+
+                <div id="branchUpdateFormRight">
+                    <label for="updateBranchLat">Latitude</label>
+                    <input type="text" id="updateBranchLat">
+
+                    <label for="updateBranchLon">longitude</label>
+                    <input type="text" id="updateBranchLon">
+
+                    
+
+                    <div id="updateBranchStatusContainer">
+                        <label for="updateBranchStatus">Status</label>
+                        <label class="switch">
+                            <input type="checkbox" id="updateBranchStatus" >
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+
+                    
+
+                </div>
+
+            </div>
+
+            <div class="modal-Footer">
+                <input type="button" value="Delete Branch">
+                <input type="submit" value="Update Branch">
+
+            </div>
 
 
+        </form>
+
+    </div>
+
+
+
+    <!-- Piechart google -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
     <script src="js/adminDashboard.js"></script>
 </body>

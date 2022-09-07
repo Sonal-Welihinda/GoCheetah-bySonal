@@ -1319,6 +1319,79 @@
     font-size: 20px;
 }
 
+/* Sales Tab */
+#SalesTab{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+#salesTitle{
+    display: flex;
+    height: 2em;
+    font-size: 2rem;
+    align-items: center;
+    margin-top: 1%;
+    margin-left: 2%;
+    
+}
+
+#salesTitle img{
+    height: 100%;
+    margin-right: 1%;
+}
+
+#salesTimeRangeSelector{
+    display: flex;
+    margin-top: 2%;
+    margin-left: 2%;
+    margin-right: 2%;
+    justify-content: space-between;
+    background-color: rgb(237, 237, 237);
+}
+
+#salesTimeRangeSelector > div{
+    background-color: rgb(212, 212, 212);
+    padding: 1% 2%;
+}
+
+#salesPieContainer{
+    flex: 1;
+    height: 10px;
+
+    display: flex;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+#salesPieCharts{
+    flex: 1;
+    background-color: grey;
+    height: 90%;
+    width: 50%;
+}
+
+#salesStatistics{
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size: 2.4vw;
+    height: 90%;
+}
+
+#salesStatistics > div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+#salesStatistics p{
+    font-size: 3vw;
+}
+
 
 
 /*
@@ -1348,7 +1421,7 @@
 
 
 
-/* Add Admin */
+/* Add Admin Modal*/
 #addDriversModal form{
     display: flex;
     flex-direction: column;
@@ -1687,7 +1760,7 @@
     border-radius: 4px;
 }
 
-/* Add FAQ */
+/* Add FAQ Modal*/
 #addFAQModal.Active{
     display: flex !important;
 }
@@ -1833,8 +1906,16 @@
 
 #branchAddModal .modal-Header{
     margin-top: 1%;
-    margin-left: .5%;
-    font-size: 26px;
+    margin-left: 1%;
+    font-size: 2vw;
+    display: flex;
+    align-items: center;
+}
+
+#branchAddModal .modal-Header .close {
+    margin-left: auto;
+    margin-right: 4%;
+    font-size: 2.1vw;
 }
 
 #branchAddModal .modal-Body{
@@ -1904,6 +1985,116 @@
     margin-left: auto;
     background-color: black;
     color: #ffc933;
+}
+
+
+/* update Branch modal  */
+
+#branchUpdateModal form{
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+    height: 48%;
+    background-color: white;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2%;
+    overflow: auto;
+    border-radius: 4px;
+    font-size: 1.8vw;
+}
+
+#branchUpdateModal .modal-Header{
+    margin-top: 1%;
+    margin-left: 1%;
+    font-size: 2vw;
+    display: flex;
+    align-items: center;
+    
+}
+
+#branchUpdateModal .modal-Header .close {
+    margin-left: auto;
+    margin-right: 4%;
+    font-size: 2.1vw;
+}
+
+#branchUpdateModal .modal-Body{
+    display: flex;
+    
+}
+
+#branchUpdateModal .modal-Body div{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+#branchUpdateModal #branchUpdateFormLeft{
+   padding-left: 4%;
+   padding-right: 4%;
+}
+
+#branchUpdateFormLeft > label, #branchUpdateFormRight > label{
+    margin-top: 4%;
+}
+
+#branchUpdateFormLeft > input, #branchUpdateFormRight > input{
+    font-size: .8em;
+    margin-top: 1%;
+}
+
+
+
+#branchUpdateFormRight{
+    display: flex;
+    flex-direction: column;
+    padding-right: 4%;
+}
+
+/* branch status container */
+
+#updateBranchStatusContainer{
+    display: flex;
+    flex-direction: row !important;
+    align-items: center;
+    margin-left: 10%;
+    margin-top: 5%;
+}
+
+#updateBranchStatusContainer label{
+    margin-right: 4%;
+    user-select: none;
+    
+}
+
+#branchUpdateModal .modal-Footer{
+    font-size: .8em;
+    display: flex;
+    padding-right: 4%;
+    margin-top: 4%;
+
+}
+
+#branchUpdateModal .modal-Footer input{
+    padding: 1% 2%;
+    font-size: .8em;
+}
+
+#branchUpdateModal .modal-Footer input:first-child{
+    margin-left: auto;
+    background-color: transparent;
+    border-color: rgb(216, 0, 0);
+    color: rgb(216, 0, 0);
+    border-style: solid;
+    
+}
+
+#branchUpdateModal .modal-Footer input:last-child{
+    background-color: black;
+    color: #ffc933;
+    margin-left: 2%;
 }
 
 

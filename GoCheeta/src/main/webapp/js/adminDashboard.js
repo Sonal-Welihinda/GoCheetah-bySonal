@@ -1,3 +1,5 @@
+
+
 var tabs = document.querySelectorAll("#TabsContent Div");
 var submenus = document.getElementsByClassName("sidebar-Submenu");
 var navButtons = document.querySelectorAll("#nav-bar > button");
@@ -7,6 +9,10 @@ var driversLDropdown = document.querySelector("#driversListContainer .drivers-Li
 var driverslist = document.querySelectorAll(".drivers-List-checkbox label");
 
 var AccTypeDropdown = document.getElementById("addAdminAccType");
+
+var SalesPiechart = document.getElementById("salesPieCharts");
+var IsgoogleChartsLoad = false;
+
 
 
 function switchTabs(ActiveTab,button){
@@ -54,7 +60,7 @@ function switchTabs(ActiveTab,button){
     })
 
 
-    
+
 
 }
 
@@ -166,3 +172,76 @@ function FAQModal_Set(FAQItem){
     document.getElementById("UpdateFAQModalQip").value = FAQItem.children[0].children[1].innerText;
     document.getElementById("UpdateFAQModalAip").value = FAQItem.children[1].children[1].innerText;
 }
+
+
+
+// pie chart gen
+
+
+function ShowSales(){
+    google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+
+    new ResizeObserver( function(){ 
+        if(IsgoogleChartsLoad){
+            drawChart();
+        }
+        
+    }).observe(SalesPiechart);
+}
+
+function drawChart() {
+    IsgoogleChartsLoad = true;
+    var data = google.visualization.arrayToDataTable([
+        ['Task', 'Hours per Day'],
+        ['Work', 3238],
+        ['Eat', 22323],
+        ['TV', 4323],
+        ['Gym', 233],
+        ['Sleep', 8]
+    ]);
+
+    var options = {'title':'My Average Day',
+                    width: SalesPiechart.clientWidth,
+                    height: SalesPiechart.clientHeight,
+                    axisTitlesPosition: 'out',
+                    sliceVisibilityThreshold:0,
+                    tooltip: { trigger: 'selection' },
+                    legend: 
+                    {
+                        position: 'left',
+                        labeledValueText: 'both',
+                        textStyle: 
+                            {
+                            color: 'blue',
+                            fontSize: 16
+                            },
+                        alignment:'center'
+                    },
+                    chartArea: {
+                       
+                        height: "96%",
+                        width: "96%"
+                    }
+  };
+
+  var chart = new google.visualization.PieChart(SalesPiechart);
+
+
+    function mouseOverHandler(selection) {
+        chart.setSelection([{row: selection.row}]);
+    }
+
+    function mouseOutHandler() {
+        chart.setSelection();
+    }
+
+    google.visualization.events
+      .addListener(chart, 'onmouseover', mouseOverHandler);
+    google.visualization.events
+      .addListener(chart, 'onmouseout', mouseOutHandler);
+
+
+   chart.draw(data, options);
+}
+
