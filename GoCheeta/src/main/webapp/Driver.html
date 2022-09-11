@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/Driver.css">
+    <title>Drivers</title>
+</head>
+<body>
+
+    <!-- Nav bar Drivers -->
+    <nav class="nav-Bar">
+        <div class="logo">
+            <img src="images/logo_white.png" alt="company logo white">
+        </div>
+
+        <div class="username-profile">
+            <img src="/images/person_black_fill.svg" alt="profile icon">
+            <span>Sonal </span>
+
+        </div>
+
+    </nav>
+
+    <div id="Tabs">
+
+        <div id="DriverDashboardTab">
+            <div class="Title">
+                <h1>Profile</h1>
+                <h1>Welcome Sonal</h1>
+            </div>
+
+            <div class="Tab-Body">
+                <div>
+                    <label for="">Customer name</label>
+                    <p >Sonal </p>
+
+                    <label for="">Pick up</label>
+                    <textarea rows="6" readonly>49 Old Moor Street, 12 Colombo 49 Old Moor Street, 12 Colombo</textarea>
+
+                    <label for="">Drop off</label>
+                    <textarea rows="6" readonly>49 Old Moor Street, 12 Colombo 49 Old Moor Street, 12 Colombo</textarea>
+                </div>
+
+                <div>
+                    <label for="">Trip ID</label>
+                    <p >234342 </p>
+
+                    <label for="">Time</label>
+                    <p >
+                        01.02pm
+                    </p>
+
+                    <label for="">Price</label>
+                    <p >
+                        Rs: 2000
+                    </p>
+
+                    <label for="">Status</label>
+                    <p >
+                        Picking up
+                    </p>
+
+                    <label for=""><img src="/images/phone_black_fill.svg" alt="phone"></label>
+                    <p >
+                        011 222 2222
+                    </p>
+                </div>
+            </div>
+
+
+            <div class="Tab-Footer">
+                <button>Cancel Trip</button>
+                <button>Picked Up</button>
+            </div>
+            
+        </div>
+
+        <div id="profileTab">
+            <div class="Title">
+                <h1>Profile</h1>
+                <button id="profileTabEditBtn" onclick="EnableEditProfile();">Edit button</button>
+            </div>
+
+            <form id="profileForm">
+                <div id="profileFormPicContainer">
+                    <img src="/images/person_black_fill.svg" alt="" id="profilePic">
+                    <button >Change profile picture</button>
+                </div>
+
+                <label for="profileFormName">Name</label>
+                <input type="text" id="profileFormName" readonly="true">
+                <label for="profileFormName">Contact Number</label>
+                <input type="text" id="profileFormName" readonly>
+                <label for="profileFormAddress">Address</label>
+                <textarea id="profileFormAddress" rows="10" readonly></textarea>
+
+                <label for="profileForGContainer">Gender</label>
+                <select  id="profileForGContainer" required disabled>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    
+                </select>
+                
+
+                <label for="profileFormUName">Username</label>
+                <input type="text" id="profileFormUName" readonly>
+
+                <button >Change Password</button>
+                
+
+                <div id="profileFormButtons">
+                    <button type="button" onclick="EnableEditProfile();" >Cancel</button>
+                    <button type="submit" >Update Profile</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+
+    <script src="/js/Driver.js"></script>
+    
+</body>
+</html>

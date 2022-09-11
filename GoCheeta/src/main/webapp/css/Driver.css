@@ -1,0 +1,295 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+
+
+
+.nav-Bar{
+    display: flex;
+    background-color: black;
+    height: 8vh;
+    width: 100%;
+    
+}
+
+.nav-Bar .logo{
+    display: flex;
+    height: 100%;
+
+}
+
+.nav-Bar  .username-profile{
+    flex: 1;
+    display: flex;
+    align-items: center;
+    color: white;
+    font-size: 1.8vw;
+    font-weight: 600;
+    justify-content: end;
+    width: auto;
+    margin-right: 1%;
+    
+    
+}
+
+.nav-Bar  .username-profile img{
+    border-color: white;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 50%;
+    margin-right: 1%;
+    height: 60%;
+}
+
+#Tabs{
+    
+    height: 92vh;
+    width: 100%;
+}
+
+/* Profile Tab */
+
+#profileTab{
+    display: none;
+    flex-direction: column;
+    
+}
+
+#profileTab.Active{
+    display: flex;
+}
+
+#profileTab .Title{
+    margin: 1% 2%;
+    display: flex;
+    flex-direction: column;
+}
+
+#profileTab .Title button{
+    
+    margin-left: auto;
+    padding: .5% 1.5%;
+}
+
+
+#profileTab .Title button.Active{
+    display: none;
+}
+
+#profileForm{
+    display: flex;
+    flex-direction: column;
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-bottom: 2%;
+}
+
+#profileFormPicContainer{
+    display: flex;
+   
+    
+    margin-bottom: 2%;
+}
+
+#profilePic{
+    background-color: gray;
+    width: 16%;
+   
+}
+
+#profileFormPicContainer button{
+    margin-top: 1%;
+    margin-bottom: auto;
+    padding: 1% 2%;
+    margin-left: 2%;
+    font-size: 1.4vw;
+}
+
+#profileForm > label{
+    font-size: 1.6vw;
+}
+
+#profileForm > input, #profileForm > textarea, #profileForGContainer, #profileForm > button{
+    margin-right: 30%;
+    margin-bottom: 1%;
+    font-size: 1.4vw;
+    resize: none;
+}
+
+#profileForm > button{
+    padding-top: 1%;
+    padding-bottom: 1%;
+    margin-right: 50%;
+}
+
+#profileFormButtons{
+    display: none;
+    justify-content: end;
+    margin-top: 2%;
+}
+
+#profileFormButtons button{
+    font-size: 1.4vw;
+    padding: 1% 2%;
+    margin-left: 2%;
+    font-weight: 600;
+    background-color: white;
+}
+
+#profileFormButtons button:last-child{
+    background-color: #FFBC00;
+    border: none;
+}
+
+#profileFormButtons.Active{
+    display: flex;
+}
+
+
+/* 
+    Driver dashboard 
+*/
+
+#DriverDashboardTab{
+    display: flex;
+    flex-direction: column;
+    
+}
+
+#DriverDashboardTab .Title{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-top: 1%;
+}
+
+#DriverDashboardTab .Tab-Body{
+    display: flex;
+    flex-direction: row;
+    margin-left: 2%;
+    margin-right: 2%;
+    gap: 2%;
+}
+
+#DriverDashboardTab .Tab-Body div{
+    flex: 1;
+}
+
+#DriverDashboardTab .Tab-Body div label,#DriverDashboardTab .Tab-Body div p{
+    font-size: 2vw;
+}
+
+#DriverDashboardTab .Tab-Body div textarea{
+    font-size: 2vw;
+    height: 6em;
+    resize: none;
+}
+
+#DriverDashboardTab .Tab-Body div:first-child{
+    display: grid;
+    grid-template-columns: auto auto;
+    
+    
+}
+
+#DriverDashboardTab .Tab-Body div:first-child p, #DriverDashboardTab .Tab-Body div:first-child textarea{
+    margin-bottom: 4%;
+}
+
+#DriverDashboardTab .Tab-Body div:last-child{
+    margin-left: 4%;
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: start;
+    column-gap: 4%;
+    
+}
+
+
+
+#DriverDashboardTab .Tab-Footer {
+    display: flex;
+    justify-content: end;
+    margin-left: 4%;
+    margin-right: 4%;
+    margin-top: 4%;
+    gap: 2%;
+}
+
+#DriverDashboardTab .Tab-Footer button{
+    padding: 1% 4%;
+    font-size: 2vw;
+    font-weight: 600;
+}
+
+#DriverDashboardTab .Tab-Footer button:first-child{
+    background-color: rgb(201, 201, 201);
+    color: rgb(214, 0, 0);
+    border-color: rgb(214, 0, 0);
+    border-style: solid;
+}
+
+#DriverDashboardTab .Tab-Footer button:last-child{
+    background: rgb(56, 133, 56);
+    border: none;
+    color: white;
+}
+
+
+@media only screen and (max-width: 768px) {
+
+    /* Navbar */
+
+    .username-profile span{
+        display: none;
+    }
+
+    /* Driver Dash board */
+
+    #DriverDashboardTab .Title{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+
+    #DriverDashboardTab .Tab-Body{
+        flex-direction: column;
+        
+    }
+
+    #DriverDashboardTab .Tab-Body div label,#DriverDashboardTab .Tab-Body div p{
+        font-size: 4vw;
+    }
+
+    #DriverDashboardTab .Tab-Body div textarea{
+        font-size: 4vw;
+        height: 5em;
+    }
+
+    #DriverDashboardTab .Tab-Body div:first-child{
+        flex: 1;
+
+    }
+
+    #DriverDashboardTab .Tab-Body div:last-child{
+        flex: 1;
+        margin-left: 0%;
+        margin-top: 2%;
+        display: grid;
+        grid-template-columns: auto auto;
+        justify-content: stretch;
+        
+    }
+
+    #DriverDashboardTab .Tab-Body div:last-child p{
+        margin-bottom: 4%;
+    }
+
+    #DriverDashboardTab .Tab-Footer button{
+        font-size: 4vw;margin-top: 4%;
+    }
+
+}
