@@ -1,0 +1,494 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+
+
+
+.nav-Bar{
+    display: flex;
+    background-color: black;
+    height: 8vh;
+    width: 100%;
+    
+}
+
+.nav-Bar .logo{
+    display: flex;
+    height: 100%;
+
+}
+
+.nav-Bar  .username-profile{
+    flex: 1;
+    display: flex;
+    align-items: center;
+    color: white;
+    font-size: 1.8vw;
+    font-weight: 600;
+    justify-content: end;
+    width: auto;
+    margin-right: 1%;
+    
+    
+}
+
+.nav-Bar  .username-profile img{
+    border-color: white;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 50%;
+    margin-right: 1%;
+    height: 60%;
+}
+
+#Tabs{
+    width: 100%;
+    height: 92vh;
+}
+
+#DashboardTab {
+    height: 100%;
+    width: 100%;
+    display: none;
+    flex-direction: column;
+}
+
+#DashboardTab .Tab-Title{
+    margin-top: 1%;
+    margin-left: 1%;
+}
+
+#DashboardTab .Tab-Title h1{
+    margin-bottom: 2%;
+}
+
+#DashboardTab .Tab-body{
+    display: flex;
+    flex-direction: column;
+    font-size: 2vw;
+    height: 100%;
+}
+
+
+
+#tripLocations , #tripTime {
+    display: flex;
+    
+    margin-left: 2%;
+    margin-right: 2%;
+    gap: 4%;
+    margin-top: 1%;
+}
+
+#tripLocations{
+    margin-top: 2%;
+}
+
+#tripLocations > div, #tripTime > div{
+    flex: 1;
+    display: flex;
+    
+}
+
+#tripLocations > div label, #tripTime > div label{
+    flex: 1;
+}
+
+#tripLocations > div input, #tripTime > div input {
+    flex: 3;
+    font-size: 2vw;
+    justify-self: start;
+}
+
+#vCategoryContainer{
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-top: 1%;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.H-List{
+    display: flex;
+    margin-top: 1%;
+    overflow-x: auto;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    
+}
+
+.H-List::-webkit-scrollbar {
+    display: none;
+}
+.H-List {
+    -ms-overflow-style: none;  
+    scrollbar-width: none;  
+}
+
+.VCategory-Item{
+    flex: none;
+    background-color: white;
+    border: 2px solid black;
+    height: 100px;
+    width: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2%;
+    margin-right: 2%;
+    word-wrap: break-word;
+    white-space: initial;
+    
+    margin-bottom: auto;
+}
+
+.VCategory-Item img{
+    flex: 2;
+    width: 70%;  
+}
+
+.VCategory-Item img, .VCategory-Item span{
+    flex: 1;
+    text-align: center;
+    font-size: 1.7rem;
+}
+
+#vModelContainer{
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+.VModel-Item{
+    background-color: gray;
+    width: 140px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1%;
+    margin-left: 1%;
+    text-align: center;
+    font-size: 1.6rem;  
+}
+
+
+
+.VModel-Item .VModal-Img{
+    margin-top: 4%;
+    align-items: center;
+    flex: 2;
+}
+
+.VModel-Item img{
+    width: 140px;
+}
+
+.VModel-Item .vModal-Details, .VModel-Item .vModal-Details p{
+    flex: auto;
+    
+}
+
+.VModel-Item .vModal-Details  p{
+    margin-top: 1%;
+}
+
+#TripDistanceContainer{
+    display: flex;
+    margin-left: 2%;
+    margin-right: 2%;
+    font-size: 2vw;
+    gap: 3%;
+    justify-content: baseline;
+}
+
+#TripConfirmContainer{
+    background-color: rgb(192, 192, 192);
+    padding: 2% 2%;
+    display: flex;
+    margin-top: auto;
+    
+}
+
+#TripConfirmContainer div:last-child{
+    display: flex;
+    flex: 1;
+    justify-content: end;
+}
+
+#TripConfirmContainer button{
+    font-size: 2vw;
+    padding: 1% 4%;
+    background-color: transparent;
+    color: black;
+    border-radius: 4px;
+}
+
+#TripConfirmContainer button:last-child{
+    margin-left: 2%;
+    background-color: black;
+    color: #FFBC00;
+    border: 2px solid #FFBC00;
+}
+
+
+/* Booking Tab */
+#BookingsTab{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+#BookingsTab .Tab-Title{
+    font-size: 2.4vw;
+    margin-top: 1%;
+    margin-left: 1%;
+}
+
+#BookingsTab .bookingList{
+    display: flex;
+    flex-direction: column;
+    
+
+}
+
+.BookingItem{
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    margin-left: 2%;
+    margin-right: 2%;
+    padding: 1%;
+    margin-top: 1%;
+    font-size: 22px;
+    font-weight: 600;
+    border: 2px solid black;
+}
+
+
+.BookingItem > div{
+    flex: 1;
+}
+
+.BookingItem > div:first-child{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1%;
+}
+
+
+
+
+/* Modal  */
+.Modal{
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background-color:rgba(0, 0, 0, 0.4);;
+    opacity: 0.99;
+    height: 100%; 
+    overflow: auto;
+}
+
+.Modal.Active{
+    display: flex !important;
+}
+
+/* Booking Details modal */
+
+#bookingDetailModal > div{
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    height: 75%;
+    background-color: white;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2%;
+    overflow: auto;
+    border-radius: 4px;
+}
+
+#bookingDetailModal .modal-Header{
+    display: flex;
+    background-color: rgb(255, 208, 138);
+    padding: 1% 2%;
+    font-size: 36px;
+    color: black;
+
+}
+
+
+#bookingDetailModal .modal-Header span{
+    margin-left: auto;
+    font-size: 36px;
+
+}
+
+#bookingDetailModal .modal-Body{
+    display: flex;
+    flex-direction: column;
+    /* grid-template-columns: auto auto;
+    justify-content: start; */
+    font-size: 24px;
+    margin-left: 3%;
+    margin-right: 3%;
+    margin-top: 4px;
+    
+}
+
+#bookingDetailModal .modal-Body div:first-child{
+    justify-content: space-between;
+    
+}
+
+#bookingDetailModal .modal-Body div{
+    display: flex;
+    margin-top: 1%;
+    
+}
+
+#bookingDetailModal .modal-Body div label{
+    font-weight: 600;
+
+}
+
+#bookingDetailModal .modal-Body div span{
+    flex: 1;
+}
+
+#bookingDetailModal .modal-Footer{
+    display: flex;
+    flex-direction: column;
+    margin-left: 3%;
+    margin-right: 3%;
+    font-size: 24px;
+}
+
+
+
+/* Rate box */
+
+#TripRateContainer{
+    display: flex;
+    flex-direction: column;
+}
+
+.RateContainer input{
+    display: none;
+}
+
+.RateContainer, .AlreadyRateContainer {
+    display: none;
+    flex-direction: row-reverse;
+    justify-content: start;
+}
+
+.RateContainer.Active, .AlreadyRateContainer.Active {
+    display: flex;
+}
+
+.RateContainer label {
+    width: 6%;
+}
+
+.RateContainer label img, .AlreadyRateContainer label img{
+    width: 100%;
+    filter: invert(60%) sepia(12%) saturate(6%) hue-rotate(345deg) brightness(91%) contrast(89%);
+}
+
+.RateContainer input:not(:checked) ~ label:hover img{
+    filter: invert(68%) sepia(67%) saturate(1036%) hue-rotate(359deg) brightness(101%) contrast(105%);
+}
+
+
+.RateContainer input:not(:checked) ~ label:hover ~ label img  
+{
+    filter: invert(68%) sepia(67%) saturate(1036%) hue-rotate(359deg) brightness(101%) contrast(105%);
+}
+
+.RateContainer input:checked ~ label img{
+    filter: invert(68%) sepia(67%) saturate(1036%) hue-rotate(359deg) brightness(101%) contrast(105%);
+}
+
+.AlreadyRateContainer label.Checked ~ label img, .AlreadyRateContainer label.Checked img {
+    filter: invert(68%) sepia(67%) saturate(1036%) hue-rotate(359deg) brightness(101%) contrast(105%);
+}
+
+
+#TripRateingMsg{
+    width: 100%;
+    font-size: 24px;
+    resize: none;
+}
+
+#TripRateingBtn{
+    display: none;
+    font-size: 1.6vw;
+    padding: 1% 3%;
+    margin-left: auto;
+    margin-top: 4%;
+    background-color: black;
+    color: white;
+    font-weight: 600;
+}
+
+#TripRateingBtn.Active{
+    display: flex;
+}
+
+
+
+
+@media only screen and (max-width: 768px) {
+
+    /* Nav bar */
+
+    .username-profile span{
+        display: none;
+    }
+
+
+    /* booking Dashboard */
+
+    #DashboardTab .Tab-body{
+        font-size: 5vw;
+    }
+
+    #tripLocations > div input, #tripTime > div input, #TripDistanceContainer, #TripConfirmContainer {
+        font-size: 5vw;
+    }
+
+
+    #tripLocations , #tripTime  {
+        flex-direction: column;
+        margin-right: 6%;
+        
+    }
+
+    #TripConfirmContainer{
+        display: flex;
+        flex-direction: column;
+        margin-top: 2%;
+    }
+
+    #TripConfirmContainer div:last-child button  {
+        font-size: 5vw;
+        padding: 1% 8%;
+    }
+
+    #TripConfirmContainer div:last-child{
+        justify-content: space-between;
+        margin-top: 4%;
+    }
+
+
+}

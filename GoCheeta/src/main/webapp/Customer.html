@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/Customer.css">
+    <title>GoCheetah Customer dashboard</title>
+</head>
+<body>
+
+    <nav class="nav-Bar">
+        <div class="logo">
+            <img src="images/logo_white.png" alt="company logo white">
+        </div>
+
+        <div class="username-profile">
+            <img src="/images/person_black_fill.svg" alt="profile icon">
+            <span>Sonal </span>
+
+        </div>
+
+    </nav>
+
+    <div id="Tabs">
+
+        <div id="DashboardTab">
+            <div class="Tab-Title">
+                <h1>Welcom Sonal</h1>
+                <h3>Where do you want to go ?</h3>
+            </div>
+
+            <div class="Tab-body">
+                <div id="tripLocations">
+                    <div>
+                        <label for="TripPickupL">Pickup</label>
+                        <input type="text" id="TripPickupL">
+                    </div>
+                    <div>
+                        <label for="TripDropoffL">Drop off</label>
+                        <input type="text" id="TripDropoffL">
+                    </div>
+                </div>
+
+                <div id="tripTime">
+                    <div>
+                        <label for="TripPickupD">Date</label>
+                        <input type="date" id="TripPickupD">
+                    </div>
+                    <div>
+                        <label for="TripDropoffL2">Time </label>
+                        <input type="time" id="TripDropoffL2">
+                    </div>
+                </div>
+
+                <div id="vCategoryContainer">
+                    <label> Select vehicle category</label>
+
+                    <div class="H-List" onmousewheel="HorizontalScroll(event,this);">
+                        <div class="VCategory-Item">
+                            <img src="/images/car-add.svg" alt="Car">
+                            <span>Air plane</span>
+                        </div>
+
+                        <div class="VCategory-Item">
+                            <img src="/images/car-add.svg" alt="Car">
+                            <span>Car</span>
+                        </div>
+
+                        <div class="VCategory-Item">
+                            <img src="/images/car-add.svg" alt="Car">
+                            <span>Car</span>
+                        </div>
+
+                        <div class="VCategory-Item">
+                            <img src="/images/car-add.svg" alt="Car">
+                            <span>Car</span>
+                        </div>
+
+                        <div class="VCategory-Item">
+                            <img src="/images/car-add.svg" alt="Car">
+                            <span>Car</span>
+                        </div>
+
+                        <div class="VCategory-Item">
+                            <img src="/images/car-add.svg" alt="Car">
+                            <span>Car</span>
+                        </div>
+
+                        <div class="VCategory-Item">
+                            <img src="/images/car-add.svg" alt="Car">
+                            <span>Car</span>
+                        </div>
+
+                        <div class="VCategory-Item">
+                            <img src="/images/car-add.svg" alt="Car">
+                            <span>Car</span>
+                        </div>
+
+                        <div class="VCategory-Item">
+                            <img src="/images/car-add.svg" alt="Car">
+                            <span>Car</span>
+                        </div>
+
+                        <div class="VCategory-Item">
+                            <img src="/images/car-add.svg" alt="Car">
+                            <span>Car</span>
+                        </div>
+
+                        <div class="VCategory-Item">
+                            <img src="/images/car-add.svg" alt="Car">
+                            <span>Car</span>
+                        </div>
+
+                        <div class="VCategory-Item">
+                            <img src="/images/car-add.svg" alt="Car">
+                            <span>Car</span>
+                        </div>
+
+                        <div class="VCategory-Item">
+                            <img src="/images/car-add.svg" alt="Car">
+                            <span>Car</span>
+                        </div>
+
+                        <div class="VCategory-Item">
+                            <img src="/images/car-add.svg" alt="Car">
+                            <span>Car</span>
+                        </div>
+
+                        <div class="VCategory-Item">
+                            <img src="/images/car-add.svg" alt="Car">
+                            <span>Car2</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="vModelContainer" >
+                    <label> Select Model</label>
+
+                    <div class="H-List" onmousewheel="HorizontalScroll(event,this);">
+                        
+                        <div class="VModel-Item">
+                            <div class="VModal-Img">
+                                <img src="/images/taxi-car.png" alt="Vehicel Image">
+                            </div>
+                            <div class="vModal-Details">
+                                <p>toyota camry</p>
+                                <p>Seat 6</p>
+                            </div>
+                            
+                        </div>
+                        
+                        <div class="VModel-Item">
+                            <div class="VModal-Img">
+                                <img src="/images/taxi-car.png" alt="Vehicel Image">
+                            </div>
+                            <div class="vModal-Details">
+                                <p>toyota camry</p>
+                                <p>Seat 6</p>
+                            </div>
+                            
+                        </div>
+
+                        <div class="VModel-Item">
+                            <div class="VModal-Img">
+                                <img src="/images/taxi-car.png" alt="Vehicel Image">
+                            </div>
+                            <div class="vModal-Details">
+                                <p>toyota camry 2022</p>
+                                <p>Seat 6</p>
+                            </div>
+                            
+                        </div>
+
+                        <div class="VModel-Item">
+                            <div class="VModal-Img">
+                                <img src="/images/taxi-car.png" alt="Vehicel Image">
+                            </div>
+                            <div class="vModal-Details">
+                                <p>toyota camry 2022</p>
+                                <p>Seat 6</p>
+                            </div>
+                            
+                        </div>
+
+                        <div class="VModel-Item">
+                            <div class="VModal-Img">
+                                <img src="/images/taxi-car.png" alt="Vehicel Image">
+                            </div>
+                            <div class="vModal-Details">
+                                <p>toyota camry 2022</p>
+                                <p>Seat 6</p>
+                            </div>
+                            
+                        </div>
+
+
+
+                    </div>
+                </div>
+                
+
+
+                <div id="TripDistanceContainer" >
+                    <label for="TripDistance">Distance :</label>
+                    <label id="TripDistance"> 4KM</label>
+                </div>
+
+                <div id="TripConfirmContainer" >
+                    <div>
+                        Price : Rs 2000.00
+                    </div>
+
+                    <div>
+                        <button>Cancel</button>
+                        <button>Confirm Trip</button>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+        <div id="BookingsTab">
+            <div class="Tab-Title">
+                <span>Bookings</span>
+            </div>
+
+            <div id="bookingList">
+
+                <div class="BookingItem" onclick="openModal('bookingDetailModal');">
+                    <div>
+                        <div class="booking-DT">
+                            Date : 2022/02/02  Time : 24:24:00:00
+                        </div>
+
+                        <div class="booking-ID">
+                            Trip Id : 233423
+                        </div>
+
+                    </div>
+
+                    <div class="booking-driver">
+                        Rider : Sonal
+                    </div>
+                </div>
+
+                <div class="BookingItem" onclick="openModal('bookingDetailModal');">
+                    <div>
+                        <div class="booking-DT">
+
+                            Date : 2022/02/02  Time : 24:24:00:00
+
+                        </div>
+
+                        <div class="booking-ID">
+                            Trip Id : 233423
+                        </div>
+
+                    </div>
+
+                    <div class="booking-driver">
+                        Rider : Sonal
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+    <!-- Modal -->
+
+
+    <!-- Booking Details Modal -->
+    <div id="bookingDetailModal" class="Modal ">
+        <div >
+
+            <div class="modal-Header">
+                <h3>
+                    Trip Details
+                </h3>
+                <span class="close">
+                    &#10006;
+
+                </span>
+                
+            </div>
+            
+            <div class="modal-Body">
+
+                <div >
+                    <div>
+                        <label for="bkDeetsModalDate">Date : </label>
+                        <span id="bkDeetsModalDate" >2022/02/02, 12:00:00</span>
+                    </div>
+                    
+                    <div >
+                        <span id="bkDeetsModalTripID" >LKR 200000.00</span>
+                    </div>
+                </div>
+                
+                
+                <div >
+                    <label for="bkDeetsModalTripID"> Trip Id :</label>
+                    <span id="bkDeetsModalTripID" >23343</span>
+                </div>
+
+                
+                <div>
+                    <label for="bkDeetsModalPickupL">Pickup location :</label>
+                    <span id="bkDeetsModalPickupL">123/4 testnamefdsfddsf testCity 20202 test2</span>
+                </div>
+
+                <div>
+                    <label for="bkDeetsModalDropoffL">Dropoff location :</label>
+                    <span id="bkDeetsModalDropoffL">123/4 testnamefdsfddsf testCity 20202 test2</span>
+                </div>
+
+                <div >
+                    <label for="bkDeetsModalVehicle">Vehicle :</label>
+                    <span id="bkDeetsModalVehicle"> test vehicle  - GG-2332</span>
+                </div>
+
+
+
+
+            </div>
+
+            <div class="modal-Footer">
+                <div>
+                    <label for="TripDriver">Rider : </label>
+                    <span id="TripDriver">Sonal</span>
+                </div>
+                
+                <div id="TripRateContainer">
+
+                    <div class="AlreadyRateContainer Active" >
+                        
+                        <label><img src="/images/star.svg" alt="star"></label>
+                        
+                        <label><img src="/images/star.svg" alt="star"></label>
+                        
+                        <label class="Checked"><img src="/images/star.svg" alt="star"></label>
+
+                        <label><img src="/images/star.svg" alt="star"></label>
+                        <label><img src="/images/star.svg" alt="star"></label>
+                    </div>
+
+                    <div class="RateContainer" >
+                        <input type="radio" name="Rate" id="DriverRate5" >
+                        <label for="DriverRate5"><img src="/images/star.svg" alt="star"></label>
+                        <input type="radio" name="Rate" id="DriverRate4" >
+                        <label for="DriverRate4"><img src="/images/star.svg" alt="star"></label>
+                        <input type="radio" name="Rate" id="DriverRate3" >
+                        <label for="DriverRate3"><img src="/images/star.svg" alt="star"></label>
+                        <input type="radio" name="Rate" id="DriverRate2" >
+                        <label for="DriverRate2"><img src="/images/star.svg" alt="star"></label>
+                        <input type="radio" name="Rate" id="DriverRate1" >
+                        <label for="DriverRate1"><img src="/images/star.svg" alt="star"></label>
+                    </div>
+
+                    <textarea  id="TripRateingMsg" readonly rows="4" placeholder="Describe your experience (optional)">good</textarea>
+
+                    <button id="TripRateingBtn" > Submit</button>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    
+
+
+
+
+    <script src="/js/Customer.js"></script>
+</body>
+</html>
