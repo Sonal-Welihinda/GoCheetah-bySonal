@@ -14,25 +14,25 @@
         <div id="nav-bar">
             <img id="compLogo" src="images/logo-full.png" alt="company logo">
 
-            <button onclick="switchTabs('dashbordTab', this);"><img src="/images/dashboard_black_fill.svg" alt="dashboard icon"> <span>Dashbord</span></button>
-            <button onclick="switchTabs('driversTab',this);"><img src="/images/driver-icon.svg" alt="driver icon"> <span>Drivers</span></button>
-            <button subMenu="Vehicel" onclick="submenuEnable('Vehicel'); subMenuActive(this);"><img src="/images/Vehicel_taxi_fill.svg" alt="Vehicel"> <span>Vehicel</span></button>
+            <button onclick="switchTabs('dashbordTab', this);"><img src="images/dashboard_black_fill.svg" alt="dashboard icon"> <span>Dashbord</span></button>
+            <button onclick="switchTabs('driversTab',this);"><img src="images/driver-icon.svg" alt="driver icon"> <span>Drivers</span></button>
+            <button subMenu="Vehicel" onclick="submenuEnable('Vehicel'); subMenuActive(this);"><img src="images/Vehicel_taxi_fill.svg" alt="Vehicel"> <span>Vehicel</span></button>
             <div class="sidebar-Submenu" data-SubMenu="Vehicel">
                 <button onclick="switchTabs('vehicleTab', this); ">View Vehicel</button>
                 <button onclick="switchTabs('addVehicleTab',this);">Add Vehicel</button>
                 <button onclick="switchTabs('categoryVehicleTab', this);">Vehicel Category</button>
             </div>
-            <button subMenu="Admins" onclick="switchTabs('adminsTab', this);"><img src="/images/admin_panel.svg" alt="admin icon"> <span>Admins</span></button>
+            <button subMenu="Admins" onclick="switchTabs('adminsTab', this); getAdmins();"><img src="images/admin_panel.svg" alt="admin icon"> <span>Admins</span></button>
             <!-- <div class="sidebar-Submenu" data-SubMenu="Admins">
                 <button onclick="switchTabs('adminsTab', this);">View Admin</button>
                 <button onclick="switchTabs('addVehicleTab', this);">Add Vehicel</button>
                 <button onclick="switchTabs('categoryVehicleTab', this);">Vehicel Category</button>
             </div> -->
-            <button onclick="switchTabs('FAQTab',this);"><img src="/images/faqs-icon.svg" alt="FAQ icon"> <span>FAQ</span></button>
-            <button onclick="switchTabs('BookingsTab',this);"><img src="/images/booking-icon.svg" alt="driver icon"> <span>Booking</span></button>
-            <button onclick="switchTabs('InquiriesTab',this);"><img src="/images/Inquiry.svg" alt="Inquiries icon"> <span>Inquiries</span></button>
-            <button onclick="switchTabs('BranchesTab',this);"><img src="/images/Branch-icon.svg" alt="Branch icon"> <span>Branch</span></button>
-            <button onclick="switchTabs('SalesTab',this); ShowSales();" ><img src="/images/financial-growth-icon.svg" alt="Sales icon"> <span>Sales</span></button>
+            <button onclick="switchTabs('FAQTab',this);"><img src="images/faqs-icon.svg" alt="FAQ icon"> <span>FAQ</span></button>
+            <button onclick="switchTabs('BookingsTab',this);"><img src="images/booking-icon.svg" alt="driver icon"> <span>Booking</span></button>
+            <button onclick="switchTabs('InquiriesTab',this);"><img src="images/Inquiry.svg" alt="Inquiries icon"> <span>Inquiries</span></button>
+            <button onclick="switchTabs('BranchesTab',this);"><img src="images/Branch-icon.svg" alt="Branch icon"> <span>Branch</span></button>
+            <button onclick="switchTabs('SalesTab',this); ShowSales();" ><img src="images/financial-growth-icon.svg" alt="Sales icon"> <span>Sales</span></button>
 
         </div>
 
@@ -40,7 +40,7 @@
 
             <div id="dashbordTab">
                 <div id="userName">
-                    <img src="/images/person_black_fill.svg" alt="Person">
+                    <img src="images/person_black_fill.svg" alt="Person">
                     <p>Sonal</p>
                 </div>
 
@@ -99,13 +99,13 @@
             <div id="driversTab">
 
                 <div id="driverTitle">
-                    <img src="/images/driver-icon.svg" alt="driver-icon">
+                    <img src="images/driver-icon.svg" alt="driver-icon">
                     <span>Drivers</span>
                 </div>
 
                 <div id="driversToolbox">
                     <input type="search" name="Search" id="driversSearchIP" placeholder="Search">
-                    <button onclick="openModal('addDriversModal');"> <img src="/images/driver-add.svg" alt="driver add"> <span>Add driver</span> </button>
+                    <button onclick="openModal('addDriversModal');"> <img src="images/driver-add.svg" alt="driver add"> <span>Add driver</span> </button>
                 </div>
 
                 <table id="driverTable">
@@ -149,7 +149,7 @@
 
             <div id="vehicleTab">
                 <div id="vehicleTitle">
-                    <img src="/images/driver-icon.svg" alt="driver-icon">
+                    <img src="images/driver-icon.svg" alt="driver-icon">
                     <span>Vehicle</span>
                 </div>
 
@@ -193,7 +193,7 @@
 
             <div id="addVehicleTab">
                 <div id="vAddTitle">
-                    <img src="/images/car-add.svg" alt="vehicle add">
+                    <img src="images/car-add.svg" alt="vehicle add">
                     <span> Add Vehicle</span>
                 </div>
                 <form action="" id="addVehicleForm">
@@ -211,7 +211,7 @@
                             <label for="drivers-dropDown">Drivers</label>
                             <div class="drivers-dropDown-box" onclick="driversDropdown();">
                                 <span>Select drivers</span>
-                                <img src="/images/arrow-down-icon.svg" alt="down arrow">
+                                <img src="images/arrow-down-icon.svg" alt="down arrow">
                             </div>
                             <div class="drivers-List-Container" >
                                 <div class="drivers-List-checkbox" >
@@ -277,7 +277,7 @@
                     </div>
                     
                     <div>
-                        <img src="/images/car-edit.svg" alt="vehicle update">
+                        <img src="images/car-edit.svg" alt="vehicle update">
                         <span> Update vehicle</span>
                     </div>
                     
@@ -297,7 +297,7 @@
                             <label for="drivers-dropDown">Drivers</label>
                             <div class="drivers-dropDown-box" onclick="driversDropdown();">
                                 <span>Select drivers</span>
-                                <img src="/images/arrow-down-icon.svg" alt="down arrow">
+                                <img src="images/arrow-down-icon.svg" alt="down arrow">
                             </div>
                             <div class="drivers-List-Container" >
                                 <div class="drivers-List-checkbox" >
@@ -400,7 +400,7 @@
 
             <div id="adminsTab">
                 <div id="AdminVTitle">
-                    <img src="/images/admin_panel.svg" alt="admin icon">
+                    <img src="images/admin_panel.svg" alt="admin icon">
                     <span>Admins</span> 
                 </div>
 
@@ -431,12 +431,19 @@
                     
                 </div>
 
-                <table id="driverTable">
+                <table id="adminTable">
                     <thead>
                         <tr>
-                            <th>Id</th>
+                            <th>AdminId</th>
                             <th>Name</th>
-                            <th>location</th>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th>Phone Number</th>
+                            <th>Address</th>
+                            <th>DOB</th>
+                            <th>Account Type</th>
+                            <th>Branch</th>
+                            <th>Gender</th>
                         </tr>
                     </thead>
 
@@ -473,7 +480,7 @@
 
             <div id="addAdminTab">
                 <div id="addAdminTitle">
-                    <img src="/images/admin-icon.svg" alt="">
+                    <img src="images/admin-icon.svg" alt="">
                     <span>Add New Admin</span>
                 </div>
 
@@ -481,38 +488,38 @@
                     <div>
                         <div id="addAdminFormLeft">
                             <label for="addAdminFormName">Name</label>
-                            <input type="text" id="addAdminFormName">
+                            <input type="text" id="addAdminFormName" required>
                             <label for="addAdminFormEmail">Email</label>
-                            <input type="email" id="addAdminFormEmail">
+                            <input type="email" id="addAdminFormEmail" required>
                             <label for="addAdminFormPNum">Phone number</label>
-                            <input type="text" id="addAdminFormPNum">
+                            <input type="text" id="addAdminFormPNum" required>
                             <label for="addAdminFormAddress">Address</label>
-                            <input type="text" id="addAdminFormAddress">
+                            <input type="text" id="addAdminFormAddress" required>
                             <label for="addAdminFormDOB">Date of birth</label>
-                            <input type="date" id="addAdminFormDOB">
+                            <input type="date" id="addAdminFormDOB" required>
                             
                         </div>
     
     
                         <div id="addAdminFormRight">
                             <label for="addAdminAccType">Account Type :</label>
-                            <select name="AccountType" id="addAdminAccType" onchange="addAdmin_Branchs();">
+                            <select name="AccountType" id="addAdminAccType" onchange="addAdmin_Branchs();" required>
                                 <option value="BranchAdmin">Branch Admin</option>
                                 <option value="MainAdmin">HQ Admin</option>
                             </select>
     
-                            <div id="addAdminFormBranchBox">
+                            <div id="addAdminFormBranchBox" class="Active">
                                 <label for="addAdminBranch">Branch :</label>
-                                <select name="Branchs" id="addAdminBranch">
-                                    <option value="unav">unAvailabile</option>
-                                    <option value="Availabile">Availabile</option>
-                                    <option value="null">not set</option>
+                                <select name="Branchs" id="addAdminBranch" required>
+                                    <option value="Kandy">Kandy</option>
+                                    <option value="galle">galle</option>
+                                    
                                 </select>
                             </div>
     
                             <label for="addAdminFormGender">Gender</label>
                             <div id="addAdminFormGender">
-                                <input type="radio" name="AddAdminGender" id="addAdminFormMale">
+                                <input type="radio" name="AddAdminGender" id="addAdminFormMale" checked>
                                 <label for="addAdminFormMale">Male</label>
                                 
                                 <input type="radio" name="AddAdminGender" id="addAdminFormFemale">
@@ -521,17 +528,17 @@
                             </div>
     
                             <label for="addAdminFormUsername">Username</label>
-                            <input type="text" id="addAdminFormUsername">
+                            <input type="text" id="addAdminFormUsername" required>
     
-                            <label for="addAdminFormPassword" id="addAdminFormPasswordLabel">Password <img src="/images/passGen_24dp.svg" alt="pass gen icon" onclick="genPassword('addAdminFormPassword');"></label>
-                            <input type="text" id="addAdminFormPassword">
+                            <label for="addAdminFormPassword" id="addAdminFormPasswordLabel">Password <img src="images/passGen_24dp.svg" alt="pass gen icon" onclick="genPassword('addAdminFormPassword');"></label>
+                            <input type="password" id="addAdminFormPassword" required>
                             
                         </div>
                     </div>
 
                     <div id="addAdminformSubmit">
                         <input type="button" value="Cancel" onclick="switchTabs2('adminsTab');">
-                        <input type="submit" value="Create new admin">
+                        <input type="button" value="Create new admin" onclick="addAdmin();">
                     </div>
 
                 </form>
@@ -539,13 +546,15 @@
 
             <div id="updateAdminTab">
                 <div id="updateAdminTitle">
-                    <img src="/images/admin-icon.svg" alt="">
+                    <img src="images/admin-icon.svg" alt="">
                     <span>Update Admin details</span>
                 </div>
 
                 <form action="" id="updateAdminForm">
                     <div>
                         <div id="updateAdminFormLeft">
+                            <label for="updateAdminFormID">Admin ID : <label id="updateAdminFormID">2</label></label>
+                            
                             <label for="updateAdminFormName">Name</label>
                             <input type="text" id="updateAdminFormName">
                             <label for="updateAdminFormEmail">Email</label>
@@ -562,12 +571,12 @@
     
                         <div id="updateAdminFormRight">
                             <label for="updateAdminAccType">Account Type :</label>
-                            <select name="AccountType" id="updateAdminAccType" onchange="addAdmin_Branchs();">
+                            <select name="AccountType" id="updateAdminAccType" onchange="updateAdmin_Branchs();">
                                 <option value="BranchAdmin">Branch Admin</option>
                                 <option value="MainAdmin">HQ Admin</option>
                             </select>
     
-                            <div id="updateAdminFormBranchBox">
+                            <div id="updateAdminFormBranchBox" class="Active">
                                 <label for="updateAdminBranch">Branch :</label>
                                 <select name="Branchs" id="updateAdminBranch">
                                     <option value="unav">unAvailabile</option>
@@ -589,7 +598,7 @@
                             <label for="updateAdminFormUsername">Username</label>
                             <input type="text" id="updateAdminFormUsername">
     
-                            <label for="updateAdminFormPassword" id="updateAdminFormPasswordLabel">Password <img src="/images/passGen_24dp.svg" alt="pass gen icon" onclick="genPassword('updateAdminFormPassword');"></label>
+                            <label for="updateAdminFormPassword" id="updateAdminFormPasswordLabel">Password <img src="images/passGen_24dp.svg" alt="pass gen icon" onclick="genPassword('updateAdminFormPassword');"></label>
                             <input type="text" id="updateAdminFormPassword">
                             
                         </div>
@@ -605,12 +614,12 @@
 
             <div id="FAQTab">
                 <div id="FAQTitle">
-                    <img src="/images/faqs-icon.svg" alt="Faq">
+                    <img src="images/faqs-icon.svg" alt="Faq">
                     <span>FAQ </span>
                 </div>
 
                 <div id="FAQaddBtnContiner">
-                    <button onclick="openModal('addFAQModal');"><img src="/images/faqs-icon.svg" alt="FAQ"> Add FAQ</button>
+                    <button onclick="openModal('addFAQModal');"><img src="images/faqs-icon.svg" alt="FAQ"> Add FAQ</button>
                 </div>
 
                 <div id="FAQList">
@@ -688,7 +697,7 @@
 
             <div id="BookingsTab">
                 <div id="bookingTitle">
-                    <img src="/images/booking-icon.svg" alt="booking-icon">
+                    <img src="images/booking-icon.svg" alt="booking-icon">
                     <span>Bookings</span>
                 </div>
 
@@ -739,7 +748,7 @@
 
             <div id="InquiriesTab">
                 <div id="InquiriesTitle">
-                    <img src="/images/Inquiry.svg" alt="Inquiry icon">
+                    <img src="images/Inquiry.svg" alt="Inquiry icon">
                     <span>Inquiries</span>
                 </div>
 
@@ -793,7 +802,7 @@
 
             <div id="BranchesTab">
                 <div id="branchTitle">
-                    <img src="/images/Branch-icon.svg" alt="branch icon">
+                    <img src="images/Branch-icon.svg" alt="branch icon">
                     <span>Branches</span>
                 </div>
                 <button onclick="openModal('branchAddModal');">Create Branch</button>
@@ -838,7 +847,7 @@
 
             <div id="SalesTab">
                 <div id="salesTitle">
-                    <img src="/images/financial-growth-icon.svg" alt="Sales icon">
+                    <img src="images/financial-growth-icon.svg" alt="Sales icon">
                     <span>Sales</span>
                 </div>
 
@@ -891,7 +900,7 @@
         <form>
             <div class="modal-Header">
                 <div>
-                    <img src="/images/driver-add.svg" alt="driver add">
+                    <img src="images/driver-add.svg" alt="driver add">
                     <h3>New Driver</h3>
                 </div>
 
@@ -936,7 +945,7 @@
                 </div>
 
                 <div id="addDriversModal_PwContainer">
-                    Password&nbsp;&nbsp;:&nbsp;<input type="password" id="addDriversModal_Pass"> <img src="/images/passGen_24dp.svg" alt="Password gen " onclick="genPassword('addDriversModal_Pass');">
+                    Password&nbsp;&nbsp;:&nbsp;<input type="password" id="addDriversModal_Pass"> <img src="images/passGen_24dp.svg" alt="Password gen " onclick="genPassword('addDriversModal_Pass');">
                 </div>
 
 
@@ -959,7 +968,7 @@
         <form>
             <div class="modal-Header">
                 <div>
-                    <img src="/images/driver-Edit.svg" alt="driver update">
+                    <img src="images/driver-Edit.svg" alt="driver update">
                     <h3>Edit Driver</h3>
                 </div>
 
@@ -1004,7 +1013,7 @@
                 </div>
 
                 <div id="updateDriversModal_PwContainer">
-                    Password&nbsp;&nbsp;:&nbsp;<input type="password" id="updateDriversModal_Pass"> <img src="/images/passGen_24dp.svg" alt="Password gen " onclick="genPassword('updateDriversModal_Pass');">
+                    Password&nbsp;&nbsp;:&nbsp;<input type="password" id="updateDriversModal_Pass"> <img src="images/passGen_24dp.svg" alt="Password gen " onclick="genPassword('updateDriversModal_Pass');">
                 </div>
 
 

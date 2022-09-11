@@ -8,10 +8,11 @@ var subMenuButton = document.querySelectorAll("#nav-bar .sidebar-Submenu button"
 var driversLDropdown = document.querySelector("#driversListContainer .drivers-List-checkbox");
 var driverslist = document.querySelectorAll(".drivers-List-checkbox label");
 
-var AccTypeDropdown = document.getElementById("addAdminAccType");
-
 var SalesPiechart = document.getElementById("salesPieCharts");
 var IsgoogleChartsLoad = false;
+
+// Api call
+const url = "http://localhost:8080/GoCheeta-Server/admin"; 
 
 
 
@@ -121,11 +122,24 @@ function driversDropdown(){
 function addAdmin_Branchs(){
     
     
-    if(AccTypeDropdown.value == "BranchAdmin"){
+    if(document.getElementById("addAdminAccType").value == "BranchAdmin"){
         document.getElementById("addAdminFormBranchBox").classList.add("Active");
        
     }else{
         document.getElementById("addAdminFormBranchBox").classList.remove("Active");
+    }
+
+}
+
+// Update admin form branch drop down 
+function updateAdmin_Branchs(){
+    
+    
+    if(document.getElementById("updateAdminAccType").value == "BranchAdmin"){
+        document.getElementById("updateAdminFormBranchBox").classList.add("Active");
+       
+    }else{
+        document.getElementById("updateAdminFormBranchBox").classList.remove("Active");
     }
 
 }
@@ -243,5 +257,171 @@ function drawChart() {
 
 
    chart.draw(data, options);
+}
+
+
+
+
+
+
+// Backend
+
+var Admins;
+
+
+
+//Set admin update data
+function setAdminData(id){
+    var admin; 
+    for(adm of Admins) {
+        if(adm.id == id){
+            admin = adm;
+        }    
+    }
+    
+    document.getElementById("updateAdminFormID").innerHTML = id;
+    document.getElementById("updateAdminFormName").value = admin.name;
+    document.getElementById("updateAdminFormEmail").value = admin.email;
+    document.getElementById("updateAdminFormPNum").value = admin.phoneNumber;
+    document.getElementById("updateAdminFormAddress").value = admin.address;
+    document.getElementById("updateAdminFormDOB").value = admin.DOB;
+    document.getElementById("updateAdminAccType").value = admin.AccType;
+    document.getElementById("updateAdminAccType").onchange();
+    document.getElementById("updateAdminBranch").value = admin.branch;
+    
+    if(admin.gender == "Male"){
+        document.getElementById("updateAdminFormMale").checked = true;
+    }else{
+        document.getElementById("updateAdminFormFemale").checked = true;
+    }
+    document.getElementById("updateAdminFormUsername").value = admin.username;
+    
+    
+    
+    
+    console.log(admin);
+}
+
+
+
+function ValidateForm(form){
+   return form.reportValidity();
+}
+
+
+// Add Admin 
+function addAdmin(){
+    var form = document.getElementById("addAdminForm");
+
+    var Simplevalid = ValidateForm(form);
+
+    if(!Simplevalid){
+        return;
+    }
+
+    var name = document.getElementById("addAdminFormName");
+    var email = document.getElementById("addAdminFormEmail");
+    var pNumber = document.getElementById("addAdminFormName");
+    var address = document.getElementById("addAdminFormAddress");
+    var DOB = document.getElementById("addAdminFormDOB");
+    var AccType = document.getElementById("addAdminAccType");
+    var branch = document.getElementById("addAdminBranch");
+    var genderRB = document.getElementById("addAdminFormMale");
+    var username = document.getElementById("addAdminFormUsername");
+    var password = document.getElementById("addAdminFormPassword");
+    var gender;
+    
+    if(AccType.value !="BranchAdmin"){
+        branch = "";
+        
+    }
+    
+    if(genderRB.checked){
+        gender = "Male";
+    }else{
+        gender = "Female"
+    }
+    
+
+    const admin = {
+        "name" : name.value,
+        "email" : email.value,
+        "phoneNumber" : pNumber.value,
+        "address" : address.value,
+        "DOB" : DOB.value,
+        "AccType" : AccType.value,
+        "branch" : branch,
+        "gender": gender,
+        "username" : username.value,
+        "password" : password.value
+        
+    };
+    
+    const options = {
+        method: "POST",
+        headers: {
+            "content-type" : "application/json"
+        },
+        body: JSON.stringify(admin)
+    };
+
+
+    fetch(url, options);
+    
+    
+
+}
+
+
+
+
+async function getAdmins(){
+    var data = await fetch(url);
+    Admins = await data.json();
+    document.querySelector("#adminTable tbody").innerHTML = "";
+    Array.prototype.forEach.call(Admins,(admin => {
+        document.querySelector("#adminTable tbody").innerHTML += 
+                        "<tr onclick=\"switchTabs2('updateAdminTab');\" >\n" +
+                            "<td>"+admin.id+"</td>\n" +
+                            "<td>"+admin.name+"</td>\n" +
+                            "<td>"+admin.username+"</td>\n" +
+                            "<td>"+admin.email+"</td>\n" +
+                            "<td>"+admin.phoneNumber+"</td>\n" +
+                            "<td>"+admin.address+"</td>\n" +
+                            "<td>"+admin.DOB+"</td>\n" +
+                            "<td>"+admin.AccType+"</td>\n" +
+                            "<td>"+admin.branch+"</td>\n" +
+                            "<td>"+admin.gender+"</td>\n" +
+                            
+                        "</tr>";
+                console.log(admin);;
+    }));
+    
+    setAdminData(1);
+    
+}
+
+
+async function UpdateAdmin(){
+    var data = await fetch(url);
+    Admins = await data.json();
+    document.querySelector("#adminTable tbody").innerHTML = "";
+    Array.prototype.forEach.call(Admins,(admin => {
+        document.querySelector("#adminTable tbody").innerHTML += 
+                        "<tr onclick=\"switchTabs2('updateAdminTab');\" >\n" +
+                            "<td>"+admin.id+"</td>\n" +
+                            "<td>"+admin.name+"</td>\n" +
+                            "<td>"+admin.username+"</td>\n" +
+                            "<td>"+admin.email+"</td>\n" +
+                            "<td>"+admin.phoneNumber+"</td>\n" +
+                            "<td>"+admin.address+"</td>\n" +
+                            "<td>"+admin.DOB+"</td>\n" +
+                            "<td>"+admin.AccType+"</td>\n" +
+                            "<td>"+admin.branch+"</td>\n" +
+                            "<td>"+admin.gender+"</td>\n" +
+                            
+                        "</tr>";
+    }));
+    
 }
 

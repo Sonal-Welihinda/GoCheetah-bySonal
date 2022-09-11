@@ -769,6 +769,30 @@
     width: 90%;
 }
 
+#adminTable{
+    margin-left: 2%;
+    
+    margin-right: 2%;
+    background-color: antiquewhite;
+    border-collapse: collapse;
+}
+
+#adminTable th, #adminTable td{
+    padding-left: 3px;
+    text-align: start;
+    border-right: 2px solid black;
+}
+
+#adminTable th:last-of-type, #adminTable td:last-of-type{
+    border: none;
+}
+
+#AdminTable thead tr{
+    border-spacing: 30px;
+    padding-bottom: 30px;
+    margin-bottom: 20px;
+}
+
 
 
 /* Add admin tab */
@@ -802,12 +826,12 @@
     height: 100%;
 }
 
-#addAdminForm div{
+#addAdminForm > div{
     display: flex;
     flex: 1;
 }
 
-#addAdminForm div div{
+#addAdminForm > div > div{
     flex: 1;
 }
 
@@ -845,7 +869,7 @@
     
 }
 
-#addAdminFormRight label{
+#addAdminFormRight > label{
     margin-top: 3%;
 }
 
@@ -858,25 +882,23 @@
 }
 
 #addAdminFormBranchBox{
-    display: flex;
+    display: none;
     flex-direction: column;
-    
+    margin-top: 3%;
 }
 
 
 #addAdminFormBranchBox.Active{
-    display: none;
+    display: flex;
 }
 
 #addAdminFormGender{
-    display: flex;
     align-items: center;
     
 }
 
 #addAdminFormGender label{
-    margin-top: auto;
-    margin-bottom: auto;
+    
     margin-right: 4%;
     margin-left: 1%;
 }
@@ -956,12 +978,12 @@
     height: 100%;
 }
 
-#updateAdminForm div{
+#updateAdminForm > div{
     display: flex;
     flex: 1;
 }
 
-#updateAdminForm div div{
+#updateAdminForm > div > div{
     flex: 1;
 }
 
@@ -999,7 +1021,7 @@
     
 }
 
-#updateAdminFormRight label{
+#updateAdminFormRight > label{
     margin-top: 3%;
 }
 
@@ -1012,18 +1034,18 @@
 }
 
 #updateAdminFormBranchBox{
-    display: flex;
+    display: none;
     flex-direction: column;
+    margin-top: 3%;
     
 }
 
 
 #updateAdminFormBranchBox.Active{
-    display: none;
+    display: flex;
 }
 
 #updateAdminFormGender{
-    display: flex;
     align-items: center;
     
 }
