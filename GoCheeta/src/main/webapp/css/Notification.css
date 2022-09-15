@@ -1,0 +1,73 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+#AlertBox{
+    position: absolute;
+    top: 2%;
+    right: 1%;
+    float: right;
+    display: none;
+    align-items: center;
+    background-color: #e5ffbd;
+    width: 40%;
+    height: 50px;
+    overflow: hidden;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    border-radius: 6px;
+}
+
+#AlertBox.Active{
+    display: flex;
+}
+
+
+#AlertMsg{
+    max-height: 100%;
+    overflow-y: auto;
+    font-size: 1.6vw;
+    margin-right: 2%;
+    
+    
+}
+
+#AlertIcon{
+    height: 90%;
+    margin-left: 2%;
+    margin-right: 2%;
+    
+}
+
+#AlertCloseBtn{
+    height: 70%;
+
+    margin-right: 2%;
+    filter: invert(100%);
+    margin-left: auto;
+    
+}
+
+
+
+#AlertMsg::-webkit-scrollbar {
+    width: 6px;
+}
+
+#AlertMsg::-webkit-scrollbar-track-piece  {
+    background-color: #aeaeae42;
+
+}
+
+#AlertMsg::-webkit-scrollbar-thumb:vertical {
+    background-color: #aeaeae42;
+}
+  
+#AlertMsg {
+    /* -ms-overflow-style: none;   */
+    scrollbar-color: #aeaeae42 #aeaeae42;
+    scrollbar-width: thin;
+    /* scrollbar-track-color:rgba(251, 251, 251, 0.352); */
+    
+}

@@ -5,9 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/adminDashboard.css">
+    <link rel="stylesheet" href="css/Notification.css">
     <title>Document</title>
 </head>
 <body>
+
+    <div id="AlertBox" onmouseover="mouseOverAlert();" onmouseout="mouseOutAlert();">
+        <img src="images/green-checkmark-icon.svg" alt="alert icon" id="AlertIcon">
+        <p id="AlertMsg">
+            
+        </p>
+
+        <img src="images/close.svg" id="AlertCloseBtn">
+
+    </div>
+
     <div id="nav-tabs" >
 
 
@@ -22,7 +34,7 @@
                 <button onclick="switchTabs('addVehicleTab',this);">Add Vehicel</button>
                 <button onclick="switchTabs('categoryVehicleTab', this);">Vehicel Category</button>
             </div>
-            <button subMenu="Admins" onclick="switchTabs('adminsTab', this); getAdmins();"><img src="images/admin_panel.svg" alt="admin icon"> <span>Admins</span></button>
+            <button subMenu="Admins" onclick="switchTabs('adminsTab', this); setDataAdminTab(); "><img src="images/admin_panel.svg" alt="admin icon"> <span>Admins</span></button>
             <!-- <div class="sidebar-Submenu" data-SubMenu="Admins">
                 <button onclick="switchTabs('adminsTab', this);">View Admin</button>
                 <button onclick="switchTabs('addVehicleTab', this);">Add Vehicel</button>
@@ -31,7 +43,7 @@
             <button onclick="switchTabs('FAQTab',this);"><img src="images/faqs-icon.svg" alt="FAQ icon"> <span>FAQ</span></button>
             <button onclick="switchTabs('BookingsTab',this);"><img src="images/booking-icon.svg" alt="driver icon"> <span>Booking</span></button>
             <button onclick="switchTabs('InquiriesTab',this);"><img src="images/Inquiry.svg" alt="Inquiries icon"> <span>Inquiries</span></button>
-            <button onclick="switchTabs('BranchesTab',this);"><img src="images/Branch-icon.svg" alt="Branch icon"> <span>Branch</span></button>
+            <button onclick="switchTabs('BranchesTab',this);  ShowBranches();"><img src="images/Branch-icon.svg" alt="Branch icon"> <span>Branch</span></button>
             <button onclick="switchTabs('SalesTab',this); ShowSales();" ><img src="images/financial-growth-icon.svg" alt="Sales icon"> <span>Sales</span></button>
 
         </div>
@@ -404,28 +416,27 @@
                     <span>Admins</span> 
                 </div>
 
-                <button id="addAdminBtn" onclick="switchTabs2('addAdminTab');"> &plus; Add Admin</button>
+                <button id="addAdminBtn" onclick="switchTabs2('addAdminTab'); DropdownBranch('addAdminBranch', true);"> &plus; Add Admin</button>
 
                 <!-- change id of select -->
 
-                <div id="adminFilters">
+                <div id="adminFilters" >
                     <label for="adminBranchs">Branch :</label>
-                    <select name="adminBranchs" id="adminBranchs">
-                        <option value="unav">unAvailabile</option>
-                        <option value="Availabile">Availabile</option>
-                        <option value="null">not set</option>
+                    <select name="Branchs" id="adminBranchs" onchange="FilterAdmins();">
+                        <option value="">Select Branch</option>
+                        
                     </select>
 
-                    <label for="adminBranchs2">Account Types :</label>
-                    <select name="adminBranchs" id="adminBranchs2">
-                        <option value="unav">unAvailabile</option>
-                        <option value="Availabile">Availabile</option>
-                        <option value="null">not set</option>
+                    <label for="adminAccType">Account Types :</label>
+                    <select name="AccType" id="adminAccType" onchange="FilterAdmins();">
+                        <option value="">Select Account Type</option>
+                        <option value="MainAdmin">HQ Admin</option>
+                        <option value="BranchAdmin">Branch Admin</option>
                     </select>
 
                     <div id="adminSearchContainer">
                         <label for="AdminSearch">Search</label>
-                        <input type="search" name="AdminSearch" id="AdminSearch">
+                        <input type="search" name="AdminSearch" id="AdminSearch" onkeyup="FilterAdmins();">
                     </div>
 
                     
@@ -511,9 +522,6 @@
                             <div id="addAdminFormBranchBox" class="Active">
                                 <label for="addAdminBranch">Branch :</label>
                                 <select name="Branchs" id="addAdminBranch" required>
-                                    <option value="Kandy">Kandy</option>
-                                    <option value="galle">galle</option>
-                                    
                                 </select>
                             </div>
     
@@ -537,7 +545,7 @@
                     </div>
 
                     <div id="addAdminformSubmit">
-                        <input type="button" value="Cancel" onclick="switchTabs2('adminsTab');">
+                        <input type="button" value="Cancel" onclick="switchTabs2('adminsTab'); setDataAdminTab();">
                         <input type="button" value="Create new admin" onclick="addAdmin();">
                     </div>
 
@@ -555,16 +563,16 @@
                         <div id="updateAdminFormLeft">
                             <label for="updateAdminFormID">Admin ID : <label id="updateAdminFormID">2</label></label>
                             
-                            <label for="updateAdminFormName">Name</label>
-                            <input type="text" id="updateAdminFormName">
-                            <label for="updateAdminFormEmail">Email</label>
-                            <input type="email" id="updateAdminFormEmail">
+                            <label for="updateAdminFormName" >Name</label>
+                            <input type="text" id="updateAdminFormName" required>
+                            <label for="updateAdminFormEmail" >Email</label>
+                            <input type="email" id="updateAdminFormEmail" required>
                             <label for="updateAdminFormPNum">Phone number</label>
-                            <input type="text" id="updateAdminFormPNum">
+                            <input type="text" id="updateAdminFormPNum" required>
                             <label for="updateAdminFormAddress">Address</label>
-                            <input type="text" id="updateAdminFormAddress">
+                            <input type="text" id="updateAdminFormAddress" required>
                             <label for="updateAdminFormDOB">Date of birth</label>
-                            <input type="date" id="updateAdminFormDOB">
+                            <input type="date" id="updateAdminFormDOB" required>
                             
                         </div>
     
@@ -579,15 +587,13 @@
                             <div id="updateAdminFormBranchBox" class="Active">
                                 <label for="updateAdminBranch">Branch :</label>
                                 <select name="Branchs" id="updateAdminBranch">
-                                    <option value="unav">unAvailabile</option>
-                                    <option value="Availabile">Availabile</option>
-                                    <option value="null">not set</option>
+                                    
                                 </select>
                             </div>
     
                             <label for="updateAdminFormGender">Gender</label>
                             <div id="updateAdminFormGender">
-                                <input type="radio" name="updateAdminGender" id="updateAdminFormMale">
+                                <input type="radio" name="updateAdminGender" id="updateAdminFormMale" >
                                 <label for="updateAdminFormMale">Male</label>
                                 
                                 <input type="radio" name="updateAdminGender" id="updateAdminFormFemale">
@@ -596,17 +602,18 @@
                             </div>
     
                             <label for="updateAdminFormUsername">Username</label>
-                            <input type="text" id="updateAdminFormUsername">
+                            <input type="text" id="updateAdminFormUsername" required>
     
                             <label for="updateAdminFormPassword" id="updateAdminFormPasswordLabel">Password <img src="images/passGen_24dp.svg" alt="pass gen icon" onclick="genPassword('updateAdminFormPassword');"></label>
-                            <input type="text" id="updateAdminFormPassword">
+                            <input type="text" id="updateAdminFormPassword" >
                             
                         </div>
                     </div>
 
                     <div id="updateAdminformSubmit">
-                        <input type="button" value="Cancel" onclick="switchTabs2('adminsTab');">
-                        <input type="submit" value="Update admin">
+                        <input type="button" value="Cancel" onclick="switchTabs2('adminsTab'); setDataAdminTab();">
+                        <input type="button" value="Delete" onclick="deleteAdmin(); switchTabs2('adminsTab'); setDataAdminTab() ">
+                        <input type="button" value="Update admin" onclick="UpdateAdmin();">
                     </div>
 
                 </form>
@@ -807,12 +814,17 @@
                 </div>
                 <button onclick="openModal('branchAddModal');">Create Branch</button>
 
-                <table id="driverTable">
+                <table id="branchTable">
                     <thead>
                         <tr>
-                            <th>Id</th>
+                            <th>BranchId</th>
                             <th>Name</th>
-                            <th>location</th>
+                            <th>Contact Number</th>
+                            <th>Address</th>
+                            <th>City</th>
+                            <th>Latitude</th>
+                            <th>Longitude</th>
+                            <th>Status</th>
                         </tr>
                     </thead>
 
@@ -1022,7 +1034,7 @@
             <div class="modal-Footer">
 
                 <input type="reset" value="Delete" class="close">
-                <input type="submit" value="Update Driver">
+                <input type="submit" value="Update Driver" onclick="">
 
             </div>
 
@@ -1044,12 +1056,12 @@
                 <label for="addVCategoryModalIcon">Category Icon :</label>
                 <input type="file" name="CategoryIcon" id="addVCategoryModalIcon">
     
-                <label for="">Category Name :</label>
-                <input type="text">
+                <label for="addVCategoryModalName">Category Name :</label>
+                <input type="text" id="addVCategoryModalName">
             </div>
     
             <div class="modal-Footer">
-                <input type="submit" value="Create New Category">
+                <input type="button" value="Create New Category" onclick="addVCategory();">
             </div>
         </form>
     </div>
@@ -1206,7 +1218,7 @@
     <!-- Branch add -->
 
     <div id="branchAddModal" class="Modal">
-        <form action="">
+        <form action="" id="branchAddModalForm">
             <div class="modal-Header">
                 New Branch Details
                 <span class="close">
@@ -1219,34 +1231,35 @@
 
                 <div id="branchAddFormLeft">
                     <label for="addBranchName">Name</label>
-                    <input type="text" id="addBranchName">
+                    <input type="text" id="addBranchName" required>
 
                     <label for="addBranchCnum">Contect No</label>
-                    <input type="text" id="addBranchCnum">
+                    <input type="text" id="addBranchCnum" required>
 
-                    <label for="addBranchCity">City</label>
-                    <input type="text" id="addBranchCity">
-
-                </div>
-
-                <div id="branchAddFormRight">
-                    <label for="addBranchLat">Latitude</label>
-                    <input type="text" id="addBranchLat">
-
-                    <label for="addBranchLon">longitude</label>
-                    <input type="text" id="addBranchLon">
-
-                    
+                    <label for="addBranchAddress">Address</label>
+                    <input type="text" id="addBranchAddress" required>
 
                     <div id="addBranchStatusContainer">
-                        <label for="addBranchStatus">Status</label>
+                        <label for="addBranchStatus" >Status</label>
                         <label class="switch">
                             <input type="checkbox" id="addBranchStatus" checked>
                             <span class="slider round"></span>
                         </label>
                     </div>
 
-                    
+                </div>
+
+                <div id="branchAddFormRight">
+
+                    <label for="addBranchCity">City</label>
+                    <input type="text" id="addBranchCity" required>
+
+                    <label for="addBranchLat">Latitude</label>
+                    <input type="text" id="addBranchLat" required>
+
+                    <label for="addBranchLon">longitude</label>
+                    <input type="text" id="addBranchLon" required>
+
 
                 </div>
 
@@ -1254,7 +1267,7 @@
 
             <div class="modal-Footer">
 
-                <input type="submit" value="Create Branch">
+                <input type="button" value="Create Branch" onclick="AddBranch(); closeModal('branchAddModal');">
 
             </div>
 
@@ -1267,7 +1280,7 @@
     <!-- Branch Update -->
 
     <div id="branchUpdateModal" class="Modal ">
-        <form action="">
+        <form action="" id="branchUpdateModalForm">
             <div class="modal-Header">
                 Update Branch Details
 
@@ -1280,23 +1293,29 @@
             <div class="modal-Body">
 
                 <div id="branchUpdateFormLeft">
+                    <label for="updateBranchID">Branch ID : <label id="updateBranchID">2</label></label>
                     <label for="updateBranchName">Name</label>
-                    <input type="text" id="updateBranchName">
+                    <input type="text" id="updateBranchName" required>
 
                     <label for="updateBranchCnum">Contect No</label>
-                    <input type="text" id="updateBranchCnum">
+                    <input type="text" id="updateBranchCnum" required>
 
-                    <label for="updateBranchCity">City</label>
-                    <input type="text" id="updateBranchCity">
+                    <label for="updateBranchAddress">Address</label>
+                    <input type="text" id="updateBranchAddress" required>
+
+                    
 
                 </div>
 
                 <div id="branchUpdateFormRight">
-                    <label for="updateBranchLat">Latitude</label>
-                    <input type="text" id="updateBranchLat">
+                    <label for="updateBranchCity">City</label>
+                    <input type="text" id="updateBranchCity" required>
 
-                    <label for="updateBranchLon">longitude</label>
-                    <input type="text" id="updateBranchLon">
+                    <label for="updateBranchLat">Latitude</label>
+                    <input type="text" id="updateBranchLat" required>
+
+                    <label for="updateBranchLon">Longitude</label>
+                    <input type="text" id="updateBranchLon" required>
 
                     
 
@@ -1315,8 +1334,8 @@
             </div>
 
             <div class="modal-Footer">
-                <input type="button" value="Delete Branch">
-                <input type="submit" value="Update Branch">
+                <input type="button" value="Delete Branch" onclick="DeleteBranch();">
+                <input type="button" value="Update Branch" onclick="UpdateBranch();">
 
             </div>
 
@@ -1329,7 +1348,9 @@
 
     <!-- Piechart google -->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-
+    
+    <script src="js/Notification.js"></script>
     <script src="js/adminDashboard.js"></script>
+    
 </body>
 </html>
