@@ -27,12 +27,12 @@
             <img id="compLogo" src="images/logo-full.png" alt="company logo">
 
             <button onclick="switchTabs('dashbordTab', this);"><img src="images/dashboard_black_fill.svg" alt="dashboard icon"> <span>Dashbord</span></button>
-            <button onclick="switchTabs('driversTab',this);"><img src="images/driver-icon.svg" alt="driver icon"> <span>Drivers</span></button>
+            <button onclick="switchTabs('driversTab',this); ShowDrivers();"><img src="images/driver-icon.svg" alt="driver icon"> <span>Drivers</span></button>
             <button subMenu="Vehicel" onclick="submenuEnable('Vehicel'); subMenuActive(this);"><img src="images/Vehicel_taxi_fill.svg" alt="Vehicel"> <span>Vehicel</span></button>
             <div class="sidebar-Submenu" data-SubMenu="Vehicel">
-                <button onclick="switchTabs('vehicleTab', this); ">View Vehicel</button>
-                <button onclick="switchTabs('addVehicleTab',this);">Add Vehicel</button>
-                <button onclick="switchTabs('categoryVehicleTab', this);">Vehicel Category</button>
+                <button onclick="switchTabs('vehicleTab', this); ShowVehicle(); ">View Vehicel</button>
+                <button onclick="switchTabs('addVehicleTab',this); setVehicleAddData();">Add Vehicel</button>
+                <button onclick="switchTabs('categoryVehicleTab', this); ShowVCategoies();">Vehicel Category</button>
             </div>
             <button subMenu="Admins" onclick="switchTabs('adminsTab', this); setDataAdminTab(); "><img src="images/admin_panel.svg" alt="admin icon"> <span>Admins</span></button>
             <!-- <div class="sidebar-Submenu" data-SubMenu="Admins">
@@ -45,7 +45,7 @@
             <button onclick="switchTabs('InquiriesTab',this);"><img src="images/Inquiry.svg" alt="Inquiries icon"> <span>Inquiries</span></button>
             <button onclick="switchTabs('BranchesTab',this);  ShowBranches();"><img src="images/Branch-icon.svg" alt="Branch icon"> <span>Branch</span></button>
             <button onclick="switchTabs('SalesTab',this); ShowSales();" ><img src="images/financial-growth-icon.svg" alt="Sales icon"> <span>Sales</span></button>
-
+            <button onclick="switchTabs('LocationTab',this);  ShowLocation();" ><img src="images/location_black_fill.svg" alt="Sales icon"> <span>Locations</span></button>
         </div>
 
         <div id="TabsContent">
@@ -117,22 +117,32 @@
 
                 <div id="driversToolbox">
                     <input type="search" name="Search" id="driversSearchIP" placeholder="Search">
-                    <button onclick="openModal('addDriversModal');"> <img src="images/driver-add.svg" alt="driver add"> <span>Add driver</span> </button>
+                    <button onclick="openModal('addDriversModal'); setDataDriverModal(); "> <img src="images/driver-add.svg" alt="driver add"> <span>Add driver</span> </button>
                 </div>
 
                 <table id="driverTable">
                     <thead>
                         <tr>
-                            <th>Id</th>
+                            <th>Driver Id</th>
+                            <th>Profile Image</th>
                             <th>Name</th>
-                            <th>location</th>
+                            <th>Email</th>
+                            <th>Username</th>
+                            <th>Phone Number</th>
+                            <th>Address</th>
+                            <th>DOB</th>
+                            <th>Branch Id</th>
+                            <th>Gender</th>
+                            <th>Status</th>
+                            
+
                         </tr>
                     </thead>
 
                     <tbody>
                         <tr onclick="openModal('updateDriversModal');">
                             <td>01</td>
-                            <td>Sonal</td>
+                            <td class="Driver-ProfileImage"><img src="images/logo-full.png"  ></td>
                             <td>test location</td>
                         </tr>
 
@@ -165,12 +175,17 @@
                     <span>Vehicle</span>
                 </div>
 
-                <table id="driverTable">
+                <table id="vehicleTable">
                     <thead>
                         <tr>
-                            <th>Id</th>
+                            <th>Number Plate</th>
                             <th>Name</th>
-                            <th>location</th>
+                            <th>Vehicle image</th>
+                            <th>Seat</th>
+                            <th>Color</th>
+                            <th>BranchID</th>
+                            <th>CategoryID</th>
+                            <th>Status</th>
                         </tr>
                     </thead>
 
@@ -212,20 +227,20 @@
                     <div>
                         <div id="addVehicleFormLeft">
                             <label for="addVFormVehicleName">Vehicle Name</label>
-                            <input type="text" id="addVFormVehicleName">
+                            <input type="text" id="addVFormVehicleName" required>
     
                             <label for="addVFormVehicleImage">Vehicle Image</label>
-                            <input type="file" id="addVFormVehicleImage">
+                            <input type="file" id="addVFormVehicleImage" required>
     
                             <label for="addVFormVehiclePlateNum">Plate Number</label>
-                            <input type="text" id="addVFormVehiclePlateNum">
+                            <input type="text" id="addVFormVehiclePlateNum" required>
     
                             <label for="drivers-dropDown">Drivers</label>
-                            <div class="drivers-dropDown-box" onclick="driversDropdown();">
+                            <div class="drivers-dropDown-box" onclick="driversDropdown(); setSelectedDrivers('addVdriverDropDBox','addVehicleDriverList');" id="addVdriverDropDBox">
                                 <span>Select drivers</span>
                                 <img src="images/arrow-down-icon.svg" alt="down arrow">
                             </div>
-                            <div class="drivers-List-Container" >
+                            <div class="drivers-List-Container" id="addVehicleDriverList">
                                 <div class="drivers-List-checkbox" >
                                     <label>
                                         <input type="checkbox" name="test 1" id="">
@@ -251,32 +266,32 @@
     
                         </div>
                         <div id="addVehicleFormRight">
-                            <label for="addVFormVehicleAvailability">Availability</label>
-                            <select name="VehicleAvailability" id="addVFormVehicleAvailability">
+                            <label for="addVFormVehicleBranch">Branch</label>
+                            <select name="VehicleBranch" id="addVFormVehicleBranch">
                                 <option value="unav">unAvailabile</option>
                                 <option value="Availabile">Availabile</option>
                                 <option value="null">not set</option>
                             </select>
     
-                            <label for="addVFormVehicleAvailability">Availability</label>
-                            <select name="VehicleAvailability" id="addVFormVehicleAvailability">
+                            <label for="addVFormVehicleCategory">Category</label>
+                            <select name="VehicleCategory" id="addVFormVehicleCategory">
                                 <option value="unav">unAvailabile</option>
                                 <option value="Availabile">Availabile</option>
                                 <option value="null">not set</option>
                             </select>
     
                             <label for="addVehicleNumSeats">Number of seats</label>
-                            <input type="number" min="1" id="addVehicleNumSeats">
+                            <input type="number" min="1" id="addVehicleNumSeats" required>
 
                             <label for="addVehicleColour">Colour</label>
-                            <input type="text" min="1" id="addVehicleColour">
+                            <input type="text" min="1" id="addVehicleColour" required>
                         </div>
                     </div>
                     
                     
                     <div id="addVehicleFormSubmit" >
                         <input type="button" value="Cancel">
-                        <input type="button" value="Submit">
+                        <input type="button" value="Add Vehicle" onclick="addVehicle();">
                     </div>
                 </form>
             </div>
@@ -297,21 +312,26 @@
                 <form action="" id="updateVehicleForm">
                     <div>
                         <div id="updateVehicleFormLeft">
+                            
                             <label for="updateVFormVehicleName">Vehicle Name</label>
-                            <input type="text" id="updateVFormVehicleName">
+                            <input type="text" id="updateVFormVehicleName" required>
     
-                            <label for="updateVFormVehicleImage">Vehicle Image</label>
-                            <input type="file" id="updateVFormVehicleImage">
+                            <div id="updateVFormVehicleImageContainer">
+                                <img src="images/image_10e3010f35.jpg" id="updateVFormVehicleImageBox">
+                                <label for="updateVFormVehicleImage">Vehicle Image <input type="file" id="updateVFormVehicleImage" onclick="changeVehicleImage();"></label>
+                            
+                            </div>
+                           
     
                             <label for="updateVFormVehiclePlateNum">Plate Number</label>
-                            <input type="text" id="updateVFormVehiclePlateNum">
+                            <input type="text" id="updateVFormVehiclePlateNum" required readonly>
     
                             <label for="drivers-dropDown">Drivers</label>
-                            <div class="drivers-dropDown-box" onclick="driversDropdown();">
+                            <div class="drivers-dropDown-box" onclick="VUpdatedriversDropdown(); setSelectedDrivers('UpdateVdriverDropDBox','UpdateVehicleDriverList');" id="UpdateVdriverDropDBox">
                                 <span>Select drivers</span>
                                 <img src="images/arrow-down-icon.svg" alt="down arrow">
                             </div>
-                            <div class="drivers-List-Container" >
+                            <div class="drivers-List-Container" id="UpdateVehicleDriverList">
                                 <div class="drivers-List-checkbox" >
                                     <label>
                                         <input type="checkbox" name="test 1" id="">
@@ -337,32 +357,40 @@
     
                         </div>
                         <div id="updateVehicleFormRight">
-                            <label for="updateVFormVehicleAvailability">Availability</label>
-                            <select name="VehicleAvailability" id="updateVFormVehicleAvailability">
+                            <label for="updateVFormVehicleBranch">Branch</label>
+                            <select name="VehicleBranch" id="updateVFormVehicleBranch">
                                 <option value="unav">unAvailabile</option>
                                 <option value="Availabile">Availabile</option>
                                 <option value="null">not set</option>
                             </select>
     
-                            <label for="updateVFormVehicleAvailability">Availability</label>
-                            <select name="VehicleAvailability" id="updateVFormVehicleAvailability">
+                            <label for="updateVFormVehicleCategory">Category</label>
+                            <select name="VehicleCategory" id="updateVFormVehicleCategory">
                                 <option value="unav">unAvailabile</option>
                                 <option value="Availabile">Availabile</option>
                                 <option value="null">not set</option>
                             </select>
     
                             <label for="updateVehicleNumSeats">Number of seats</label>
-                            <input type="number" min="1" id="updateVehicleNumSeats">
+                            <input type="number" min="1" id="updateVehicleNumSeats" required>
 
                             <label for="updateVehicleColour">Colour</label>
-                            <input type="text" min="1" id="updateVehicleColour">
+                            <input type="text" min="1" id="updateVehicleColour" required>
+
+                            <label for="updateVFormVehicleStatus">Status</label>
+                            <select name="VehicleStatus" id="updateVFormVehicleStatus">
+                                <option value="Available">Available</option>
+                                <option value="Unavailable">Unavailable</option>
+                                <option value="onRide">onRide</option>
+                            </select>
+
                         </div>
                     </div>
                     
                     
                     <div id="updateVehicleFormSubmit" >
                         <input type="button" value="Delete">
-                        <input type="button" value="Update Vehicle">
+                        <input type="button" value="Update Vehicle" onclick="updateVehicle();">
                     </div>
                 </form>
             </div>
@@ -373,7 +401,7 @@
                     <button onclick="openModal('addVCategoryModal');">+ Add Category</button>
                 </div>
 
-                <table id="driverTable">
+                <table id="categoryVehicleTable">
                     <thead>
                         <tr>
                             <th>Id</th>
@@ -385,7 +413,7 @@
                     <tbody>
                         <tr>
                             <td>01</td>
-                            <td>Sonal</td>
+                            <td><img src="images/2orzmeoa-900.jpg" src alt=""></td>
                             <td>test location</td>
                         </tr>
 
@@ -899,6 +927,58 @@
 
             </div>
 
+            <div id="LocationTab">
+                <div id="LocationTitle">
+                    <h2>Locations</h2>
+                </div>
+
+                <div id="locationToolBox">
+                    <button onclick="openModal('locationAddModal'); DropdownBranch('locationAddForm_Branch', true);">Add Location</button>
+                </div>
+
+                <table id="locationTable">
+                    <thead>
+                        <tr>
+                            <th>id</th>
+                            <th>Branch</th>
+                            <th>Source</th>
+                            <th>Destination</th>
+                            <th>Distance</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr onclick="openModal('branchUpdateModal');">
+                            <td>01</td>
+                            <td>Sonal</td>
+                            <td>test location</td>
+                        </tr>
+
+                        <tr>
+                            <td>02</td>
+                            <td>Asel</td>
+                            <td>test location</td>
+                        </tr>
+
+                        <tr>
+                            <td>03</td>
+                            <td>aziz</td>
+                            <td>test location</td>
+                        </tr>
+
+                        <tr>
+                            <td>04</td>
+                            <td>Kanishka</td>
+                            <td>test location</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+
+            </div>
+
+
+
         </div>
 
         
@@ -909,7 +989,7 @@
 
     <!-- Add Driver -->
     <div id="addDriversModal" class="Modal ">
-        <form>
+        <form >
             <div class="modal-Header">
                 <div>
                     <img src="images/driver-add.svg" alt="driver add">
@@ -923,41 +1003,43 @@
 
             <div class="modal-Body">
                 <label for="addDriversModal_Name">Name</label>
-                <input type="text" id="addDriversModal_Name">
+                <input type="text" id="addDriversModal_Name" required>
+                <label for="addDriversModal_Name">Email</label>
+                <input type="text" id="addDriversModal_Email" required>
                 <label for="addDriversModal_Img">Driver Image</label>
-                <input type="file" name="driverImage" id="addDriversModal_Img">
+                <input type="file" name="driverImage" id="addDriversModal_Img" required>
                 <label for="addDriversModal_Branch">Branch</label>
-                <select name="Branch" id="addDriversModal_Branch">
+                <select name="Branch" id="addDriversModal_Branch" >
                     <option value="Kandy">Kandy</option>
                     <option value="Kandy">Kandy</option>
                     <option value="Kandy">Kandy</option>
                     <option value="Kandy">Kandy</option>
                 </select>
 
-                <label for="addDriversModal_Contact">Contact</label>
-                <input type="text" id="addDriversModal_Contact">
+                <label for="addDriversModal_Contact">Contact Number</label>
+                <input type="text" id="addDriversModal_Contact" required>
                 <label for="addDriversModal_DOB">Date of birth</label>
-                <input type="date" id="addDriversModal_DOB">
+                <input type="date" id="addDriversModal_DOB" required>
                 <label for="">Gender</label>
                 <div>
                     
-                    <input type="radio" name="Gender" id="addDriversModal_Male">
+                    <input type="radio" name="Gender" id="addDriversModal_Male" checked>
                     <label for="addDriversModal_Male">Male</label>
                     <input type="radio" name="Gender" id="addDriversModal_Female">
                     <label for="addDriversModal_Female">Female</label>
                 </div>
                 
                 <label for="addDriversModal_address">Address</label>
-                <textarea name="Address" id="addDriversModal_address" rows="6"></textarea>
+                <textarea name="Address" id="addDriversModal_address" rows="6" required></textarea>
 
                
 
                 <div id="addDriversModal_UnContainer">
-                    Username&nbsp;:&nbsp;<input type="text" id="addDriversModal_Username">
+                    Username&nbsp;:&nbsp;<input type="text" id="addDriversModal_Username" required>
                 </div>
 
                 <div id="addDriversModal_PwContainer">
-                    Password&nbsp;&nbsp;:&nbsp;<input type="password" id="addDriversModal_Pass"> <img src="images/passGen_24dp.svg" alt="Password gen " onclick="genPassword('addDriversModal_Pass');">
+                    Password&nbsp;&nbsp;:&nbsp;<input type="password" id="addDriversModal_Pass" required> <img src="images/passGen_24dp.svg" alt="Password gen " onclick="genPassword('addDriversModal_Pass');">
                 </div>
 
 
@@ -966,7 +1048,7 @@
             <div class="modal-Footer">
 
                 <input type="reset" value="Cancel" class="close">
-                <input type="submit" value="Create New Driver">
+                <input type="button" value="Create New Driver"  onclick="addDriver();">
 
             </div>
 
@@ -990,12 +1072,24 @@
             </div>
 
             <div class="modal-Body">
+                <div id="updateDriversModalImage">
+                    <img src="images/614561de5677bf6fb08f02af25a47af4.png" id="updateDriversModal_Img">
+                    <label for="updateDriversModal_FileImg">
+                        Edit Profile Image
+                        <input type="file" name="driverImage" id="updateDriversModal_FileImg">
+                    </label>
+                    
+                </div>
+                <label for="updateDriversModal_ID">Driver ID : <label id="updateDriversModal_ID">2</label></label>
+                
                 <label for="updateDriversModal_Name">Name</label>
-                <input type="text" id="updateDriversModal_Name">
-                <label for="updateDriversModal_Img">Driver Image</label>
-                <input type="file" name="driverImage" id="updateDriversModal_Img">
+                <input type="text" id="updateDriversModal_Name" required>
+
+                <label for="updateDriversModal_Email">Name</label>
+                <input type="text" id="updateDriversModal_Email" required>
+
                 <label for="updateDriversModal_Branch">Branch</label>
-                <select name="Branch" id="updateDriversModal_Branch">
+                <select name="Branch" id="updateDriversModal_Branch" >
                     <option value="Kandy">Kandy</option>
                     <option value="Kandy">Kandy</option>
                     <option value="Kandy">Kandy</option>
@@ -1003,9 +1097,9 @@
                 </select>
 
                 <label for="updateDriversModal_Contact">Contact</label>
-                <input type="text" id="updateDriversModal_Contact">
+                <input type="text" id="updateDriversModal_Contact" required>
                 <label for="updateDriversModal_DOB">Date of birth</label>
-                <input type="date" id="updateDriversModal_DOB">
+                <input type="date" id="updateDriversModal_DOB" required>
                 <label for="">Gender</label>
                 <div>
                     
@@ -1016,12 +1110,23 @@
                 </div>
                 
                 <label for="updateDriversModal_address">Address</label>
-                <textarea name="Address" id="updateDriversModal_address" rows="6"></textarea>
+                <textarea name="Address" id="updateDriversModal_address" rows="6" required></textarea>
+
+                <label for="updateDriversModal_Status">
+                    Status : 
+                    <select name="Status" id="updateDriversModal_Status">
+                        <option value="Available">Available</option>
+                        <option value="Unavailable">Unavailable</option>
+                        <option value="onRide">onRide</option>
+                    </select>
+                
+                </label>
+                
 
                
 
                 <div id="updateDriversModal_UnContainer">
-                    Username&nbsp;:&nbsp;<input type="text" id="updateDriversModal_Username">
+                    Username&nbsp;:&nbsp;<input type="text" id="updateDriversModal_Username" required>
                 </div>
 
                 <div id="updateDriversModal_PwContainer">
@@ -1034,7 +1139,7 @@
             <div class="modal-Footer">
 
                 <input type="reset" value="Delete" class="close">
-                <input type="submit" value="Update Driver" onclick="">
+                <input type="button" value="Update Driver" onclick="UpdateDriver();">
 
             </div>
 
@@ -1054,7 +1159,7 @@
     
             <div class="modal-Body">
                 <label for="addVCategoryModalIcon">Category Icon :</label>
-                <input type="file" name="CategoryIcon" id="addVCategoryModalIcon">
+                <input type="file" name="CategoryIcon" accept="image/*"  id="addVCategoryModalIcon">
     
                 <label for="addVCategoryModalName">Category Name :</label>
                 <input type="text" id="addVCategoryModalName">
@@ -1062,6 +1167,38 @@
     
             <div class="modal-Footer">
                 <input type="button" value="Create New Category" onclick="addVCategory();">
+            </div>
+        </form>
+    </div>
+
+    <!-- update Vehicle Category Modal -->
+
+    <div id="updateVCategoryModal" class="Modal">
+
+        <form  id="updateVCategoryModalForm">
+            <div class="modal-Header">
+                Update Category
+            </div>
+    
+            <div class="modal-Body">
+                <label for="updateVCategoryModalID">Category ID: <label id="updateVCategoryModalID"></label></label>
+                <label for="updateVCategoryModalImgContainer">Category Icon :</label>
+                <div id="updateVCategoryModalImgContainer">
+                    <img src="images/614561de5677bf6fb08f02af25a47af4.png" id="updateVCategoryModalImg" >
+                    <label for="updateVCategoryModalIconBtn">Change&nbsp;icon
+                        <input type="file" name="CategoryIcon" accept="image/*" id="updateVCategoryModalIconBtn" onchange="changeCateogryImage();" title="Change Icon" >
+
+                    </label>
+                    
+                </div>
+                
+    
+                <label for="updateVCategoryModalName">Category Name :</label>
+                <input type="text" id="updateVCategoryModalName">
+            </div>
+    
+            <div class="modal-Footer">
+                <input type="button" value="Update Category" onclick="updateVCategory();" >
             </div>
         </form>
     </div>
@@ -1344,6 +1481,43 @@
 
     </div>
 
+    <!-- Add location Modal -->
+
+    <div id="locationAddModal" class="Modal">
+        <form action="" id="locationAddForm">
+            <div class="modal-Header">
+                Add Location
+
+                <span class="close">
+                    &#10006;
+
+                </span>
+            </div>
+
+            <div class="modal-Body">
+                <label for="locationAddForm_Branch">Branch</label>
+                <select name="Branch" id="locationAddForm_Branch">
+                    <option value="Test">Test1</option>
+                    <option value="Test">Test2</option>
+                </select>
+
+                <label for="locationAddForm_Source">Source</label>
+                <input type="text" id="locationAddForm_Source">
+
+                <label for="locationAddForm_Destination">Destination</label>
+                <input type="text" id="locationAddForm_Destination">
+
+                <label for="locationAddForm_Distance">Distance</label>
+                <input type="number" id="locationAddForm_Distance">
+            </div>
+
+
+            <div class="modal-Footer">
+                <input type="button" value="Add Location" onclick="AddLocation();">
+            </div>
+
+        </form>
+    </div>
 
 
     <!-- Piechart google -->

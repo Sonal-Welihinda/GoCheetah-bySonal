@@ -54,6 +54,10 @@
     flex-direction: column;
 }
 
+#DashboardTab.Active{
+    display: flex;
+}
+
 #DashboardTab .Tab-Title{
     margin-top: 1%;
     margin-left: 1%;
@@ -83,6 +87,7 @@
 
 #tripLocations{
     margin-top: 2%;
+    position: relative;
 }
 
 #tripLocations > div, #tripTime > div{
@@ -100,6 +105,81 @@
     font-size: 2vw;
     justify-self: start;
 }
+
+#TripPickupL{
+    flex: 3;
+    display: block;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+    margin-right: .5%;
+}
+
+#TripPickupL input{
+    flex: 3;
+    width: 100%;
+}
+
+#TripPickupL div{
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    background-color: rgb(241, 241, 241);
+    z-index: 5;
+    width: 100%;
+    max-height: 100px;
+    overflow-y: auto;
+
+}
+
+#TripPickupL div span{
+    display: block;
+    
+    
+}
+
+#TripPickupL div.Active{
+    display: block;
+}
+
+
+#TripDropoffL{
+    flex: 3;
+    display: block;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+    margin-right: .5%;
+}
+
+#TripDropoffL input{
+    flex: 3;
+    width: 100%;
+}
+
+#TripDropoffL div{
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    background-color: rgb(241, 241, 241);
+    z-index: 5;
+    width: 100%;
+    max-height: 100px;
+    overflow-y: auto;
+
+}
+
+#TripDropoffL div.Active{
+    display: block;
+}
+
+
+#TripDropoffL div span{
+    display: block;
+    
+    
+}
+
 
 #vCategoryContainer{
     margin-left: 2%;
@@ -147,7 +227,7 @@
 
 .VCategory-Item img{
     flex: 2;
-    width: 70%;  
+    width: 90%;  
 }
 
 .VCategory-Item img, .VCategory-Item span{
@@ -156,13 +236,18 @@
     font-size: 1.7rem;
 }
 
+.VCategory-Item.Active{
+    background-color: rgb(206, 206, 206);
+}
+
+
 #vModelContainer{
     margin-left: 2%;
     margin-right: 2%;
 }
 
 .VModel-Item{
-    background-color: gray;
+    background-color: rgb(245, 245, 245);
     width: 140px;
     display: flex;
     flex-direction: column;
@@ -174,6 +259,9 @@
     font-size: 1.6rem;  
 }
 
+.VModel-Item.Active{
+    background-color: rgb(199, 196, 196);
+}
 
 
 .VModel-Item .VModal-Img{
@@ -238,8 +326,12 @@
 #BookingsTab{
     height: 100%;
     width: 100%;
-    display: flex;
+    display: none;
     flex-direction: column;
+}
+
+#BookingsTab.Active{
+    display: flex;
 }
 
 #BookingsTab .Tab-Title{
@@ -445,6 +537,30 @@
     display: flex;
 }
 
+
+/* hover menu */
+#menuButtons{
+    position: absolute;
+    display: none;
+    flex-direction: column;
+    margin-top: 10%;
+    overflow: hidden;
+    
+}
+
+.username-profile:hover  #menuButtons{
+    display: flex;
+}
+
+#menuButtons button{
+    margin-top: 4px;
+    padding: 2% 3%;
+    font-size: 18px;
+    width: 100%;
+    background-color: black;
+    color: white;
+    font-weight: 600;
+}
 
 
 

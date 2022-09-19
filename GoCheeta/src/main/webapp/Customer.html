@@ -4,10 +4,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/Customer.css">
+    <link rel="stylesheet" href="css/Customer.css">
+    <link rel="stylesheet" href="css/Notification.css">
     <title>GoCheetah Customer dashboard</title>
 </head>
 <body>
+
+    <div id="AlertBox" onmouseover="mouseOverAlert();" onmouseout="mouseOutAlert();">
+        <img src="images/green-checkmark-icon.svg" alt="alert icon" id="AlertIcon">
+        <p id="AlertMsg">
+            
+        </p>
+
+        <img src="images/close.svg" id="AlertCloseBtn">
+
+    </div>
 
     <nav class="nav-Bar">
         <div class="logo">
@@ -15,18 +26,22 @@
         </div>
 
         <div class="username-profile">
-            <img src="/images/person_black_fill.svg" alt="profile icon">
-            <span>Sonal </span>
-
+            <img src="images/person_black_fill.svg" alt="profile icon">
+            <span id="profileName">Sonal </span>
+            <div id="menuButtons">
+                <button onclick="PreviousBookingTab();">Previous Booking</button>
+                <button onclick="bookingTab();">Booking Now</button>
+            </div>
         </div>
 
     </nav>
 
+
     <div id="Tabs">
 
-        <div id="DashboardTab">
+        <div id="DashboardTab" class="Active">
             <div class="Tab-Title">
-                <h1>Welcom Sonal</h1>
+                <h1 id="DashboardWelcomeMessage">Welcome Sonal</h1>
                 <h3>Where do you want to go ?</h3>
             </div>
 
@@ -34,101 +49,118 @@
                 <div id="tripLocations">
                     <div>
                         <label for="TripPickupL">Pickup</label>
-                        <input type="text" id="TripPickupL">
+                        
+                        <div id="TripPickupL">
+                            <input type="text" id="TripPickupIP"  onkeyup="pickLocationSearch();"  onkeydown="suggestionBoxActive('TripPickupL');" >
+                            <div>
+                                <span>test 1</span>
+                                <span>test 1</span>
+                                <span>test 1</span>
+                            </div>
+                            
+                        </div>
                     </div>
                     <div>
                         <label for="TripDropoffL">Drop off</label>
-                        <input type="text" id="TripDropoffL">
+                        <div id="TripDropoffL">
+                            <input type="text" id="TripDropoffIP" onkeyup="DestinationLocationSearch();" onkeydown="suggestionBoxActive('TripDropoffL');">
+                            <div>
+                                <span>test 1</span>
+                                <span>test 1</span>
+                                <span>test 1</span>
+                            </div>
+                        </div>
+                        
                     </div>
                 </div>
 
-                <div id="tripTime">
+                <form id="tripTime">
                     <div>
                         <label for="TripPickupD">Date</label>
-                        <input type="date" id="TripPickupD">
+                        <input type="date" id="TripPickupD" required>
                     </div>
                     <div>
-                        <label for="TripDropoffL2">Time </label>
-                        <input type="time" id="TripDropoffL2">
+                        <label for="TripTimeIP">Time </label>
+                        <input type="time" id="TripTimeIP" required>
                     </div>
-                </div>
+                </form>
 
                 <div id="vCategoryContainer">
                     <label> Select vehicle category</label>
 
-                    <div class="H-List" onmousewheel="HorizontalScroll(event,this);">
+                    <div class="H-List" onmousewheel="HorizontalScroll(event,this); " id="VCateogoryList">
                         <div class="VCategory-Item">
-                            <img src="/images/car-add.svg" alt="Car">
+                            <img src="images/car-add.svg" alt="Car">
                             <span>Air plane</span>
                         </div>
 
                         <div class="VCategory-Item">
-                            <img src="/images/car-add.svg" alt="Car">
+                            <img src="images/car-add.svg" alt="Car">
                             <span>Car</span>
                         </div>
 
                         <div class="VCategory-Item">
-                            <img src="/images/car-add.svg" alt="Car">
+                            <img src="images/car-add.svg" alt="Car">
                             <span>Car</span>
                         </div>
 
                         <div class="VCategory-Item">
-                            <img src="/images/car-add.svg" alt="Car">
+                            <img src="images/car-add.svg" alt="Car">
                             <span>Car</span>
                         </div>
 
                         <div class="VCategory-Item">
-                            <img src="/images/car-add.svg" alt="Car">
+                            <img src="images/car-add.svg" alt="Car">
                             <span>Car</span>
                         </div>
 
                         <div class="VCategory-Item">
-                            <img src="/images/car-add.svg" alt="Car">
+                            <img src="images/car-add.svg" alt="Car">
                             <span>Car</span>
                         </div>
 
                         <div class="VCategory-Item">
-                            <img src="/images/car-add.svg" alt="Car">
+                            <img src="images/car-add.svg" alt="Car">
                             <span>Car</span>
                         </div>
 
                         <div class="VCategory-Item">
-                            <img src="/images/car-add.svg" alt="Car">
+                            <img src="images/car-add.svg" alt="Car">
                             <span>Car</span>
                         </div>
 
                         <div class="VCategory-Item">
-                            <img src="/images/car-add.svg" alt="Car">
+                            <img src="images/car-add.svg" alt="Car">
                             <span>Car</span>
                         </div>
 
                         <div class="VCategory-Item">
-                            <img src="/images/car-add.svg" alt="Car">
+                            <img src="images/car-add.svg" alt="Car">
                             <span>Car</span>
                         </div>
 
                         <div class="VCategory-Item">
-                            <img src="/images/car-add.svg" alt="Car">
+                            <img src="images/car-add.svg" alt="Car">
                             <span>Car</span>
                         </div>
 
                         <div class="VCategory-Item">
-                            <img src="/images/car-add.svg" alt="Car">
+                            <img src="images/car-add.svg" alt="Car">
                             <span>Car</span>
                         </div>
 
                         <div class="VCategory-Item">
-                            <img src="/images/car-add.svg" alt="Car">
+                            <img src="images/car-add.svg" alt="Car">
                             <span>Car</span>
                         </div>
 
                         <div class="VCategory-Item">
-                            <img src="/images/car-add.svg" alt="Car">
+                            <img src="images/car-add.svg" alt="Car">
                             <span>Car</span>
                         </div>
 
                         <div class="VCategory-Item">
-                            <img src="/images/car-add.svg" alt="Car">
+                            <img src="images/car-add.svg" alt="Car">
                             <span>Car2</span>
                         </div>
                     </div>
@@ -137,11 +169,11 @@
                 <div id="vModelContainer" >
                     <label> Select Model</label>
 
-                    <div class="H-List" onmousewheel="HorizontalScroll(event,this);">
+                    <div class="H-List" onmousewheel="HorizontalScroll(event,this);" id="VModalList">
                         
                         <div class="VModel-Item">
                             <div class="VModal-Img">
-                                <img src="/images/taxi-car.png" alt="Vehicel Image">
+                                <img src="images/taxi-car.png" alt="Vehicel Image">
                             </div>
                             <div class="vModal-Details">
                                 <p>toyota camry</p>
@@ -152,7 +184,7 @@
                         
                         <div class="VModel-Item">
                             <div class="VModal-Img">
-                                <img src="/images/taxi-car.png" alt="Vehicel Image">
+                                <img src="images/taxi-car.png" alt="Vehicel Image">
                             </div>
                             <div class="vModal-Details">
                                 <p>toyota camry</p>
@@ -163,7 +195,7 @@
 
                         <div class="VModel-Item">
                             <div class="VModal-Img">
-                                <img src="/images/taxi-car.png" alt="Vehicel Image">
+                                <img src="images/taxi-car.png" alt="Vehicel Image">
                             </div>
                             <div class="vModal-Details">
                                 <p>toyota camry 2022</p>
@@ -174,7 +206,7 @@
 
                         <div class="VModel-Item">
                             <div class="VModal-Img">
-                                <img src="/images/taxi-car.png" alt="Vehicel Image">
+                                <img src="images/taxi-car.png" alt="Vehicel Image">
                             </div>
                             <div class="vModal-Details">
                                 <p>toyota camry 2022</p>
@@ -185,7 +217,7 @@
 
                         <div class="VModel-Item">
                             <div class="VModal-Img">
-                                <img src="/images/taxi-car.png" alt="Vehicel Image">
+                                <img src="images/taxi-car.png" alt="Vehicel Image">
                             </div>
                             <div class="vModal-Details">
                                 <p>toyota camry 2022</p>
@@ -202,18 +234,18 @@
 
 
                 <div id="TripDistanceContainer" >
-                    <label for="TripDistance">Distance :</label>
-                    <label id="TripDistance"> 4KM</label>
+                    <label for="TripDistance">Distance (KM):</label>
+                    <label id="TripDistance"> 0</label>
                 </div>
 
                 <div id="TripConfirmContainer" >
-                    <div>
-                        Price : Rs 2000.00
+                    <div >
+                        Price : Rs <span id="TripPrice">00.00</span> 
                     </div>
 
                     <div>
                         <button>Cancel</button>
-                        <button>Confirm Trip</button>
+                        <button type="button" onclick="AddBooking();">Confirm Trip</button>
                     </div>
                 </div>
 
@@ -338,27 +370,27 @@
 
                     <div class="AlreadyRateContainer Active" >
                         
-                        <label><img src="/images/star.svg" alt="star"></label>
+                        <label><img src="images/star.svg" alt="star"></label>
                         
-                        <label><img src="/images/star.svg" alt="star"></label>
+                        <label><img src="images/star.svg" alt="star"></label>
                         
-                        <label class="Checked"><img src="/images/star.svg" alt="star"></label>
+                        <label class="Checked"><img src="images/star.svg" alt="star"></label>
 
-                        <label><img src="/images/star.svg" alt="star"></label>
-                        <label><img src="/images/star.svg" alt="star"></label>
+                        <label><img src="images/star.svg" alt="star"></label>
+                        <label><img src="images/star.svg" alt="star"></label>
                     </div>
 
                     <div class="RateContainer" >
                         <input type="radio" name="Rate" id="DriverRate5" >
-                        <label for="DriverRate5"><img src="/images/star.svg" alt="star"></label>
+                        <label for="DriverRate5"><img src="images/star.svg" alt="star"></label>
                         <input type="radio" name="Rate" id="DriverRate4" >
-                        <label for="DriverRate4"><img src="/images/star.svg" alt="star"></label>
+                        <label for="DriverRate4"><img src="images/star.svg" alt="star"></label>
                         <input type="radio" name="Rate" id="DriverRate3" >
-                        <label for="DriverRate3"><img src="/images/star.svg" alt="star"></label>
+                        <label for="DriverRate3"><img src="images/star.svg" alt="star"></label>
                         <input type="radio" name="Rate" id="DriverRate2" >
-                        <label for="DriverRate2"><img src="/images/star.svg" alt="star"></label>
+                        <label for="DriverRate2"><img src="images/star.svg" alt="star"></label>
                         <input type="radio" name="Rate" id="DriverRate1" >
-                        <label for="DriverRate1"><img src="/images/star.svg" alt="star"></label>
+                        <label for="DriverRate1"><img src="images/star.svg" alt="star"></label>
                     </div>
 
                     <textarea  id="TripRateingMsg" readonly rows="4" placeholder="Describe your experience (optional)">good</textarea>
@@ -375,6 +407,8 @@
 
 
 
-    <script src="/js/Customer.js"></script>
+    <script src="js/Customer.js"></script>
+    <script src="js/Notification.js"></script>
+
 </body>
 </html>

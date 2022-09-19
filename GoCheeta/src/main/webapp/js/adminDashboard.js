@@ -5,8 +5,9 @@ var submenus = document.getElementsByClassName("sidebar-Submenu");
 var navButtons = document.querySelectorAll("#nav-bar > button");
 var subMenuButton = document.querySelectorAll("#nav-bar .sidebar-Submenu button");
 
-var driversLDropdown = document.querySelector("#driversListContainer .drivers-List-checkbox");
-var driverslist = document.querySelectorAll(".drivers-List-checkbox label");
+var driversLDropdown = document.querySelector(".drivers-List-Container .drivers-List-checkbox");
+var driversLUpdateDropdown = document.querySelector("#UpdateVehicleDriverList .drivers-List-checkbox");
+var driverslist = document.querySelectorAll(" .drivers-List-checkbox label");
 
 var SalesPiechart = document.getElementById("salesPieCharts");
 var IsgoogleChartsLoad = false;
@@ -16,6 +17,12 @@ const admin_url = "http://localhost:8080/GoCheeta-Server/admin/";
 const branch_Url ="http://localhost:8080/GoCheeta-Server/branch/"; 
 const FileServerApi ="http://localhost:8080/GoCheeta-Server/FileService/"; 
 const VehicleCategory_url ="http://localhost:8080/GoCheeta-Server/Vehicle/Category/";
+const Vehicle_url ="http://localhost:8080/GoCheeta-Server/Vehicle/";
+const Driver_url ="http://localhost:8080/GoCheeta-Server/Drtver/";
+const Location_url ="http://localhost:8080/GoCheeta-Server/Location/";
+
+// Backend
+var Admins,Branches,VCategories,Vehicles,Drivers,Locations;
 
 
 
@@ -63,9 +70,6 @@ function switchTabs(ActiveTab,button){
         }
     })
 
-
-
-
 }
 
 function switchTabs2(ActiveTab){
@@ -96,11 +100,7 @@ function subMenuActive(mainMenu){
         }else{
             nBtn.classList.remove("navActive");
         }
-    })
-    
-    
-    
-    
+    }) 
 
 
 }
@@ -119,6 +119,10 @@ function submenuEnable(submenu){
 
 function driversDropdown(){
     driversLDropdown.classList.toggle("Active");
+}
+
+function VUpdatedriversDropdown(){
+    document.querySelector("#UpdateVehicleDriverList .drivers-List-checkbox").classList.toggle("Active");
 }
 
 // Add admin form branch drop down 
@@ -215,11 +219,11 @@ function drawChart() {
     IsgoogleChartsLoad = true;
     var data = google.visualization.arrayToDataTable([
         ['Task', 'Hours per Day'],
-        ['Work', 3238],
-        ['Eat', 22323],
-        ['TV', 4323],
-        ['Gym', 233],
-        ['Sleep', 8]
+        ['Kandy', 3238],
+        ['Galle', 22323],
+        ['Nugegoda', 4323],
+        ['Gampaha', 233],
+        ['Kurunegala', 8]
     ]);
 
     var options = {'title':'My Average Day',
@@ -273,7 +277,6 @@ function drawChart() {
 
 // Backend
 
-var Admins,Branches;
 
 
 
@@ -556,7 +559,7 @@ async function FilterAdmins(){
     //     method: "GET"
     // };
     //var data = await fetch(admin_url+"?"+branchID+"/"+AccType+"/"+AdminSearch);
-    var query = "branchID:"+branchID+"/"+AccType+"/"+AdminSearch;
+    // var query = "branchID:"+branchID+"/"+AccType+"/"+AdminSearch;
     var data = await fetch(admin_url+"FilterAdmin?"+new URLSearchParams({'branchID':branchID, 'AccType':AccType, 'SearchTxt':AdminSearch }));
     Admins = await data.json();
     document.querySelector("#adminTable tbody").innerHTML = "";
@@ -788,47 +791,85 @@ function DeleteBranch(){
     });
 }
 
+// Add Location
+
+async function AddLocation(){
+    var branch = document.getElementById("locationAddForm_Branch");
+    var source = document.getElementById("locationAddForm_Source");
+    var destination = document.getElementById("locationAddForm_Destination");
+    var Distance = document.getElementById("locationAddForm_Distance");
+
+    const Location = {
+        "branchID":branch.value,
+        "source":source.value,
+        "destination":destination.value,
+        "Distance":Distance.value,
+    }
+
+    const options = {
+        method: "POST",
+        headers: {
+            "content-type" : "application/json"
+        },
+        body: JSON.stringify(Location)
+    };
+
+    var response = await fetch(Location_url,options);
+
+    if(response.status == 201){
+        ShowNotification("Success", "Location added");
+    }else if(response.status == 501){
+        var msg = await response.text();
+        ShowNotification("error", response.msg);
+    }
+
+    closeModal('locationAddModal');
+
+
+}
+
+async function getLocation(){
+    var data = await fetch(Location_url);
+    Locations = await data.json();
+}
+
+async function ShowLocation(){
+    await getLocation();
+
+    document.querySelector("#locationTable tbody").innerHTML = "";
+    Array.prototype.forEach.call(Locations,(Loction => {
+  
+        document.querySelector("#locationTable tbody").innerHTML += 
+                        "<tr onclick=\"switchTabs2('updateVehicleTab');\" >\n" +
+                            "<td>"+Loction.locationID+"</td>\n" +
+                            "<td>"+Loction.BranchCity+"</td>\n" +
+                            "<td>"+Loction.source+"</td>\n" +
+                            "<td>"+Loction.destination+"</td>\n" +
+                            "<td>"+Loction.Distance+"</td>\n" +
+                  
+     
+                        "</tr>";
+
+             
+                
+    }));
+
+
+}
+
 
 // Vehicle Category
 
 // fileUpload
-async function fileUpload(imgElement,folder){
+async function fileUpload(imgElement){
     
     
     return new Promise((resolve, reject) => {
         var fileR = new FileReader();    
         fileR.onload = function(e) {
 
+            resolve(fileR.result);
 
-
-            const ImgFile = {
-                "fileLocaiton": folder,
-                "ImgBase64":e.target.result
-            }
-
-            const options = {
-                method: "POST",
-                headers: {
-                    "content-type" : "application/json"
-                },
-                body: JSON.stringify(ImgFile)
-            };
-
-            fetch(FileServerApi+"Upload",options).then((response) => {
-
-                if(response.status == 201){
-                    response.json().then((res) => {resolve(res)});
-
-
-                }else if(response.status == 501){
-                    response.json().then((res) => {
-                        ShowNotification("error", JSON.parse(res).Error);
-                        reject("");
-                    });
-
-                }
-
-            });
         };
         fileR.readAsDataURL(imgElement.files[0]);
 
@@ -840,11 +881,12 @@ async function fileUpload(imgElement,folder){
 async function addVCategory(){
     var vCateogryIcon = document.getElementById("addVCategoryModalIcon");
     var vCategoryName = document.getElementById("addVCategoryModalName");
-    var fileName = await fileUpload(vCateogryIcon,"VehicleCategory");
+    var Imgfile = await fileUpload(vCateogryIcon);
     
     const VehicleCategory = {
-        "ImageFileLocation": fileName.ImgUrl,
+        "ImageFileLocation": Imgfile,
         "CategoryName":vCategoryName.value
+        
     }
     
     
@@ -866,10 +908,588 @@ async function addVCategory(){
         }
 
     });
+   
+}
+
+async function getVCategories(){
+    var data = await fetch(VehicleCategory_url);
+    VCategories = await data.json();
+}
+
+function setVCategory(id){
+    var vCategory; 
+    for(Category of VCategories) {
+        if(Category.categoryID == id){
+            vCategory = Category;
+        }    
+    }
     
+    document.getElementById("updateVCategoryModalID").innerHTML = vCategory.categoryID;
+    document.getElementById("updateVCategoryModalImg").src = vCategory.ImageBase64;
+    document.getElementById("updateVCategoryModalName").value = vCategory.CategoryName;
+}
+
+async function ShowVCategoies(){
+    await getVCategories();
+    document.querySelector("#categoryVehicleTable tbody").innerHTML = "";
+    Array.prototype.forEach.call(VCategories,(vCategory => {
+  
+        document.querySelector("#categoryVehicleTable tbody").innerHTML += 
+                        "<tr onclick=\"openModal('updateVCategoryModal'); setVCategory("+vCategory.categoryID+") \" >\n" +
+                            "<td>"+vCategory.categoryID+"</td>\n" +
+                            "<td> <img src=\""+vCategory.ImageBase64+"\"></td>\n" +
+                            "<td>"+vCategory.CategoryName+"</td>\n" +
+                            
+                            
+                            
+                        "</tr>";
+
+             
+                
+    }));
+}
+
+async function changeCateogryImage(){
+    var categoryFileBtn = document.getElementById("updateVCategoryModalIconBtn");
+    var CategoryImgBox = document.getElementById("updateVCategoryModalImg");
+    var Imgfile = await fileUpload(categoryFileBtn);
+    CategoryImgBox.src = Imgfile;
+
+}
+
+async function updateVCategory(){
+    var categoryFileBtn = document.getElementById("updateVCategoryModalIconBtn");
+    var categoryName = document.getElementById("updateVCategoryModalName");
+    var categoryID = document.getElementById("updateVCategoryModalID").innerText;
+    var vCategory; 
+    var Imgfile ="";
+    var imgUpdated = false;
+
+    if(categoryFileBtn.files.length != 0){
+        var imgUpdated = true;
+        Imgfile = await fileUpload(categoryFileBtn);
+    }
+    
+    
+    for(Category of VCategories) {
+        if(Category.categoryID == categoryID){
+            vCategory = Category;
+        }    
+    }
+    
+
+    const VehicleCategory = {
+        "categoryID":categoryID,
+        "ImageFileLocation": vCategory.ImageFileLocation,
+        "CategoryName":categoryName.value,
+        "ImageBase64":Imgfile,
+        "ImageUpdated":imgUpdated
+        
+    }
+    
+    
+    const options = {
+        method: "PUT",
+        headers: {
+            "content-type" : "application/json"
+        },
+        body: JSON.stringify(VehicleCategory)
+    };
+    
+    
+    var response = await fetch(VehicleCategory_url, options);
+    if(response.status == 201){
+        var msg = await response.text();
+        ShowNotification("Success", msg);
+    }else if(response.status == 501){
+        ShowNotification("Error", response.statusText);
+    }
+
+}
+
+// 
+//   Vehicle ---------- Backend
+// 
+// 
+
+async function getVehicles(){
+    var data = await fetch(Vehicle_url);
+    Vehicles = await data.json();
+}
+
+
+async function DrowdownVehicleCategories(htmlID,notNull){
+    await getVCategories();
+
+    var branchDropdown = document.getElementById(htmlID);
+    branchDropdown.innerHTML ="";
+    
+
+    if(!notNull){
+        branchDropdown.innerHTML += "<option value=\"\">Select Branch</option> \n";
+    }
+    
+
+    for(vCateogry of VCategories){
+        branchDropdown.innerHTML += "<option value=\""+vCateogry.categoryID+"\">"+vCateogry.CategoryName+"</option> \n";
+    }
+
+
+}
+
+async function ShowVehicle(){
+    await getVehicles();
+    document.querySelector("#vehicleTable tbody").innerHTML = "";
+    Array.prototype.forEach.call(Vehicles,(vehicle => {
+  
+        document.querySelector("#vehicleTable tbody").innerHTML += 
+                        "<tr onclick=\"switchTabs2('updateVehicleTab'); setVehicleUpdateData('"+vehicle.PlateNumber+"'); \" >\n" +
+                            "<td>"+vehicle.PlateNumber+"</td>\n" +
+                            "<td>"+vehicle.Name+"</td>\n" +
+                            "<td class=\"vehicle-Image\"> <img src=\""+vehicle.ImageBase64+"\"></td>\n" +
+                            "<td>"+vehicle.Seat+"</td>\n" +
+                            "<td>"+vehicle.Color+"</td>\n" +
+                            "<td>"+vehicle.BranchID+"</td>\n" +
+                            "<td>"+vehicle.CategoryID+"</td>\n" +
+                            "<td>"+vehicle.Status+"</td>\n" +
+     
+                        "</tr>";
+
+             
+                
+    }));
+}
+
+
+
+function setSelectedDrivers(dropbox,listBox){
+    var drowdownBoxText = document.querySelector("#"+dropbox+" span");
+    var count = document.querySelectorAll( "#"+listBox+" input:checked");
+
+    drowdownBoxText.innerHTML =count.length+" Drivers Selected";
+
+    return count;
+}
+
+
+async function setVehicleAddData(){
+    await getDrivers();
+
+    driversLDropdown.innerHTML = "";
+    for(driver of Drivers){
+        driversLDropdown.innerHTML +=   "<label>" +
+                                            "<input type=\"checkbox\" value=\""+driver.id+"\" >" +
+                                            "<span>"+driver.Name+"</span>" +
+                                        "</label>" ;
+    }
+
+
+    DropdownBranch("addVFormVehicleBranch", true);
+    DrowdownVehicleCategories("addVFormVehicleCategory", true);
+
+
+}
+
+// Insert vehicle
+async function addVehicle(){
+    var form = document.getElementById("addVehicleForm");
+    var Simplevalid = ValidateForm(form);
+    if(!Simplevalid){
+        return;
+    }
+
+    var Drivers = getSelectedDriverArray('#addVdriverDropDBox','#addVehicleDriverList');
+    var VehicleName = document.getElementById("addVFormVehicleName");
+    var plateNum = document.getElementById("addVFormVehiclePlateNum");
+    var BranchID = document.getElementById("addVFormVehicleBranch");
+    var CategoryID = document.getElementById("addVFormVehicleCategory");
+    var Seat = document.getElementById("addVehicleNumSeats");
+    var Color = document.getElementById("addVehicleColour");
+
+    var vehicleImg = document.getElementById("addVFormVehicleImage");
+    var Imgfile = await fileUpload(vehicleImg);
+
+    const Vehicle = {
+        "Name": VehicleName.value,
+        "ImageBase64": Imgfile,
+        "Color": Color.value,
+        "PlateNumber": plateNum.value,
+        "BranchID": BranchID.value,
+        "CategoryID": CategoryID.value,
+        "Seat": Seat.value,
+        "DriverIds": Drivers,
+        "Status": "Available"
+
+    }
+
+    const options = {
+        method: "POST",
+        headers: {
+            "content-type" : "application/json"
+        },
+        body: JSON.stringify(Vehicle)
+    };
+
+    var response = await fetch(Vehicle_url, options);
+
+    if(response.status == 201){
+        ShowNotification("Success", "Driver addeed");
+    }else if(response.status == 501){
+        var errorMsg = await response.text();
+        ShowNotification("error", errorMsg);
+    }
+
+
+
+}
+// get selected Drivers
+function getSelectedDriverArray(dropbox,listBox){
+    var selected = setSelectedDrivers(dropbox,listBox);
+    var driverID = [];
+
+    for (let i = 0; i < selected.length; i++) {
+        driverID[i] = selected[i].value;
+        
+    }
+
+    return driverID;
+
+}
+
+// set vehicle data to vehicle update tab
+async function setVehicleUpdateData(PlateNumber){
+    await getVehicles();
+    var Vehicle = await Vehicles.find((driver) => driver.PlateNumber ==PlateNumber );
+    await getDrivers();
+
+    driversLUpdateDropdown.innerHTML = "";
+    for(driver of Drivers){
+        driversLUpdateDropdown.innerHTML += "<label>" +
+                                                "<input type=\"checkbox\" "+(Vehicle.DriverIds.includes(driver.id)? "checked":"")+" value=\""+driver.id+"\" >" +
+                                                "<span>"+driver.Name+"</span>" +
+                                            "</label>" ;
+    }
+
+
+    DropdownBranch("updateVFormVehicleBranch", true);
+    DrowdownVehicleCategories("updateVFormVehicleCategory", true);
+
+    document.getElementById("updateVFormVehicleName").value = Vehicle.Name;
+    document.getElementById("updateVFormVehicleImageBox").src = Vehicle.ImageBase64;
+    document.getElementById("updateVFormVehiclePlateNum").value = Vehicle.PlateNumber;
+    document.getElementById("updateVFormVehicleBranch").value = Vehicle.BranchID;
+    document.getElementById("updateVFormVehicleCategory").value = Vehicle.CategoryID;
+    document.getElementById("updateVehicleColour").value = Vehicle.Color;
+    document.getElementById("updateVehicleNumSeats").value = Vehicle.Seat;
+    document.getElementById("updateVFormVehicleStatus").value = Vehicle.Status;
+
+
+    getSelectedDriverArray('UpdateVdriverDropDBox','UpdateVehicleDriverList');
+
+}
+
+// Update Vehicle
+async function updateVehicle(){
+
+    var form = document.getElementById("updateVehicleForm");
+
+    var Simplevalid = ValidateForm(form);
+
+    if(!Simplevalid){
+        return;
+    }
+
+    var Name = document.getElementById("updateVFormVehicleName");
+    var VehicleFile = document.getElementById("updateVFormVehicleImage");
+    var PlateNumber = document.getElementById("updateVFormVehiclePlateNum");
+    var BranchID = document.getElementById("updateVFormVehicleBranch");
+    var CategoryID = document.getElementById("updateVFormVehicleCategory");
+    var Color = document.getElementById("updateVehicleColour");
+    var Seat = document.getElementById("updateVehicleNumSeats");
+    var Status = document.getElementById("updateVFormVehicleStatus");
+    const Vehicl = Vehicles.find(Vehicl => Vehicl.PlateNumber === PlateNumber.value );
+    var Drivers = getSelectedDriverArray('UpdateVdriverDropDBox','UpdateVehicleDriverList');
+
+
+    var Imgfile = "";
+    var imgUpdated = false;
+
+    if(VehicleFile.files.length != 0){
+        imgUpdated = true;
+        Imgfile = await fileUpload(VehicleFile);
+    }
+    
+
+    const Vehicle = {
+        "PlateNumber":PlateNumber.value,
+        "Name" : Name.value,
+        "ImageBase64" : Imgfile,
+        "Color" : Color.value,
+        "BranchID" : BranchID.value,
+        "CategoryID" : CategoryID.value,
+        "Seat": Seat.value,
+        "Status" : Status.value,
+        "DriverIds" : Drivers,
+        "ImagePath":Vehicl.ImagePath
+        
+    };
+    
+    
+    const options = {
+        method: "PUT",
+        headers: {
+            "content-type" : "application/json"
+        },
+        body: JSON.stringify(Vehicle)
+    };
+    
+    
+    var response = await fetch(Vehicle_url, options);
+    if(response.status == 201){
+        
+        ShowNotification("Success", "Updated Vehicle");
+    }else if(response.status == 501){
+        var msg = await response.text();
+        ShowNotification("error", msg);
+    }
+
+
+
+}
+
+async function changeVehicleImage(){
+    var filePicker = document.getElementById("updateVFormVehicleImage");
+    var ImageBase64 = await fileUpload(filePicker);
+    document.getElementById("updateVFormVehicleImageBox").src = ImageBase64;
+}
+
+
+
+
+
+// 
+//   Driver ----------------- Backend
+// 
+
+function setDataDriverModal(){
+    
+    DropdownBranch("addDriversModal_Branch", true);
     
     
 }
+
+async function getDrivers(){
+    var data = await fetch(Driver_url);
+    Drivers = await data.json();
+}
+
+
+async function addDriver(){
+
+    var form = document.querySelector("#addDriversModal > form");
+
+    var Simplevalid = ValidateForm(form);
+
+    if(!Simplevalid){
+        return;
+    }
+    
+    
+    var name = document.getElementById("addDriversModal_Name");
+    var email = document.getElementById("addDriversModal_Email");
+    var pNumber = document.getElementById("addDriversModal_Contact");
+    var address = document.getElementById("addDriversModal_address");
+    var DOB = document.getElementById("addDriversModal_DOB");
+    var branchDropdown = document.getElementById("addDriversModal_Branch");
+    var genderRB = document.getElementById("addDriversModal_Male");
+    var username = document.getElementById("addDriversModal_Username");
+    var password = document.getElementById("addDriversModal_Pass");
+
+    var driverImg = document.getElementById("addDriversModal_Img");
+    var Imgfile = await fileUpload(driverImg);
+    var gender;
+    
+    
+    if(genderRB.checked){
+        gender = "Male";
+    }else{
+        gender = "Female"
+    }
+    
+
+    const Driver = {
+        
+        "Name" : name.value,
+        "Email" : email.value,
+        "ContactNumber" : pNumber.value,
+        "Address" : address.value,
+        "DOB" : DOB.value,
+        "BranchID" : branchDropdown.value,
+        "gender": gender,
+        "username" : username.value,
+        "Imgbase64":Imgfile,
+        "password" : password.value,
+        "Status": "Available"
+        
+    };
+    
+    const options = {
+        method: "POST",
+        headers: {
+            "content-type" : "application/json"
+        },
+        body: JSON.stringify(Driver)
+    };
+
+    var response = await fetch(Driver_url, options);
+
+    if(response.status == 201){
+        ShowNotification("Success", "Driver addeed");
+    }else if(response.status == 501){
+        var errorMsg = await response.text();
+        ShowNotification("error", errorMsg);
+    }
+
+    closeModal('addDriversModal');
+    ShowDrivers();
+
+}
+
+async function setDriverData (id){
+    await DropdownBranch("updateDriversModal_Branch", true);
+    var Driver;
+    for(drive of Drivers){
+        if(drive.id == id){
+            Driver = drive;
+        }
+    }
+
+    document.getElementById("updateDriversModal_ID").innerHTML = Driver.id;
+    document.getElementById("updateDriversModal_Img").src = Driver.Imgbase64;
+    document.getElementById("updateDriversModal_Name").value = Driver.Name;
+    document.getElementById("updateDriversModal_Email").value = Driver.Email;
+    document.getElementById("updateDriversModal_Branch").value = Driver.BranchID;
+    document.getElementById("updateDriversModal_Contact").value = Driver.ContactNumber;
+    document.getElementById("updateDriversModal_DOB").value = Driver.DOB;
+    
+    document.getElementById("updateDriversModal_address").value = Driver.Address;
+    document.getElementById("updateDriversModal_Username").value = Driver.username;
+    document.getElementById("updateDriversModal_Status").value = Driver.Status;
+
+    if(Driver.gender == "Male"){
+        document.getElementById("updateDriversModal_Male").checked = true;
+
+    }else{
+        document.getElementById("updateDriversModal_Female").checked= true;
+
+    }
+
+
+}
+
+async function UpdateDriver(){
+    var updateForm = document.querySelector("#updateDriversModal form");
+    var Simplevalid = ValidateForm(updateForm);
+    if(!Simplevalid){
+        return;
+    }
+    var id = document.getElementById("updateDriversModal_ID").innerHTML;
+    var Name = document.getElementById("updateDriversModal_Name");
+    var Email = document.getElementById("updateDriversModal_Email");
+    var BranchID = document.getElementById("updateDriversModal_Branch");
+    var ContactNumber = document.getElementById("updateDriversModal_Contact");
+    var DOB = document.getElementById("updateDriversModal_DOB");
+    var gender = document.getElementById("updateDriversModal_Male");
+    var Address = document.getElementById("updateDriversModal_address");
+    var Status = document.getElementById("updateDriversModal_Status");
+    var Name = document.getElementById("updateDriversModal_Name");
+    var username = document.getElementById("updateDriversModal_Username");
+    var password = document.getElementById("updateDriversModal_Pass");
+    var driver = Drivers.find((driver) => driver.id ==id );
+    
+    var filePicker = document.getElementById("updateDriversModal_FileImg");
+    var Imgfile = "";
+    var imgUpdated = false;
+
+    if(filePicker.files.length != 0){
+        imgUpdated = true;
+        Imgfile = await fileUpload(filePicker);
+    }
+    
+    
+    
+
+    if(gender.checked){
+        gender = "Male";
+    }else{
+        gender = "Female";
+    }
+    
+
+    const Driver = {
+        "id":id,
+        "Name" : Name.value,
+        "Email" : Email.value,
+        "ContactNumber" : ContactNumber.value,
+        "Address" : Address.value,
+        "DOB" : DOB.value,
+        "BranchID" : BranchID.value,
+        "gender": gender,
+        "username" : username.value,
+        "ImgLocation":driver.ImgLocation,
+        "Imgbase64":Imgfile,
+        "password" : password.value,
+        "Status": Status.options[Status.selectedIndex].text
+        
+    };
+    
+    
+    const options = {
+        method: "PUT",
+        headers: {
+            "content-type" : "application/json"
+        },
+        body: JSON.stringify(Driver)
+    };
+    
+    
+    var response = await fetch(Driver_url, options);
+    if(response.status == 201){
+        
+        ShowNotification("Success", "Updated the driver");
+    }else if(response.status == 501){
+        var msg = await response.text();
+        ShowNotification("Error", msg);
+    }
+}
+
+
+async function ShowDrivers(){
+    await getDrivers();
+    document.querySelector("#driverTable tbody").innerHTML = "";
+    Array.prototype.forEach.call(Drivers,(driver => {
+  
+        document.querySelector("#driverTable tbody").innerHTML += 
+                        "<tr onclick=\"openModal('updateDriversModal'); setDriverData("+driver.id+"); \" >\n" +
+                            "<td>"+driver.id+"</td>\n" +
+                            "<td class=\"Driver-ProfileImage\"> <img src=\""+driver.Imgbase64+"\"></td>\n" +
+                            "<td>"+driver.Name+"</td>\n" +
+                            "<td>"+driver.Email+"</td>\n" +
+                            "<td>"+driver.username+"</td>\n" +
+                            "<td>"+driver.ContactNumber+"</td>\n" +
+                            "<td>"+driver.Address+"</td>\n" +
+                            "<td>"+driver.DOB+"</td>\n" +
+                            "<td>"+driver.BranchID+"</td>\n" +
+                            "<td>"+driver.gender+"</td>\n" +
+                            "<td>"+driver.Status+"</td>\n" +
+                            
+                        "</tr>";
+                
+    }));
+}
+
+
+
 
 
 

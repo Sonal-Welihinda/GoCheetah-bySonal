@@ -262,7 +262,7 @@
 
 #driverTable{
     margin-left: 2%;
-    
+    font-size: 24px;
     margin-right: 2%;
     background-color: antiquewhite;
     border-collapse: collapse;
@@ -272,6 +272,21 @@
     padding-left: 3px;
     text-align: start;
     border-right: 2px solid black;
+}
+
+#driverTable thead{
+    margin-bottom: 10px;
+}
+
+
+.Driver-ProfileImage{
+    width: 8%;
+}
+
+.Driver-ProfileImage img{
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
 }
 
 #driverTable th:last-of-type, #driverTable td:last-of-type{
@@ -329,6 +344,48 @@
     font-size: 20px;
 }
 
+#vehicleTable{
+    margin-left: 2%;
+    font-size: 24px;
+    margin-right: 2%;
+    background-color: antiquewhite;
+    border-collapse: collapse;
+}
+
+#vehicleTable th, #vehicleTable td{
+    padding-left: 3px;
+    text-align: start;
+    border-right: 2px solid black;
+    
+}
+
+
+
+#vehicleTable thead{
+    margin-bottom: 10px;
+}
+
+.vehicle-Image{
+    width: 30%;
+    padding-right: 3px;
+    
+}
+
+.vehicle-Image img{
+    width: 100%;
+    
+}
+
+#vehicleTable th:last-of-type, #vehicleTable td:last-of-type{
+    border: none;
+}
+
+#vehicleTable thead tr{
+    border-spacing: 30px;
+    padding-bottom: 30px;
+    margin-bottom: 20px;
+}
+
 /* 
     Drivers drop down  
     for add drivers and update drivers
@@ -381,6 +438,7 @@
     height: auto;
     transition: height 1s;
 }
+
 
 .drivers-List-checkbox label{
     display: flex;
@@ -618,6 +676,31 @@
     
 }
 
+#updateVFormVehicleImageContainer{
+    display: flex;
+    margin-right: 24%;
+    margin-top: 4.5%;
+}
+
+#updateVFormVehicleImageContainer img{
+    width: 50%;
+    
+}
+
+#updateVFormVehicleImageContainer label{
+    display: flex;
+    background-color: gainsboro;
+    padding: 1% 2%;
+    margin-top: 2%;
+    margin-left: 4%;
+    margin-bottom: auto;
+}
+
+#updateVFormVehicleImage {
+    display: none;
+}
+
+
 /* add Vehicle Form right side */
 
 #updateVehicleFormRight{
@@ -686,6 +769,7 @@
     display: flex;
     flex-direction: column;
     font-size: 36px;
+    height: 100%;
 }
 
 #categoryVehicleTab span{
@@ -706,9 +790,55 @@
 }
 
 
-#categoryVehicleTab table{
-    font-size: 24px;
+#categoryVehicleTable{
+    font-size: 40px;
+    margin-left: 2%;
+    margin-right: 2%;
+    background-color: antiquewhite;
+    border-collapse: collapse;
+    height: 100%;
+    display: inline-block;
+    overflow-y: scroll;
+    
+    
 }
+
+/* #categoryVehicleTable thead{
+    overflow-y: scroll;
+    
+} */
+
+#categoryVehicleTable tbody{
+    
+    overflow-y: scroll;
+}
+
+#categoryVehicleTable th, #categoryVehicleTable td{
+    padding-left: 3px;
+    text-align: center;
+    border-right: 2px solid black;
+    padding-right: 3px;
+}
+
+#categoryVehicleTable td:nth-child(2) {
+    width: 26%;
+    
+}
+
+#categoryVehicleTable td:nth-child(2) > img {
+    width: 100%;
+}
+
+#categoryVehicleTable th:last-of-type, #categoryVehicleTable td:last-of-type{
+    border: none;
+}
+
+#categoryVehicleTable thead tr{
+    border-spacing: 30px;
+    padding-bottom: 30px;
+    margin-bottom: 20px;
+}
+
 
 
 /* AdminTab */
@@ -1440,6 +1570,57 @@
     font-size: 3vw;
 }
 
+/* Location Tab */
+#LocationTab{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+#LocationTitle{
+    margin-top: 1%;
+    margin-left: 1%;
+}
+
+#locationToolBox{
+    display: flex;
+    justify-content: end;
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-bottom: 1%;
+    margin-top: 2%;
+}
+
+#locationToolBox button{
+    background-color: #ccc;
+    padding: .5% 2%;
+    border: none;
+    border-radius: 4px;
+}
+
+#locationTable{
+    margin-left: 2%;
+    
+    margin-right: 2%;
+    background-color: antiquewhite;
+    border-collapse: collapse;
+}
+
+#locationTable th, #locationTable td{
+    padding-left: 3px;
+    text-align: start;
+    border-right: 2px solid black;
+}
+
+#locationTable th:last-of-type, #locationTable td:last-of-type{
+    border: none;
+}
+
+#locationTable thead tr{
+    border-spacing: 30px;
+    padding-bottom: 30px;
+    margin-bottom: 20px;
+}
 
 
 /*
@@ -1630,6 +1811,31 @@
     font-size: 24px;
 }
 
+#updateDriversModalImage{
+    width: 100%;
+    display: flex;
+}
+
+#updateDriversModalImage img{
+    width: 40%;
+}
+
+
+label[for="updateDriversModal_Img"]{
+    background-color: gray;
+    margin-bottom: auto;
+    padding: 1% 2%;
+    border-radius: 2px;
+    margin-top: 8%;
+    margin-left: 8%;
+    
+}
+
+#updateDriversModal_FileImg{
+    display: none;
+}
+
+
 #updateDriversModal .modal-Body >label{
     margin-top: 2%;
 }
@@ -1739,6 +1945,90 @@
 #addVCategoryModalForm .modal-Footer input{
     margin-left: auto;
     padding: 1% 3%;
+}
+
+/* Update Vehicle Category modal */
+
+
+#updateVCategoryModalForm{
+    display: flex;
+    flex-direction: column;
+    padding: 2%;
+    height: 60%;
+    width: 40%;
+    margin-top: 2%; 
+    margin-left: auto;
+    margin-right: auto;
+    background-color: bisque;
+    
+}
+
+
+
+#updateVCategoryModalForm .modal-Header{
+    font-size: 36px;
+
+    
+}
+
+#updateVCategoryModalForm .modal-Body{
+    margin-left: 4%;
+    margin-right: 4%;
+    margin-top: 2%;
+    font-size: 26px;
+    display: flex;
+    flex-direction: column;
+    height: 80%;
+    
+}
+
+#updateVCategoryModalForm .modal-Body input,#updateVCategoryModalForm .modal-Body label{
+    font-size: 26px;
+    margin-top: 1%;
+}
+
+#updateVCategoryModalImgContainer{
+    display: flex;
+    height: 50%;
+    width: 100%;
+    
+    gap: 2%;
+}
+
+#updateVCategoryModalIconBtn{
+    display: none;
+}
+
+label[for="updateVCategoryModalIconBtn"]{
+    background-color:  #ccc;
+    
+    padding: 6px 12px;
+    
+    cursor: pointer;
+    margin-bottom: auto;
+    width: 50%;
+}
+
+#updateVCategoryModalForm .modal-Footer{
+    display: flex;
+    margin-left: 4%;
+    margin-right: 4%;
+    margin-top: auto;
+   
+}
+
+#updateVCategoryModalForm .modal-Footer input{
+    margin-left: auto;
+    padding: 1% 3%;
+}
+
+#updateVCategoryModalImg{
+    height: 100%;
+    /* width: 40%; */
+    background-color: gray;
+    
+    /* justify-self: center; */
+    
 }
 
 
@@ -2034,6 +2324,63 @@
     background-color: black;
     color: #ffc933;
 }
+
+/* Location add Modal */
+#locationAddForm{
+    display: flex;
+    flex-direction: column;
+    width: 35%;
+    height: 56%;
+    background-color: white;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2%;
+    overflow: auto;
+    border-radius: 4px;
+    font-size: 1.8vw;
+
+}
+#locationAddForm .modal-Header{
+    margin-left: 1%;
+    margin-right: 1%;
+    display: flex;
+    align-items: center;
+}
+
+#locationAddForm .modal-Header span{
+    margin-left: auto;
+}
+
+#locationAddForm .modal-Body{
+    display: flex;
+    flex-direction: column;
+    margin-left: 4%;
+    margin-right: 4%;
+    
+}
+
+#locationAddForm .modal-Body label{
+    margin-top: 2%;
+}
+
+
+#locationAddForm .modal-Body, #locationAddForm .modal-Body input, #locationAddForm .modal-Body select{
+    font-size: 24px;
+}
+
+#locationAddForm  .modal-Footer{
+    display: flex;
+}
+
+#locationAddForm  .modal-Footer input{
+    margin-left: auto;
+    font-size: 24px;
+    margin-top: 6%;
+    margin-right: 4%;
+    padding: .5% 2%;
+}
+
+
 
 
 /* update Branch modal  */

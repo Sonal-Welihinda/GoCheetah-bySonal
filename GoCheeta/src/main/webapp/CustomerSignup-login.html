@@ -4,13 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/Notification.css">
+    <link rel="stylesheet" href="css/CustomerSignup-login.css">
     <link rel="stylesheet" href="css/nav-customer.css">
     <link rel="stylesheet" href="css/footer-customer.css">
-    <link rel="stylesheet" href="css/Notification.css">
-
-
-    <title>login</title>
+    <title>Customer Login</title>
 </head>
 <body>
 
@@ -31,44 +29,56 @@
         </div>
     </div>
 
-    <!-- login screen -->
-    <div class="login-bg">
-
-        <!-- login panel -->
-        <div class="login-panel flex">
-
-            
-            <div class="login-title flex" >
-                <img src="images/logo-full.png" alt="gocheeta company logo"> 
-                <p>Login Page</p>
+    <!-- container -->
+    <div id="loginContainer">
+        <div id="loginPageImg">
+            <img src="images/logo_white.png" >
+        </div>
+        <div id="loginSignupContainer">
+            <div id="tabButtons">
+                <button onclick="loginTab();">Login</button>
+                <button onclick="signupTab();">Signup</button>
             </div>
 
-            <!-- login form -->
-            <form action="" class="login-form" id="DriverForm">
-                <label for="email">Email</label>
-                <input class="email-ip" type="text" id="Driveremail" required>
-                <label for="password">Password</label>
-                <input class="password-ip" type="text" id="Driverpassword" required>
-           
-                <input class="submitBtn" type="button" onclick="DriverLogin();" value="Login">
-            </form>
+            <div id="Tab">
+                <form action="" id="SignUp">
+                    <input type="text" placeholder="Email" required id="signupEmailIp">
+                    <input type="text" placeholder="Name" required id="signupNameIp">
+                    <textarea id="signupAddress" placeholder="Address"  rows="4"></textarea>
+                    <label for="">
+                        Gender&nbsp;
+                        <select  id="signupGender">
+                            <option value="Male" selected>Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                    </label>
+                    <input type="text" placeholder="Mobile Number" id="signupMobileNumber" required>
+                    <input type="password" placeholder="Password" required id="signupPassword">
+                    
+                    <button type="button" onclick="Register();">Sign up</button>
+                </form>
 
+                <form action="" id="login" class="Active">
+                    <label for="loginPhoneNumber">Mobile Phone Number</label>
+                    <input type="text" id="loginPhoneNumber" required >
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" required>
+
+                    <button type="button" onclick="loginCustomer();">Login</button>
+                </form>
+
+                <form action="" id="verifyCode">
+                    <div>
+                        <h2>Verification</h2>
+                        <p>We have send One time password to your Number</p>
+                        <input type="text" id="otpCodeIP" placeholder="OTP ex: 23032">
+                        <input type="button" value="Verify">
+                    </div>
+                </form>
+            </div>
             
-            <!-- create new account 
-            <div class="createAccBtn flex" >
-                <div>
-                    Create Account 
-                    <img src="images/person_add.svg" alt="Create Account">
-                    <img src="images/chevron_right.svg" alt="Create button">
-                </div>
-            </div> -->
         </div>
-
     </div>
-
-
-    
-
 
 
 
@@ -122,10 +132,8 @@
         </div>
     </div>
 
-
-
     <!-- <script src="nav.js"></script> -->
     <script src="js/Notification.js"></script>
-    <script src="js/driverLogin.js"></script>
+    <script src="js/CustomerSignup-login.js"></script>
 </body>
 </html>

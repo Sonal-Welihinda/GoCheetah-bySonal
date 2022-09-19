@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/Driver.css">
+    <link rel="stylesheet" href="css/Driver.css">
     <title>Drivers</title>
 </head>
 <body>
@@ -16,7 +16,7 @@
         </div>
 
         <div class="username-profile">
-            <img src="/images/person_black_fill.svg" alt="profile icon">
+            <img src="images/person_black_fill.svg" alt="profile icon">
             <span>Sonal </span>
 
         </div>
@@ -25,45 +25,45 @@
 
     <div id="Tabs">
 
-        <div id="DriverDashboardTab">
+        <div id="DriverDashboardTab" >
             <div class="Title">
                 <h1>Profile</h1>
-                <h1>Welcome Sonal</h1>
+                <h1 id="titleName">Welcome Sonal</h1>
             </div>
 
             <div class="Tab-Body">
                 <div>
-                    <label for="">Customer name</label>
-                    <p >Sonal </p>
+                    <label for="CustormerName">Customer name</label>
+                    <p id="CustormerName">Sonal </p>
 
-                    <label for="">Pick up</label>
-                    <textarea rows="6" readonly>49 Old Moor Street, 12 Colombo 49 Old Moor Street, 12 Colombo</textarea>
+                    <label for="PickupLocation">Pick up</label>
+                    <textarea id="PickupLocation" rows="6" readonly>49 Old Moor Street, 12 Colombo 49 Old Moor Street, 12 Colombo</textarea>
 
-                    <label for="">Drop off</label>
-                    <textarea rows="6" readonly>49 Old Moor Street, 12 Colombo 49 Old Moor Street, 12 Colombo</textarea>
+                    <label for="dropoffLocation">Drop off</label>
+                    <textarea id="dropoffLocation" rows="6" readonly>49 Old Moor Street, 12 Colombo 49 Old Moor Street, 12 Colombo</textarea>
                 </div>
 
                 <div>
-                    <label for="">Trip ID</label>
-                    <p >234342 </p>
+                    <label for="BookingID">Trip ID</label>
+                    <p id="BookingID">234342 </p>
 
-                    <label for="">Time</label>
-                    <p >
+                    <label for="BookingDateTime">Date and Time</label>
+                    <p id="BookingDateTime">
                         01.02pm
                     </p>
 
-                    <label for="">Price</label>
-                    <p >
+                    <label for="BookingPrice">Price</label>
+                    <p id="BookingPrice">
                         Rs: 2000
                     </p>
 
-                    <label for="">Status</label>
-                    <p >
+                    <label for="BookingStatus">Status</label>
+                    <p id="BookingStatus">
                         Picking up
                     </p>
 
-                    <label for=""><img src="/images/phone_black_fill.svg" alt="phone"></label>
-                    <p >
+                    <label for="BookingCustomerNumber"><img src="images/phone_black_fill.svg" alt="phone"></label>
+                    <p id="BookingCustomerNumber">
                         011 222 2222
                     </p>
                 </div>
@@ -71,8 +71,8 @@
 
 
             <div class="Tab-Footer">
-                <button>Cancel Trip</button>
-                <button>Picked Up</button>
+                <button type="button" onclick="CancelBooking();">Cancel Trip</button>
+                <button type="button" onclick="FinishTrip();">Finish Trip</button>
             </div>
             
         </div>
@@ -85,7 +85,7 @@
 
             <form id="profileForm">
                 <div id="profileFormPicContainer">
-                    <img src="/images/person_black_fill.svg" alt="" id="profilePic">
+                    <img src="images/person_black_fill.svg" alt="" id="profilePic">
                     <button >Change profile picture</button>
                 </div>
 
@@ -120,7 +120,7 @@
     </div>
 
 
-    <script src="/js/Driver.js"></script>
+    <script src="js/Driver.js"></script>
     
 </body>
 </html>
