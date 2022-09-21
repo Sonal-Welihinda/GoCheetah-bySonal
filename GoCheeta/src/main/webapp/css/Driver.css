@@ -20,17 +20,30 @@
 }
 
 .nav-Bar  .username-profile{
-    flex: 1;
-    display: flex;
+    display: block;
     align-items: center;
     color: white;
+    position: relative;
     font-size: 1.8vw;
     font-weight: 600;
     justify-content: end;
     width: auto;
     margin-right: 1%;
+    margin-left: auto;
+    margin-top: auto;
+    margin-bottom: auto;
     
-    
+    height: 100%;
+}
+.username-profile div:first-child{
+    display: flex;
+    font-size: 2.2vw;
+    font-weight: 600;
+    margin-top: auto;
+    margin-bottom: auto;
+    align-items: center;
+    height: 100%;
+    gap: 10px;
 }
 
 .nav-Bar  .username-profile img{
@@ -38,9 +51,41 @@
     border-width: 2px;
     border-style: solid;
     border-radius: 50%;
-    margin-right: 1%;
-    height: 60%;
+   
+    height: 70%;
+    
+    
 }
+
+/* hover menu */
+#menuButtons{
+    position: absolute;
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 3;
+    width: 100%;
+    background-color: rgb(225, 225, 225);
+    padding: 6% 3%;
+    
+}
+
+.username-profile:hover #menuButtons, #menuButtons:hover {
+    display: inline-block;
+}
+
+#menuButtons button{
+    display: block;
+    margin-top: 4px;
+    padding: 2% 3%;
+    font-size: 18px;
+    width: 100%;
+    background-color: black;
+    color: white;
+    font-weight: 600;
+}
+
+
 
 #Tabs{
     
@@ -152,9 +197,13 @@
 */
 
 #DriverDashboardTab{
-    display: flex;
+    display: none;
     flex-direction: column;
     
+}
+
+#DriverDashboardTab.Active{
+    display: flex;
 }
 
 #DriverDashboardTab .Title{
@@ -237,6 +286,131 @@
     border: none;
     color: white;
 }
+
+
+
+
+
+/* Modal  */
+.Modal{
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background-color:rgba(0, 0, 0, 0.4);;
+    opacity: 0.99;
+    height: 100%; 
+    overflow: auto;
+}
+
+.Modal.Active{
+    display: flex !important;
+}
+
+
+/* password change */
+#PasswordChangeForm{
+    display: flex;
+    flex-direction: column;
+    width: 35%;
+    height: 46%;
+    background-color: white;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2%;
+    overflow: auto;
+    border-radius: 4px;
+    font-size: 1.8vw;
+
+}
+#PasswordChangeForm .modal-Header{
+    margin-left: 1%;
+    margin-right: 1%;
+    display: flex;
+    align-items: center;
+}
+
+#PasswordChangeForm .modal-Header span{
+    margin-left: auto;
+}
+
+#PasswordChangeForm .modal-Body{
+    display: flex;
+    flex-direction: column;
+    margin-left: 4%;
+    margin-right: 4%;
+    
+}
+
+#PasswordChangeForm .modal-Body label{
+    margin-top: 2%;
+}
+
+
+#PasswordChangeForm .modal-Body, #PasswordChangeForm .modal-Body input, #PasswordChangeForm .modal-Body select{
+    font-size: 24px;
+}
+
+#PasswordChangeForm  .modal-Footer{
+    display: flex;
+}
+
+#PasswordChangeForm  .modal-Footer input{
+    margin-left: auto;
+    font-size: 24px;
+    margin-top: 6%;
+    margin-right: 4%;
+    padding: .5% 2%;
+}
+
+
+/* History booking */
+#TripHistoryTab{
+    display: none;
+    flex-direction: column;
+}
+
+#TripHistoryTab.Active{
+    display: flex;
+}
+
+#TripTitle{
+    font-size: 2vw;
+    margin-top: 1%;
+    margin-left: 1%;
+}
+
+
+
+#BookingHistoryList{
+    overflow: auto;
+    height: 100%;
+    margin-left: 4%;
+    margin-right: 4%;
+}
+
+.Item-HistoryBooking{
+    margin-top: 1%;
+}
+
+.Item-HistoryBooking{
+    background-color: gray;
+    font-size: 2vw;
+    padding: 1%;
+}
+
+.Trip-Id-Price{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1%;
+}
+
+
+
 
 
 @media only screen and (max-width: 768px) {

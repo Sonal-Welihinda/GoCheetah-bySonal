@@ -30,7 +30,9 @@ async function DriverLogin(){
         
         document.cookie = "DriverID="+driverData.id;
         document.cookie = "DriverName="+driverData.Name;
-        ShowNotification("Success", "Success fully loged in redirecting....");
+        document.cookie = "DriverEmail="+driverData.Email;
+        document.cookie = "DriverPassword="+driverData.password;
+        ShowNotification("Success", "Successfully loged in redirecting....");
         setTimeout(()=>{
             window.location.href = "Driver.html";
         },2000);

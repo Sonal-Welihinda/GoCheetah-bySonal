@@ -7,9 +7,20 @@
     <link rel="stylesheet" href="css/login.css">
     <link rel="stylesheet" href="css/nav-customer.css">
     <link rel="stylesheet" href="css/footer-customer.css">
-    <title>login</title>
+    <link rel="stylesheet" href="css/Notification.css">
+    <title>Admin login</title>
 </head>
 <body>
+
+    <div id="AlertBox" onmouseover="mouseOverAlert();" onmouseout="mouseOutAlert();">
+        <img src="images/green-checkmark-icon.svg" alt="alert icon" id="AlertIcon">
+        <p id="AlertMsg">
+            
+        </p>
+
+        <img src="images/close.svg" id="AlertCloseBtn">
+
+    </div>
 
     <!-- nav bar v1 -->
     <div class="nav-bar flex">
@@ -27,28 +38,20 @@
             
             <div class="login-title flex" >
                 <img src="images/logo-full.png" alt="gocheeta company logo"> 
-                <p>Login Page</p>
+                <p>Admin Login Page</p>
             </div>
 
             <!-- login form -->
-            <form action="" class="login-form">
+            <form action="" class="login-form" id="AdminForm">
                 <label for="email">Email</label>
-                <input class="email-ip" type="text" id="email">
+                <input class="email-ip" type="text" id="Adminemail" required>
                 <label for="password">Password</label>
-                <input class="password-ip" type="text" id="password">
+                <input class="password-ip" type="text" id="Adminpassword" required>
            
-                <input class="submitBtn" type="button" value="Login">
+                <input class="submitBtn" type="button" value="Login" onclick="AdminLogin()">
             </form>
 
-            
-            <!-- create new account  -->
-            <div class="createAccBtn flex">
-                <div>
-                    Create Account 
-                    <img src="images/person_add.svg" alt="Create Account">
-                    <img src="images/chevron_right.svg" alt="Create button">
-                </div>
-            </div>
+        
         </div>
 
     </div>
@@ -111,6 +114,8 @@
 
 
 
-    <script src="nav.js"></script>
+    <!-- <script src="nav.js"></script> -->
+    <script src="js/loginAdmin.js"></script>
+    <script src="js/Notification.js"></script>
 </body>
 </html>

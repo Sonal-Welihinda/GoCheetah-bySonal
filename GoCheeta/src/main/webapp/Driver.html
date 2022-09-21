@@ -5,9 +5,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/Driver.css">
+    <link rel="stylesheet" href="css/Notification.css">
     <title>Drivers</title>
 </head>
 <body>
+
+    <div id="AlertBox" onmouseover="mouseOverAlert();" onmouseout="mouseOutAlert();">
+        <img src="images/green-checkmark-icon.svg" alt="alert icon" id="AlertIcon">
+        <p id="AlertMsg">
+            
+        </p>
+
+        <img src="images/close.svg" id="AlertCloseBtn">
+
+    </div>
 
     <!-- Nav bar Drivers -->
     <nav class="nav-Bar">
@@ -16,8 +27,16 @@
         </div>
 
         <div class="username-profile">
-            <img src="images/person_black_fill.svg" alt="profile icon">
-            <span>Sonal </span>
+            <div>
+                <img src="images/person_black_fill.svg" alt="profile icon" id="navUserImg">
+                <span id="navUserName">Sonal </span>
+            </div>
+            
+            <div id="menuButtons">
+                <button onclick="ProfileTab();">Profile</button>
+                <button onclick="DriverDashboard();">Current Trip</button>
+                <button onclick="DriverBookingHistory();">History Trip</button>
+            </div>
 
         </div>
 
@@ -25,7 +44,7 @@
 
     <div id="Tabs">
 
-        <div id="DriverDashboardTab" >
+        <div id="DriverDashboardTab" class="Activee" >
             <div class="Title">
                 <h1>Profile</h1>
                 <h1 id="titleName">Welcome Sonal</h1>
@@ -91,8 +110,11 @@
 
                 <label for="profileFormName">Name</label>
                 <input type="text" id="profileFormName" readonly="true">
-                <label for="profileFormName">Contact Number</label>
-                <input type="text" id="profileFormName" readonly>
+                <label for="profileFormNumber">Contact Number</label>
+                <input type="text" id="profileFormNumber" readonly>
+                <label for="profileFormDOB">Date of Birth</label>
+                <input type="date" id="profileFormDOB" readonly>
+
                 <label for="profileFormAddress">Address</label>
                 <textarea id="profileFormAddress" rows="10" readonly></textarea>
 
@@ -107,20 +129,77 @@
                 <label for="profileFormUName">Username</label>
                 <input type="text" id="profileFormUName" readonly>
 
-                <button >Change Password</button>
+                <button type="button" onclick="openModal('PasswordChangeModal');">Change Password</button>
                 
 
                 <div id="profileFormButtons">
                     <button type="button" onclick="EnableEditProfile();" >Cancel</button>
-                    <button type="submit" >Update Profile</button>
+                    <button type="button" >Update Profile</button>
                 </div>
             </form>
+        </div>
+
+
+        <div id="TripHistoryTab">
+            <div id="TripTitle">
+                Booking History
+            </div>
+            <div id="BookingHistoryList">
+                <div class="Item-HistoryBooking">
+                    <p class="travel-destination">source - destination </p>
+
+                    <div class="Trip-Id-Price">
+                        <p>trip id 2333 </p>
+                        <p>Rs : 2002</p>
+                    </div>
+                </div>
+
+            </div>
 
         </div>
+
+        <div id="BookingtoAcceptTab">
+
+        </div>
+
+    </div>
+
+
+    <!-- Modal -->
+
+    <div id="PasswordChangeModal" class="Modal">
+        <form action="" id="PasswordChangeForm">
+            <div class="modal-Header">
+                Change Password
+
+                <span class="close">
+                    &#10006;
+
+                </span>
+            </div>
+
+            <div class="modal-Body">
+                <label for="PasswordChangeForm_CuurentPass">Current password</label>
+                <input type="password" id="PasswordChangeForm_CuurentPass" required>
+
+                <label for="PasswordChangeForm_NewPass">New password</label>
+                <input type="password" id="PasswordChangeForm_NewPass" required>
+
+                <label for="PasswordChangeForm_ReEnterPass">Re-enter password</label>
+                <input type="password" id="PasswordChangeForm_ReEnterPass" required>
+            </div>
+
+
+            <div class="modal-Footer">
+                <input type="button" value="Change Password" onclick="ChangePassword();">
+            </div>
+
+        </form>
     </div>
 
 
     <script src="js/Driver.js"></script>
+    <script src="js/Notification.js"></script>
     
 </body>
 </html>
