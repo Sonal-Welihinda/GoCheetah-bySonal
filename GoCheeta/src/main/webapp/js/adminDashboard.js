@@ -1595,7 +1595,7 @@ async function getBookingSales(){
 
 function copyPass(input){
     var password = input.value;
-    navigator.clipboard.writeText(password.value);
+    navigator.clipboard.writeText(password);
 }
 
 
