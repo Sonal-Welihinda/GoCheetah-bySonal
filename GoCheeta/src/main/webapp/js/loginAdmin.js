@@ -8,8 +8,8 @@ async function AdminLogin(){
     var passwordIp = document.getElementById("Adminpassword");
 
     const Admin = {
-        "email":EmailIp.value,
-        "password":passwordIp.value
+        "Email":EmailIp.value,
+        "Password":passwordIp.value
     }
 
     const options = {

@@ -371,6 +371,101 @@
     margin-bottom: 1%;
 }
 
+/* Active Booking tab */
+#ActiveBooking #ActiveBKTitle{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-top: 1%;
+}
+
+#ActiveBooking{
+    display: none;
+}
+
+#ActiveBooking.Active{
+    display: block;
+}
+
+#ActiveBKTitle{
+    font-size: 30px;
+    font-weight: 600;
+}
+
+
+#ActiveBooking .Tab-Body{
+    display: flex;
+    flex-direction: row;
+    margin-left: 2%;
+    margin-right: 2%;
+    gap: 2%;
+}
+
+#ActiveBooking .Tab-Body div{
+    flex: 1;
+}
+
+#ActiveBooking .Tab-Body div label,#ActiveBooking .Tab-Body div p{
+    font-size: 2vw;
+}
+
+#ActiveBooking .Tab-Body div textarea{
+    font-size: 2vw;
+    height: 6em;
+    resize: none;
+}
+
+#ActiveBooking .Tab-Body div:first-child{
+    display: grid;
+    grid-template-columns: auto auto;
+    
+    
+}
+
+#ActiveBooking .Tab-Body div:first-child p, #ActiveBooking .Tab-Body div:first-child textarea{
+    margin-bottom: 4%;
+}
+
+#ActiveBooking .Tab-Body div:last-child{
+    margin-left: 4%;
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: start;
+    column-gap: 4%;
+    
+}
+
+
+
+#ActiveBooking .Tab-Footer {
+    display: flex;
+    justify-content: end;
+    margin-left: 4%;
+    margin-right: 4%;
+    margin-top: 4%;
+    gap: 2%;
+}
+
+#ActiveBooking .Tab-Footer button{
+    padding: 1% 4%;
+    font-size: 2vw;
+    font-weight: 600;
+}
+
+#ActiveBooking .Tab-Footer button:first-child{
+    background-color: rgb(201, 201, 201);
+    color: rgb(214, 0, 0);
+    border-color: rgb(214, 0, 0);
+    border-style: solid;
+}
+
+#ActiveBooking .Tab-Footer button:last-child{
+    background: rgb(56, 133, 56);
+    border: none;
+    color: white;
+}
 
 
 
@@ -605,6 +700,53 @@
         justify-content: space-between;
         margin-top: 4%;
     }
+
+    /* cuurent trip */
+
+    #ActiveBooking #ActiveBKTitle{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+
+    #ActiveBooking .Tab-Body{
+        flex-direction: column;
+        
+    }
+
+    #ActiveBooking .Tab-Body div label,#ActiveBooking .Tab-Body div p{
+        font-size: 4vw;
+    }
+
+    #ActiveBooking .Tab-Body div textarea{
+        font-size: 4vw;
+        height: 5em;
+    }
+
+    #ActiveBooking .Tab-Body div:first-child{
+        flex: 1;
+
+    }
+
+    #ActiveBooking .Tab-Body div:last-child{
+        flex: 1;
+        margin-left: 0%;
+        margin-top: 2%;
+        display: grid;
+        grid-template-columns: auto auto;
+        justify-content: stretch;
+        
+    }
+
+    #ActiveBooking .Tab-Body div:last-child p{
+        margin-bottom: 4%;
+    }
+
+    #ActiveBooking .Tab-Footer button{
+        font-size: 4vw;margin-top: 4%;
+    }
+    
+    
 
 
 }

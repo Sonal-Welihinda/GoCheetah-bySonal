@@ -41,10 +41,10 @@
                 <button onclick="switchTabs('categoryVehicleTab', this);">Vehicel Category</button>
             </div> -->
             <button onclick="switchTabs('FAQTab',this);"><img src="images/faqs-icon.svg" alt="FAQ icon"> <span>FAQ</span></button>
-            <button onclick="switchTabs('BookingsTab',this);"><img src="images/booking-icon.svg" alt="driver icon"> <span>Booking</span></button>
+            <button onclick="switchTabs('BookingsTab',this); getBookings();"><img src="images/booking-icon.svg" alt="driver icon"> <span>Booking</span></button>
             <button onclick="switchTabs('InquiriesTab',this);"><img src="images/Inquiry.svg" alt="Inquiries icon"> <span>Inquiries</span></button>
             <button onclick="switchTabs('BranchesTab',this);  ShowBranches();"><img src="images/Branch-icon.svg" alt="Branch icon"> <span>Branch</span></button>
-            <button onclick="switchTabs('SalesTab',this); ShowSales();" ><img src="images/financial-growth-icon.svg" alt="Sales icon"> <span>Sales</span></button>
+            <button onclick="switchTabs('SalesTab',this); ShowSales(); getBookingSales();" ><img src="images/financial-growth-icon.svg" alt="Sales icon"> <span>Sales</span></button>
             <button onclick="switchTabs('LocationTab',this);  ShowLocation();" ><img src="images/location_black_fill.svg" alt="Sales icon"> <span>Locations</span></button>
         </div>
 
@@ -284,7 +284,10 @@
                             <input type="number" min="1" id="addVehicleNumSeats" required>
 
                             <label for="addVehicleColour">Colour</label>
-                            <input type="text" min="1" id="addVehicleColour" required>
+                            <input type="text" id="addVehicleColour" required>
+
+                            <label for="addVehicleBaseFare">Base fare</label>
+                            <input type="number" id="addVehicleBaseFare" required>
                         </div>
                     </div>
                     
@@ -325,6 +328,9 @@
     
                             <label for="updateVFormVehiclePlateNum">Plate Number</label>
                             <input type="text" id="updateVFormVehiclePlateNum" required readonly>
+
+                            <label for="updateVehicleBaseFee">Base Fare</label>
+                            <input type="number" id="updateVehicleBaseFee" required>
     
                             <label for="drivers-dropDown">Drivers</label>
                             <div class="drivers-dropDown-box" onclick="VUpdatedriversDropdown(); setSelectedDrivers('UpdateVdriverDropDBox','UpdateVehicleDriverList');" id="UpdateVdriverDropDBox">
@@ -376,6 +382,7 @@
 
                             <label for="updateVehicleColour">Colour</label>
                             <input type="text" min="1" id="updateVehicleColour" required>
+                            
 
                             <label for="updateVFormVehicleStatus">Status</label>
                             <select name="VehicleStatus" id="updateVFormVehicleStatus">
@@ -567,7 +574,7 @@
                             <input type="text" id="addAdminFormUsername" required>
     
                             <label for="addAdminFormPassword" id="addAdminFormPasswordLabel">Password <img src="images/passGen_24dp.svg" alt="pass gen icon" onclick="genPassword('addAdminFormPassword');"></label>
-                            <input type="password" id="addAdminFormPassword" required>
+                            <input type="password" id="addAdminFormPassword" onclick="copyPass(this);" required>
                             
                         </div>
                     </div>
@@ -633,7 +640,7 @@
                             <input type="text" id="updateAdminFormUsername" required>
     
                             <label for="updateAdminFormPassword" id="updateAdminFormPasswordLabel">Password <img src="images/passGen_24dp.svg" alt="pass gen icon" onclick="genPassword('updateAdminFormPassword');"></label>
-                            <input type="text" id="updateAdminFormPassword" >
+                            <input type="text" id="updateAdminFormPassword" onclick="copyPass(this);" >
                             
                         </div>
                     </div>
@@ -911,10 +918,10 @@
 
                     <div id="salesStatistics">
 
-                        <div>
+                        <!-- <div>
                             <p id="salesTotalTrip">2,000,000</p>
                             <label for="salesTotalTrip">Total Trip</label>
-                        </div>
+                        </div> -->
 
                         <div>
                             <p id="salesTotalSales">2,000,000</p>
@@ -1039,7 +1046,7 @@
                 </div>
 
                 <div id="addDriversModal_PwContainer">
-                    Password&nbsp;&nbsp;:&nbsp;<input type="password" id="addDriversModal_Pass" required> <img src="images/passGen_24dp.svg" alt="Password gen " onclick="genPassword('addDriversModal_Pass');">
+                    Password&nbsp;&nbsp;:&nbsp;<input type="password" id="addDriversModal_Pass" onclick="copyPass(this);" required> <img src="images/passGen_24dp.svg" alt="Password gen " onclick="genPassword('addDriversModal_Pass');">
                 </div>
 
 
@@ -1130,7 +1137,7 @@
                 </div>
 
                 <div id="updateDriversModal_PwContainer">
-                    Password&nbsp;&nbsp;:&nbsp;<input type="password" id="updateDriversModal_Pass"> <img src="images/passGen_24dp.svg" alt="Password gen " onclick="genPassword('updateDriversModal_Pass');">
+                    Password&nbsp;&nbsp;:&nbsp;<input type="password" onclick="copyPass(this);" id="updateDriversModal_Pass"> <img src="images/passGen_24dp.svg" alt="Password gen " onclick="genPassword('updateDriversModal_Pass');">
                 </div>
 
 
@@ -1298,8 +1305,8 @@
                 </div>
 
                 <div >
-                    <label for="bkDeetsModalTime">Time : </label>
-                    <span id="bkDeetsModalTime" >24:24:23:24</span>
+                    <label for="bkDeetsModalPrice">Price : </label>
+                    <span id="bkDeetsModalPrice" >24:24:23:24</span>
                     
                 </div>
 
@@ -1330,6 +1337,12 @@
                     <label for="bkDeetsModalC_Pnum">Customer Phone Number :</label>
                     <span id="bkDeetsModalC_Pnum">1234567889</span>
                 </div>
+
+                <div>
+                    <label for="bkDeetsModalDriver">Driver name :</label>
+                    <span id="bkDeetsModalDriver">123/4 testnamefdsfddsf testCity 20202 test2</span>
+                </div>
+
 
                 <div>
                     <label for="bkDeetsModalPickupL">Pickup location :</label>

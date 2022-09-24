@@ -20,9 +20,10 @@ const VehicleCategory_url ="http://localhost:8080/GoCheeta-Server/Vehicle/Catego
 const Vehicle_url ="http://localhost:8080/GoCheeta-Server/Vehicle/";
 const Driver_url ="http://localhost:8080/GoCheeta-Server/Drtver/";
 const Location_url ="http://localhost:8080/GoCheeta-Server/Location/";
+const Booking_url =  "http://localhost:8080/GoCheeta-Server/Booking/";
 
 // Backend
-var Admins,Branches,VCategories,Vehicles,Drivers,Locations;
+var Admins,Branches,VCategories,Vehicles,Drivers,Locations,Bookings,BookingSales;
 
 
 
@@ -217,14 +218,27 @@ function ShowSales(){
 
 function drawChart() {
     IsgoogleChartsLoad = true;
-    var data = google.visualization.arrayToDataTable([
-        ['Task', 'Hours per Day'],
-        ['Kandy', 3238],
-        ['Galle', 22323],
-        ['Nugegoda', 4323],
-        ['Gampaha', 233],
-        ['Kurunegala', 8]
-    ]);
+
+    var ChartArray = new Array();
+
+    if(BookingSales != null){
+        ChartArray.push(['Sales', 'For Each Branch']);
+        for(var BSales of BookingSales){
+            
+            ChartArray.push([BSales.BranchName,BSales.price]);
+        }
+
+    }else{
+        ChartArray.push(['Task', 'Hours per Day']);
+        ChartArray.push(['Kandy', 3238]);
+        ChartArray.push(['Galle', 22323]);
+        ChartArray.push(['Nugegoda', 4323]);
+        ChartArray.push(['Gampaha', 233]);
+        ChartArray.push(['Kurunegala', 8]);
+    }
+    
+
+    var data = google.visualization.arrayToDataTable(ChartArray);
 
     var options = {'title':'My Average Day',
                     width: SalesPiechart.clientWidth,
@@ -295,6 +309,12 @@ function getCookie(cname) {
 
 
 function SetupAdminPanel(){
+    var AdminID = getCookie("AdminID");
+    if(AdminID == null|| AdminID == ""){
+        window.location.href = "loginAdmin.html";
+    }
+    
+
     var AccType = getCookie("AdminType");
 
     if(AccType =="BranchAdmin"){
@@ -309,21 +329,21 @@ function SetupAdminPanel(){
 function setAdminData(id){
     var admin; 
     for(adm of Admins) {
-        if(adm.id == id){
+        if(adm.Id == id){
             admin = adm;
         }    
     }
     
     document.getElementById("updateAdminFormID").innerHTML = id;
-    document.getElementById("updateAdminFormName").value = admin.name;
-    document.getElementById("updateAdminFormEmail").value = admin.email;
-    document.getElementById("updateAdminFormPNum").value = admin.phoneNumber;
-    document.getElementById("updateAdminFormAddress").value = admin.address;
+    document.getElementById("updateAdminFormName").value = admin.Name;
+    document.getElementById("updateAdminFormEmail").value = admin.Email;
+    document.getElementById("updateAdminFormPNum").value = admin.PhoneNumber;
+    document.getElementById("updateAdminFormAddress").value = admin.Address;
     document.getElementById("updateAdminFormDOB").value = admin.DOB;
     document.getElementById("updateAdminAccType").value = admin.AccType;
     document.getElementById("updateAdminAccType").onchange();
-    document.getElementById("updateAdminFormPassword").value = admin.password;
-    if(admin.gender == "Male"){
+    document.getElementById("updateAdminFormPassword").value = admin.Password;
+    if(admin.Gender == "Male"){
         document.getElementById("updateAdminFormMale").checked = true;
     }else{
         document.getElementById("updateAdminFormFemale").checked = true;
@@ -386,16 +406,16 @@ function addAdmin(){
 
     const admin = {
         
-        "name" : name.value,
-        "email" : email.value,
-        "phoneNumber" : pNumber.value,
-        "address" : address.value,
+        "Name" : name.value,
+        "Email" : email.value,
+        "PhoneNumber" : pNumber.value,
+        "Address" : address.value,
         "DOB" : DOB.value,
         "AccType" : AccType.value,
         "branch" : branch,
-        "gender": gender,
+        "Gender": gender,
         "username" : username.value,
-        "password" : password.value
+        "Password" : password.value
         
     };
     
@@ -429,17 +449,17 @@ async function getAdmins(){
     document.querySelector("#adminTable tbody").innerHTML = "";
     Array.prototype.forEach.call(Admins,(admin => {
         document.querySelector("#adminTable tbody").innerHTML += 
-                        "<tr onclick=\"switchTabs2('updateAdminTab'); setAdminData("+admin.id+");\" >\n" +
-                            "<td>"+admin.id+"</td>\n" +
-                            "<td>"+admin.name+"</td>\n" +
+                        "<tr onclick=\"switchTabs2('updateAdminTab'); setAdminData("+admin.Id+");\" >\n" +
+                            "<td>"+admin.Id+"</td>\n" +
+                            "<td>"+admin.Name+"</td>\n" +
                             "<td>"+admin.username+"</td>\n" +
-                            "<td>"+admin.email+"</td>\n" +
-                            "<td>"+admin.phoneNumber+"</td>\n" +
-                            "<td>"+admin.address+"</td>\n" +
+                            "<td>"+admin.Email+"</td>\n" +
+                            "<td>"+admin.PhoneNumber+"</td>\n" +
+                            "<td>"+admin.Address+"</td>\n" +
                             "<td>"+admin.DOB+"</td>\n" +
                             "<td>"+admin.AccType+"</td>\n" +
                             "<td>"+admin.branch+"</td>\n" +
-                            "<td>"+admin.gender+"</td>\n" +
+                            "<td>"+admin.Gender+"</td>\n" +
                             
                         "</tr>";
                 
@@ -491,16 +511,16 @@ async function UpdateAdmin(){
     
     const admin = {
         "id" : id,
-        "name" : name.value,
-        "email" : email.value,
-        "phoneNumber" : pNumber.value,
-        "address" : address.value,
+        "Name" : name.value,
+        "Email" : email.value,
+        "PhoneNumber" : pNumber.value,
+        "Address" : address.value,
         "DOB" : DOB.value,
         "AccType" : AccType.value,
         "branch" : branch,
-        "gender": gender,
+        "Gender": gender,
         "username" : username.value,
-        "password" : password.value
+        "Password" : password.value
         
     };
     
@@ -590,17 +610,17 @@ async function FilterAdmins(){
     document.querySelector("#adminTable tbody").innerHTML = "";
     Array.prototype.forEach.call(Admins,(admin => {
         document.querySelector("#adminTable tbody").innerHTML += 
-                        "<tr onclick=\"switchTabs2('updateAdminTab'); setAdminData("+admin.id+");\" >\n" +
-                            "<td>"+admin.id+"</td>\n" +
-                            "<td>"+admin.name+"</td>\n" +
+                        "<tr onclick=\"switchTabs2('updateAdminTab'); setAdminData("+admin.Id+");\" >\n" +
+                            "<td>"+admin.Id+"</td>\n" +
+                            "<td>"+admin.Name+"</td>\n" +
                             "<td>"+admin.username+"</td>\n" +
-                            "<td>"+admin.email+"</td>\n" +
-                            "<td>"+admin.phoneNumber+"</td>\n" +
-                            "<td>"+admin.address+"</td>\n" +
+                            "<td>"+admin.Email+"</td>\n" +
+                            "<td>"+admin.PhoneNumber+"</td>\n" +
+                            "<td>"+admin.Address+"</td>\n" +
                             "<td>"+admin.DOB+"</td>\n" +
                             "<td>"+admin.AccType+"</td>\n" +
                             "<td>"+admin.branch+"</td>\n" +
-                            "<td>"+admin.gender+"</td>\n" +
+                            "<td>"+admin.Gender+"</td>\n" +
                             
                         "</tr>";
                 
@@ -1130,6 +1150,7 @@ async function addVehicle(){
     var CategoryID = document.getElementById("addVFormVehicleCategory");
     var Seat = document.getElementById("addVehicleNumSeats");
     var Color = document.getElementById("addVehicleColour");
+    var baseFare = document.getElementById("addVehicleBaseFare");
 
     var vehicleImg = document.getElementById("addVFormVehicleImage");
     var Imgfile = await fileUpload(vehicleImg);
@@ -1143,6 +1164,7 @@ async function addVehicle(){
         "CategoryID": CategoryID.value,
         "Seat": Seat.value,
         "DriverIds": Drivers,
+        "baseFare":baseFare.value,
         "Status": "Available"
 
     }
@@ -1207,6 +1229,7 @@ async function setVehicleUpdateData(PlateNumber){
     document.getElementById("updateVehicleColour").value = Vehicle.Color;
     document.getElementById("updateVehicleNumSeats").value = Vehicle.Seat;
     document.getElementById("updateVFormVehicleStatus").value = Vehicle.Status;
+    document.getElementById("updateVehicleBaseFee").value = Vehicle.baseFare;
 
 
     getSelectedDriverArray('UpdateVdriverDropDBox','UpdateVehicleDriverList');
@@ -1232,6 +1255,7 @@ async function updateVehicle(){
     var Color = document.getElementById("updateVehicleColour");
     var Seat = document.getElementById("updateVehicleNumSeats");
     var Status = document.getElementById("updateVFormVehicleStatus");
+    var baseFee = document.getElementById("updateVehicleBaseFee");
     const Vehicl = Vehicles.find(Vehicl => Vehicl.PlateNumber === PlateNumber.value );
     var Drivers = getSelectedDriverArray('UpdateVdriverDropDBox','UpdateVehicleDriverList');
 
@@ -1255,6 +1279,7 @@ async function updateVehicle(){
         "Seat": Seat.value,
         "Status" : Status.value,
         "DriverIds" : Drivers,
+        "baseFare":baseFee.value,
         "ImagePath":Vehicl.ImagePath
         
     };
@@ -1346,14 +1371,14 @@ async function addDriver(){
         
         "Name" : name.value,
         "Email" : email.value,
-        "ContactNumber" : pNumber.value,
+        "PhoneNumber" : pNumber.value,
         "Address" : address.value,
         "DOB" : DOB.value,
         "BranchID" : branchDropdown.value,
-        "gender": gender,
+        "Gender": gender,
         "username" : username.value,
         "Imgbase64":Imgfile,
-        "password" : password.value,
+        "Password" : password.value,
         "Status": "Available"
         
     };
@@ -1394,14 +1419,14 @@ async function setDriverData (id){
     document.getElementById("updateDriversModal_Name").value = Driver.Name;
     document.getElementById("updateDriversModal_Email").value = Driver.Email;
     document.getElementById("updateDriversModal_Branch").value = Driver.BranchID;
-    document.getElementById("updateDriversModal_Contact").value = Driver.ContactNumber;
+    document.getElementById("updateDriversModal_Contact").value = Driver.PhoneNumber;
     document.getElementById("updateDriversModal_DOB").value = Driver.DOB;
     
     document.getElementById("updateDriversModal_address").value = Driver.Address;
     document.getElementById("updateDriversModal_Username").value = Driver.username;
     document.getElementById("updateDriversModal_Status").value = Driver.Status;
 
-    if(Driver.gender == "Male"){
+    if(Driver.Gender == "Male"){
         document.getElementById("updateDriversModal_Male").checked = true;
 
     }else{
@@ -1455,15 +1480,15 @@ async function UpdateDriver(){
         "id":id,
         "Name" : Name.value,
         "Email" : Email.value,
-        "ContactNumber" : ContactNumber.value,
+        "PhoneNumber" : ContactNumber.value,
         "Address" : Address.value,
         "DOB" : DOB.value,
         "BranchID" : BranchID.value,
-        "gender": gender,
+        "Gender": gender,
         "username" : username.value,
         "ImgLocation":driver.ImgLocation,
         "Imgbase64":Imgfile,
-        "password" : password.value,
+        "Password" : password.value,
         "Status": Status.options[Status.selectedIndex].text
         
     };
@@ -1501,11 +1526,11 @@ async function ShowDrivers(){
                             "<td>"+driver.Name+"</td>\n" +
                             "<td>"+driver.Email+"</td>\n" +
                             "<td>"+driver.username+"</td>\n" +
-                            "<td>"+driver.ContactNumber+"</td>\n" +
+                            "<td>"+driver.PhoneNumber+"</td>\n" +
                             "<td>"+driver.Address+"</td>\n" +
                             "<td>"+driver.DOB+"</td>\n" +
                             "<td>"+driver.BranchID+"</td>\n" +
-                            "<td>"+driver.gender+"</td>\n" +
+                            "<td>"+driver.Gender+"</td>\n" +
                             "<td>"+driver.Status+"</td>\n" +
                             
                         "</tr>";
@@ -1513,7 +1538,103 @@ async function ShowDrivers(){
     }));
 }
 
+// bookings
 
+async function getBookings(){
+    var bookingData = await fetch(Booking_url);
+    Bookings = await bookingData.json()
+
+    
+    document.getElementById("bookingList").innerHTML = "";
+    Array.prototype.forEach.call(Bookings,(booking => {
+
+    document.getElementById("bookingList").innerHTML +=
+        "<div class=\"BookingItem\" onclick=\"openModal('bookingDetailModal'); setBookingModalData("+booking.bookingID +");\">" +
+                        "<div>" +
+                            "<div class=\"booking-DT\">" +
+
+                                booking.BookingTime +
+
+                            "</div>" +
+
+                            "<div class=\"booking-ID\">" +
+                                "Trip Id :" + booking.bookingID +
+                            "</div>" +
+
+                        "</div>" +
+
+                        "<div class=\"booking-driver\">" +
+                            "Rider :" + booking.DriverName +
+                        "</div>" +
+        "</div>"
+
+    }));
+}
+
+async function getBookingSales(){
+    var data = await fetch(Booking_url+"Sales");
+    BookingSales = await data.json();
+
+    if(BookingSales == null){
+        return;
+    }
+
+    var totalSales =0;
+    for(var BSales of BookingSales){
+        totalSales += BSales.price;
+    }
+
+    document.getElementById("salesTotalSales").innerHTML =totalSales ;
+
+    drawChart();
+
+    
+
+
+}
+
+function copyPass(input){
+    var password = input.value;
+    navigator.clipboard.writeText(password.value);
+}
+
+
+function setBookingModalData(bID){
+    var Selectedbooking ;
+    for(var booking of Bookings){
+        if(booking.bookingID == bID){
+            Selectedbooking =booking;
+        }
+    }
+
+    var bookingID = document.getElementById("bkDeetsModalTripID");
+    var BookingDate = document.getElementById("bkDeetsModalDate");
+    var bookingPrice = document.getElementById("bkDeetsModalPrice");
+    var vehicleName = document.getElementById("bkDeetsModalVehicle");
+    var vehiclePlateNumber = document.getElementById("bkDeetsModalVPlate");
+    var CustomerID = document.getElementById("bkDeetsModalC_ID");
+    var CustomerName = document.getElementById("bkDeetsModalC_Name");
+    var CPhoneNumber = document.getElementById("bkDeetsModalC_Pnum");
+    var PickL = document.getElementById("bkDeetsModalPickupL");
+    var DropoffL = document.getElementById("bkDeetsModalDropoffL");
+    var DriverName = document.getElementById("bkDeetsModalDriver");
+
+    bookingID.innerHTML = Selectedbooking.bookingID;
+    BookingDate.innerHTML = Selectedbooking.BookingTime;
+    bookingPrice.innerHTML = "Rs : "+Selectedbooking.price;
+    vehicleName.innerHTML = Selectedbooking.vehicle.Name;
+    vehiclePlateNumber.innerHTML = Selectedbooking.vehicle.PlateNumber;
+    CustomerID.innerHTML = Selectedbooking.CustormerId;
+    CustomerName.innerHTML = Selectedbooking.CustomerName;
+    CPhoneNumber.innerHTML = Selectedbooking.CustomerPhoneNumber;
+    PickL.innerHTML = Selectedbooking.Source;
+    DropoffL.innerHTML = Selectedbooking.Destination;
+    DriverName.innerHTML = Selectedbooking.DriverName;
+
+    console.log(Selectedbooking);
+
+
+}
 
 
 SetupAdminPanel();

@@ -96,8 +96,8 @@ async function loadProfile(){
     profileImg.src = driverProfile.Imgbase64;
     profileName.value =  driverProfile.Name;
     profileAddress.value = driverProfile.Address;
-    profileNumber.value = driverProfile.ContactNumber;
-    profileGender.value = driverProfile.gender;
+    profileNumber.value = driverProfile.PhoneNumber;
+    profileGender.value = driverProfile.Gender;
     profileusername.value = driverProfile.username;
     profileDOB.value = driverProfile.DOB;
     console.log(driverProfile);
@@ -111,8 +111,24 @@ async function loadProfile(){
 async function loadHistoryBooking(){
     var DriverID = getCookie("DriverID");
     var BookingData = await fetch(Booking_url+"History/"+DriverID);
-   var Bookings = await BookingData.json();
-    console.log(Bookings);
+    var Bookings = await BookingData.json();
+
+    document.getElementById("BookingHistoryList").innerHTML = "";
+
+    Array.prototype.forEach.call(Bookings,(booking => {
+        document.getElementById("BookingHistoryList").innerHTML += 
+        "<div class=\"Item-HistoryBooking\">" +
+            "<p class=\"travel-destination\"> "+booking.Source+" --- "+booking.Destination+" </p>"+
+
+            "<div class=\"Trip-Id-Price\">"+
+                "<p> Trip id:"+booking.bookingID+"</p>"+
+                "<p>Rs : "+booking.price+"</p>"+
+            "</div>"+
+        "</div>"
+
+    }));
+
+    
 }
 
 
@@ -179,6 +195,33 @@ async function loadBooking(){
 
     var DriversID = getCookie('DriverID');
     var data = await fetch(Booking_url+DriversID);
+
+    var titleName = document.getElementById("titleName")
+    var Name = document.getElementById("CustormerName")
+    var pickup = document.getElementById("PickupLocation");
+    var dropOff = document.getElementById("dropoffLocation");
+    var bookingID = document.getElementById("BookingID");
+    var Booktime = document.getElementById("BookingDateTime");
+    var price = document.getElementById("BookingPrice");
+    var Status = document.getElementById("BookingStatus");
+    var CustomerPhoneNumber = document.getElementById("BookingCustomerNumber");
+    var bookingBtn = document.querySelector("#DriverDashboardTab .Tab-Footer");
+
+    titleName.innerHTML = "";
+    Name.innerHTML = "";
+    pickup.value = "";
+    dropOff.value = "";
+    bookingID.innerHTML = "";
+    Booktime.innerHTML = "";
+    price.innerHTML = "";
+    Status.innerHTML = "";
+    CustomerPhoneNumber.innerHTML = "";
+    bookingBtn.style.display = "none";
+    
+    if(data.status == 500){
+        return null;
+    }
+
     var Booking = await data.json();
     if(Booking == null){
         return;
@@ -204,9 +247,11 @@ async function loadBooking(){
     price.innerHTML = Booking.price;
     Status.innerHTML = Booking.Status;
     CustomerPhoneNumber.innerHTML = Booking.CustomerPhoneNumber;
+    bookingBtn.style.display = "flex";
 
 
 }
+
 
 async function CancelBooking(){
     var bookingID = document.getElementById("BookingID").innerText;
@@ -246,5 +291,13 @@ function getCookie(cname) {
     }
     return "";
 }
+
+function loginCheck(){
+    var DriverID = getCookie("DriverID");
+    if(DriverID == null|| DriverID == ""){
+        window.location.href = "login.html";
+    }
+}
+loginCheck();
 
 loadBooking();

@@ -2,11 +2,21 @@
 function bookingTab(){
     document.getElementById("DashboardTab").classList.add("Active");
     document.getElementById("BookingsTab").classList.remove("Active");
+    document.getElementById("ActiveBooking").classList.remove("Active");
+}
+
+function ActivebookingTab(){
+    document.getElementById("ActiveBooking").classList.add("Active");
+    document.getElementById("BookingsTab").classList.remove("Active");
+    document.getElementById("DashboardTab").classList.remove("Active");
+    getActiveBooking();
 }
 
 function PreviousBookingTab(){
     document.getElementById("BookingsTab").classList.add("Active");
     document.getElementById("DashboardTab").classList.remove("Active");
+    document.getElementById("ActiveBooking").classList.remove("Active");
+    getCustomerBookings();
 }
 
 
@@ -24,7 +34,7 @@ const Booking_url =  "http://localhost:8080/GoCheeta-Server/Booking/";
 
 // backend variables
 var Locations,RelatedLocation,LocationsFull,VehicleCategory, Vehicles,Vehicl,BranchID;
-var pickLocation,dropoffLocation;
+var pickLocation,dropoffLocation,HistoryBookings;
 
 
 function HorizontalScroll(event, div){
@@ -353,6 +363,7 @@ async function AddBooking(){
     var response = await fetch(Booking_url,options);
     if(response.status == 201){
         ShowNotification("Success", "Your Taxi has been booked");
+        ActivebookingTab();
     }else if(response.status == 501){
         var msg = await response.text();
         ShowNotification("error", msg);
@@ -365,3 +376,174 @@ async function AddBooking(){
 
 showLocation();
 setupBookingDetails();
+
+
+async function getCustomerBookings(){
+    var CustomerId = getCookie("CustomerID");
+    var data = await fetch(Booking_url+"Customer/History/"+CustomerId);
+
+    HistoryBookings = await data.json();
+
+    document.getElementById("bookingList").innerHTML = "";
+
+    // if(HistoryBookings == null){
+    //     return;
+    // }
+
+    Array.prototype.forEach.call(HistoryBookings,(booking => {
+        document.getElementById("bookingList").innerHTML +=
+
+        "<div class=\"BookingItem\" onclick=\"openModal('bookingDetailModal'); setBookingModalRating("+booking.bookingID+");\">" +
+                    "<div>" +
+                        "<div class=\"booking-DT\">" +
+                            booking.BookingTime +
+                       " </div>" +
+                        "<div class=\"booking-ID\">" +
+                            "Trip Id : "+ booking.bookingID+
+                        "</div>" +
+                    "</div>" +
+                    "<div class=\"booking-driver\">" +
+                        "Rider : " +booking.DriverName +
+                    "</div>" +
+                "</div>"
+
+    }));
+
+
+}
+
+async function setBookingModalRating(BID){
+    var booking;
+    for(trip of HistoryBookings){
+        if(trip.bookingID ==BID ){
+            booking = trip;
+        }
+    }
+
+    var dateTime = document.getElementById("bkDeetsModalDate");
+    var price = document.getElementById("bkDeetsModalTripID");
+    var tripId = document.getElementById("bkDeetsModalTripID");
+    var pickupL = document.getElementById("bkDeetsModalPickupL");
+    var dropoffL = document.getElementById("bkDeetsModalDropoffL");
+    var vehicle = document.getElementById("bkDeetsModalVehicle");
+    var driver = document.getElementById("TripDriver");
+
+    var alreadyRate = document.querySelector("#TripRateContainer .AlreadyRateContainer");
+    var Rate = document.querySelector("#TripRateContainer .RateContainer");
+    var  rateMsg = document.getElementById("TripRateingMsg");
+    var rateBtn = document.getElementById("TripRateingBtn");
+
+
+    dateTime.innerText = booking.BookingTime;
+    price.innerHTML = booking.price;
+    tripId.innerHTML = "Trip ID :"+ booking.bookingID;
+    pickupL.innerHTML = booking.Source;
+    dropoffL.innerHTML = booking.Destination;
+    vehicle.innerHTML = booking.vehicle.Name +" - "+booking.vehicle.PlateNumber ;
+    driver.innerHTML = booking.DriverName;
+
+    if(booking.Rate == 0){
+        Rate.classList.add("Active");
+        alreadyRate.classList.remove("Active");
+        rateMsg.readOnly  = false;
+        rateBtn.style.display = "block";
+        rateBtn.onclick = updateBookingRating;
+    }else{
+        Rate.classList.remove("Active");
+        alreadyRate.classList.add("Active");
+        rateMsg.readOnly  = true;
+        rateBtn.style.display = "none";
+    }
+
+    if(booking.Rate>0){
+        alreadyRate.querySelector("label.Checked").classList.remove("Checked");
+        var ratelable = alreadyRate.querySelector("label:nth-child("+((5-booking.Rate)+1)+")");
+        ratelable.classList.add("Checked");
+        rateMsg.value = booking.RateMsg;
+        console.log("test");
+    }
+
+    async function updateBookingRating(){
+        var RateCuston ;
+
+        if(document.getElementById("DriverRate5").checked){
+            RateCuston = 5;
+        }else if(document.getElementById("DriverRate4").checked){
+            RateCuston = 4;
+        }else if(document.getElementById("DriverRate3").checked){
+
+            RateCuston = 3;
+        }else if(document.getElementById("DriverRate2").checked){
+            RateCuston = 2;
+
+        }else if(document.getElementById("DriverRate1").checked){
+            RateCuston = 1;
+
+        }
+
+        const bookingRate = {
+            "bookingID":booking.bookingID,
+            "Rate":RateCuston,
+            "RateMsg":rateMsg.value
+        }
+
+        const options = {
+            method: "POST",
+            headers: {
+                "content-type" : "application/json"
+            },
+            body: JSON.stringify(bookingRate)
+        };
+    
+    
+        var response = await fetch(Booking_url+"Rating",options);
+        if(response.status == 201){
+            ShowNotification("Success", "Your have Rated");
+        }else if(response.status == 501){
+            var msg = await response.text();
+            ShowNotification("error", msg);
+        }
+    }
+
+}
+
+async function getActiveBooking(){
+    var CustomerId = getCookie("CustomerID");
+    var bookingData = await fetch(Booking_url+"Customer/"+CustomerId);
+    var booking  = await bookingData.json();
+
+    if(booking == null){
+        bookingTab();
+        return;
+    }
+
+    var DriverName = document.getElementById("DriverName");
+    var PickupLocation = document.getElementById("PickupLocation");
+    var dropoffLocation = document.getElementById("dropoffLocation");
+    var BookingID = document.getElementById("BookingID");
+    var BookingDateTime = document.getElementById("BookingDateTime");
+    var BookingPrice = document.getElementById("BookingPrice");
+    var BookingStatus = document.getElementById("BookingStatus");
+    var BookingDriverPNumber = document.getElementById("BookingDriverPNumber");
+
+    DriverName.innerHTML = booking.DriverName;
+    PickupLocation.value =  booking.Source;
+    dropoffLocation.value = booking.Destination;
+    BookingID.innerHTML = booking.bookingID;
+    BookingDateTime.innerHTML = booking.BookingTime;
+    BookingPrice.innerHTML = booking.price;
+    BookingStatus.innerHTML = booking.Status;
+    BookingDriverPNumber.innerHTML = booking.CustomerPhoneNumber;
+
+}
+
+
+function loginCheck(){
+    var CustomerID = getCookie("CustomerID");
+    if(CustomerID == null|| CustomerID == ""){
+        window.location.href = "CustomerSignup-login.html";
+    }
+}
+
+loginCheck();
+ActivebookingTab();

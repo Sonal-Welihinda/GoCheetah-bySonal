@@ -12,7 +12,7 @@ async function DriverLogin(){
 
     const Driver = {
         "Email":EmailIp.value,
-        "password":passwordIp.value
+        "Password":passwordIp.value
     }
 
     const options = {
@@ -31,7 +31,7 @@ async function DriverLogin(){
         document.cookie = "DriverID="+driverData.id;
         document.cookie = "DriverName="+driverData.Name;
         document.cookie = "DriverEmail="+driverData.Email;
-        document.cookie = "DriverPassword="+driverData.password;
+       // document.cookie = "DriverPassword="+driverData.password;
         ShowNotification("Success", "Successfully loged in redirecting....");
         setTimeout(()=>{
             window.location.href = "Driver.html";

@@ -30,7 +30,7 @@
             <span id="profileName">Sonal </span>
             <div id="menuButtons">
                 <button onclick="PreviousBookingTab();">Previous Booking</button>
-                <button onclick="bookingTab();">Booking Now</button>
+                <button onclick="ActivebookingTab();">Booking Now</button>
             </div>
         </div>
 
@@ -39,7 +39,7 @@
 
     <div id="Tabs">
 
-        <div id="DashboardTab" class="Active">
+        <div id="DashboardTab" >
             <div class="Tab-Title">
                 <h1 id="DashboardWelcomeMessage">Welcome Sonal</h1>
                 <h3>Where do you want to go ?</h3>
@@ -298,6 +298,50 @@
             </div>
         </div>
 
+        <div id="ActiveBooking" >
+            <div id="ActiveBKTitle">
+                Current booking
+            </div>
+
+            <div class="Tab-Body">
+                <div>
+                    <label for="DriverName">Driver name</label>
+                    <p id="DriverName">Sonal </p>
+
+                    <label for="PickupLocation">Pick up</label>
+                    <textarea id="PickupLocation" rows="4" readonly></textarea>
+
+                    <label for="dropoffLocation">Drop off</label>
+                    <textarea id="dropoffLocation" rows="4" readonly></textarea>
+                </div>
+
+                <div>
+                    <label for="BookingID">Trip ID</label>
+                    <p id="BookingID"></p>
+
+                    <label for="BookingDateTime">Date and Time</label>
+                    <p id="BookingDateTime">
+                        
+                    </p>
+
+                    <label for="BookingPrice">Price</label>
+                    <p id="BookingPrice">
+                        
+                    </p>
+
+                    <label for="BookingStatus">Status</label>
+                    <p id="BookingStatus">
+                        
+                    </p>
+
+                    <label for="BookingDriverPNumber"><img src="images/phone_black_fill.svg" alt="phone"></label>
+                    <p id="BookingDriverPNumber">
+                        
+                    </p>
+                </div>
+            </div>
+
+        </div>
 
     </div>
 
